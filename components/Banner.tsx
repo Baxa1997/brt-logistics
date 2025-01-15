@@ -17,15 +17,15 @@ function Banner() {
 
       <div className="hidden md:inline absolute mt-0 top-0 lg:pt-40 h-full w-full bg-transparent bg-gradient-to-r from-gray-800/90 to-transparent lg:px-16">
         <h2 className="w-[400px] lg:text-6xl lg:w-[755px] md:w-[250px] text-white font-bold">
-          WE CONNECT <span className="text-[#F3A95A]">DRIVERS</span> AND{" "}
+          WE CONNECT <span className="text-[#F3A95A]">DRIVERS</span> AND
           <span className="text-[#F3A95A]">CARRIERS</span> FOR SUCCESS
         </h2>
         <div className="lg:mt-20 w-[500px] flex items-center justify-between flex-wrap">
           <Button className="hover:bg-[#049e8e] lg:w-[45%] lg:h-[65px] bg-[#35bcaf] lg:text-[18px]">
-            I'm a Driver
+            I am a Driver
           </Button>
           <Button className="hover:bg-[#ffffffd7] lg:w-[45%] lg:h-[65px] bg-[white] lg:text-[18px] text-black ml-5">
-            I'm a Carrier
+            I am a Carrier
           </Button>
           <Button className="hover:bg-white hover:text-black mt-5 w-full lg:h-[65px] lg:text-[18px] bg-transparent border-[1px]">
             Search Jobs
