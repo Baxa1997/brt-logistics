@@ -211,7 +211,7 @@ const AboutUs: React.FC = () => {
               <textarea
                 placeholder="Message"
                 className="border border-gray-300 p-2 rounded-lg w-full mb-4"
-                rows="4"></textarea>
+                rows={4}></textarea>
               <Button
                 type="submit"
                 className="bg-[#0f766e] text-white font-bold py-2 px-4 rounded-lg w-full h-[50px] hover:bg-[#0d635d]">
