@@ -78,7 +78,7 @@ const CookiePolicy: React.FC = () => {
             advertising providers. These third-party cookies help us understand
             website performance and deliver relevant advertisements. We do not
             control these cookies, and their use is governed by the third
-            parties' privacy policies.
+            parties privacy policies.
           </p>
         </section>
 
@@ -88,7 +88,7 @@ const CookiePolicy: React.FC = () => {
             You can manage or disable cookies through your browser settings.
             However, please note that disabling cookies may affect the
             functionality of our website. For more information on managing
-            cookies, refer to your browser's help section.
+            cookies, refer to your browsers help section.
           </p>
         </section>
 
@@ -111,7 +111,7 @@ const CookiePolicy: React.FC = () => {
             us at:
           </p>
           <p className="text-gray-700">
-            Email:{" "}
+            Email:
             <a
               href="mailto:info@ustruckingservice.co"
               className="text-teal-600 underline">

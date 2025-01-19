@@ -1,4 +1,3 @@
-// pages/contact.tsx
 import ContactUsSection from "@/components/ContactUsSection";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
@@ -8,7 +7,6 @@ import React from "react";
 const Contact: React.FC = () => {
   return (
     <>
-      {" "}
       <section className="min-h-screen flex items-center justify-center bg-[#034e48] relative p-6">
         <div className="absolute inset-0  opacity-50 z-0"></div>
         <div className="container mx-auto px-6 z-10 relative">

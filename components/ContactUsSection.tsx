@@ -3,7 +3,7 @@ import {Input} from "./ui/input";
 import {Button} from "./ui/button";
 import {Textarea} from "./ui/textarea";
 import Link from "next/link";
-import {AlarmClock, LocateIcon, Mail, MapPin, Phone, Timer} from "lucide-react";
+import {AlarmClock, Mail, MapPin, Phone} from "lucide-react";
 
 function ContactUsSection() {
   return (

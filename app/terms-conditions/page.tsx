@@ -26,7 +26,7 @@ const TermsAndConditions: React.FC = () => {
           <ul className="list-disc pl-6 text-gray-700">
             <li className="mb-2">
               Engage in any activity that disrupts or interferes with the
-              website's functionality.
+              websites functionality.
             </li>
             <li className="mb-2">
               Attempt to gain unauthorized access to any part of the website or
@@ -98,7 +98,7 @@ const TermsAndConditions: React.FC = () => {
             If you have any questions about these terms, please contact us at:
           </p>
           <p className="text-gray-700">
-            Email:{" "}
+            Email:
             <a
               href="mailto:info@ustruckingservice.co"
               className="text-teal-600 underline">
