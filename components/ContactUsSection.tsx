@@ -2,6 +2,8 @@ import React from "react";
 import {Input} from "./ui/input";
 import {Button} from "./ui/button";
 import {Textarea} from "./ui/textarea";
+import Link from "next/link";
+import {AlarmClock, LocateIcon, Mail, MapPin, Phone, Timer} from "lucide-react";
 
 function ContactUsSection() {
   return (
@@ -13,25 +15,54 @@ function ContactUsSection() {
           </h3>
           <div className="grid grid-cols-2 gap-6">
             <div className="flex flex-col ">
-              <span className="text-xl font-bold text-gray-700">
+              <span className="text-xl font-bold text-gray-700 mb-2">
                 Phone Number
               </span>
-              <p className="text-gray-600">+1 (347) 263-8089</p>
-              <p className="text-gray-600">+1 (347) 263-8165</p>
+              <div className="flex items-center gap-2">
+                <Phone />
+                <Link href={"tel:+13472638089"} className="text-gray-600">
+                  +1 (347) 263-8089
+                </Link>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone />
+                <Link href={"tel:+13472638165"} className="text-gray-600">
+                  +1 (347) 263-8165
+                </Link>
+              </div>
             </div>
             <div className="flex flex-col ">
-              <span className="text-xl font-bold text-gray-700">Email</span>
-              <p className="text-gray-600">info@ustruckingservice.co</p>
+              <span className="text-xl font-bold text-gray-700 mb-2">
+                Email
+              </span>
+              <div className="flex items-center gap-2">
+                <Mail />
+                <Link
+                  href="mailto:info@ustruckingservice.co"
+                  className="text-gray-600">
+                  info@ustruckingservice.co
+                </Link>
+              </div>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-700">Location</span>
-              <p className="text-gray-600">10 Shore Blvd Brooklyn NY 11235</p>
+              <span className="text-xl font-bold text-gray-700 mb-2">
+                Location
+              </span>
+              <div className="flex items-center gap-2">
+                <MapPin />
+                <p className="text-gray-600 ">
+                  10 Shore Blvd Brooklyn NY 11235
+                </p>
+              </div>
             </div>
             <div className="flex flex-col ">
-              <span className="text-xl font-bold text-gray-700">
+              <span className="text-xl font-bold text-gray-700 mb-2">
                 Working Hours
               </span>
-              <p className="text-gray-600">Mon - Sat: 9:00 AM - 6:00 PM</p>
+              <div className="flex gap-2 items-center">
+                <AlarmClock />
+                <p className="text-gray-600">Mon - Sat: 9:00 AM - 6:00 PM</p>
+              </div>
             </div>
           </div>
         </div>

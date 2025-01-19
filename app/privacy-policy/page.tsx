@@ -11,13 +11,13 @@ const PrivacyPolicy: React.FC = () => {
             The Information We Collect
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            US Trucking Service collects personal information that you
-            voluntarily submit to us when you complete an application, online
-            form, or survey. The personal information we request may include
-            your name, contact information (including mailing address, email
-            address, and phone number), as well as details about your past
-            employment, driving record, criminal history, and other information
-            relevant to recruiters and potential employers.
+            BRT Logistics collects personal information that you voluntarily
+            submit to us when you complete an application, online form, or
+            survey. The personal information we request may include your name,
+            contact information (including mailing address, email address, and
+            phone number), as well as details about your past employment,
+            driving record, criminal history, and other information relevant to
+            recruiters and potential employers.
           </p>
         </section>
 

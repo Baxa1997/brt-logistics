@@ -34,31 +34,6 @@ const AboutUs: React.FC = () => {
         </div>
       </section>
 
-      <section id="partners" className="py-16 bg-gray-50">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-          <img
-            src="/images/partner1.png"
-            alt="Partner 1"
-            className="h-16 mx-auto"
-          />
-          <img
-            src="/images/partner2.png"
-            alt="Partner 2"
-            className="h-16 mx-auto"
-          />
-          <img
-            src="/images/partner3.png"
-            alt="Partner 3"
-            className="h-16 mx-auto"
-          />
-          <img
-            src="/images/partner4.png"
-            alt="Partner 4"
-            className="h-16 mx-auto"
-          />
-        </div>
-      </section>
-
       <section id="values" className="py-16 bg-white">
         <div className="container mx-auto">
           <h2 className="text-5xl font-extrabold mb-6  text-[#0f766e] text-center">

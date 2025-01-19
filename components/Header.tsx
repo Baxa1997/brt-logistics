@@ -102,15 +102,15 @@ export default function Header() {
       <div className="hidden lg:block ml-6">
         <div className="flex">
           <Phone />
-          <a href="tel:+1(347)2638089" className="ml-2">
+          <Link href="tel:+1(347)2638089" className="ml-2">
             +1 (347) 263-8089
-          </a>
+          </Link>
         </div>
         <div className="flex">
           <Phone />
-          <a href="tel:+1(347)2638165" className="ml-2">
+          <Link href="tel:+1(347)2638165" className="ml-2">
             +1 (347) 263-8165
-          </a>
+          </Link>
         </div>
       </div>
     </header>
