@@ -79,8 +79,8 @@ const PrivacyPolicy: React.FC = () => {
         <section>
           <h2 className="text-2xl font-semibold mb-4">Children’s Privacy</h2>
           <p className="text-gray-700 leading-relaxed">
-            Our services are not intended for children under the age of 13. If
-            we inadvertently collect information from a child under 13, we will
+            Our services are not intended for children under the age of 18. If
+            we inadvertently collect information from a child under 18, we will
             promptly delete it.
           </p>
         </section>
