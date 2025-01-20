@@ -12,13 +12,13 @@ function Mission() {
 
         {/* Paragraph */}
         <p className="text-sm sm:text-base lg:text-lg text-justify text-gray-700 leading-relaxed max-w-[900px] mx-auto">
-          At US Trucking Service, our mission is to be the dedicated Driver
-          Agents who tirelessly advocate for the best interests of truck
-          drivers. We believe that every driver deserves a partner who
-          understands their unique needs and works to secure job opportunities
-          that align with their lifestyle. Our commitment is to provide
-          personalized support and guidance, ensuring that our drivers achieve
-          the career satisfaction and work-life balance they deserve.
+          At BRT Logistics, our mission is to be the dedicated Driver Agents who
+          tirelessly advocate for the best interests of truck drivers. We
+          believe that every driver deserves a partner who understands their
+          unique needs and works to secure job opportunities that align with
+          their lifestyle. Our commitment is to provide personalized support and
+          guidance, ensuring that our drivers achieve the career satisfaction
+          and work-life balance they deserve.
         </p>
       </div>
     </div>

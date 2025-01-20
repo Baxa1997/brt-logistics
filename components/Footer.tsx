@@ -21,9 +21,9 @@ function Footer() {
             />
           </Link>
           <p className="text-sm">
-            US Trucking Service means to serve as a best friend for both drivers
-            and carriers in the transportation industry. We provide qualified
-            CDL Class A drivers for motor carriers and help drivers find the job
+            BRT Logistics means to serve as a best friend for both drivers and
+            carriers in the transportation industry. We provide qualified CDL
+            Class A drivers for motor carriers and help drivers find the job
             that matches their criteria.
           </p>
         </div>
@@ -95,8 +95,8 @@ function Footer() {
             </li>
             <li className="flex items-center">
               <Mail />
-              <Link href="mailto:info@ustruckingservice.co" className="ml-2">
-                info@ustruckingservice.co
+              <Link href="mailto:sam.hr@brtlog.com" className="ml-2">
+                sam.hr@brtlog.com
               </Link>
             </li>
           </ul>

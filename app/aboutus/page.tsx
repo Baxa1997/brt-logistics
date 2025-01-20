@@ -12,15 +12,14 @@ const AboutUs: React.FC = () => {
               About Us
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              US Trucking Service aims to be the trusted partner for both
-              drivers and carriers in the transportation industry. We connect
-              qualified CDL Class A drivers with motor carriers and ensure
-              drivers find the job that best matches their skills and goals.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut aut
-              facilis earum rerum dolore et alias quisquam in beatae id fugit
-              distinctio quas quaerat voluptatum enim est quam placeat veritatis
-              debitis amet, necessitatibus quasi! Quae eligendi id vero amet
-              voluptas.
+              BRT Logistics aims to be the trusted partner for both drivers and
+              carriers in the transportation industry. We connect qualified CDL
+              Class A drivers with motor carriers and ensure drivers find the
+              job that best matches their skills and goals. Lorem ipsum dolor
+              sit, amet consectetur adipisicing elit. Ut aut facilis earum rerum
+              dolore et alias quisquam in beatae id fugit distinctio quas
+              quaerat voluptatum enim est quam placeat veritatis debitis amet,
+              necessitatibus quasi! Quae eligendi id vero amet voluptas.
             </p>
           </div>
           <div className="md:w-1/2 h-[400px] w-full mt-8 md:mt-0 relative ">

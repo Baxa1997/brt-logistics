@@ -53,9 +53,9 @@ const TermsAndConditions: React.FC = () => {
           <h2 className="text-2xl font-semibold mb-4">Intellectual Property</h2>
           <p className="text-gray-700 leading-relaxed">
             All content on this website, including text, graphics, logos, and
-            images, is the property of US Trucking Service or its content
-            suppliers and is protected by intellectual property laws. You may
-            not reproduce, distribute, or modify any content without our prior
+            images, is the property of BRT Logistics or its content suppliers
+            and is protected by intellectual property laws. You may not
+            reproduce, distribute, or modify any content without our prior
             written consent.
           </p>
         </section>
@@ -65,8 +65,8 @@ const TermsAndConditions: React.FC = () => {
             Limitation of Liability
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            To the fullest extent permitted by law, US Trucking Service shall
-            not be liable for any indirect, incidental, or consequential damages
+            To the fullest extent permitted by law, BRT Logistics shall not be
+            liable for any indirect, incidental, or consequential damages
             arising from your use of the website or services. This includes, but
             is not limited to, loss of data, profits, or business opportunities.
           </p>
@@ -100,9 +100,9 @@ const TermsAndConditions: React.FC = () => {
           <p className="text-gray-700">
             Email:
             <a
-              href="mailto:info@ustruckingservice.co"
+              href="mailto:sam.hr@brtlog.com"
               className="text-teal-600 underline">
-              info@ustruckingservice.co
+              sam.hr@brtlog.com
             </a>
           </p>
           <p className="text-gray-700">Phone: +1 (347) 263-8089</p>

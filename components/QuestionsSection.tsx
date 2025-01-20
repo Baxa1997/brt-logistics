@@ -37,16 +37,16 @@ function QuestionsSection() {
               </AccordionItem>
               <AccordionItem value="item-3">
                 <AccordionTrigger className="font-bold">
-                  What is US Trucking Service, and what do you specialize in?
+                  What is BRT Logistics, and what do you specialize in?
                 </AccordionTrigger>
                 <AccordionContent>
-                  US Trucking Service specializes in providing high-quality
-                  staffing solutions for the trucking industry.
+                  BRT LOgistics specializes in providing high-quality staffing
+                  solutions for the trucking industry.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-4">
                 <AccordionTrigger className="font-bold">
-                  How can I apply for a CDL job through US Trucking Service?
+                  How can I apply for a CDL job through BRT Logistics?
                 </AccordionTrigger>
                 <AccordionContent>
                   You can apply for a CDL job through our website or contact our
@@ -69,12 +69,11 @@ function QuestionsSection() {
             <Accordion type="single" collapsible>
               <AccordionItem value="item-6">
                 <AccordionTrigger className="font-bold">
-                  What qualifications do I need to work with US Trucking
-                  Service?
+                  What qualifications do I need to work with BRT Logistics?
                 </AccordionTrigger>
                 <AccordionContent>
                   You need a valid CDL license and meet specific company
-                  requirements to work with US Trucking Service.
+                  requirements to work with BRT Logistics.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-7">
@@ -97,8 +96,7 @@ function QuestionsSection() {
               </AccordionItem>
               <AccordionItem value="item-9">
                 <AccordionTrigger className="font-bold">
-                  What benefits can I expect when working with US Trucking
-                  Service?
+                  What benefits can I expect when working with BRT Logistics?
                 </AccordionTrigger>
                 <AccordionContent>
                   Benefits may include competitive pay, flexible schedules, and

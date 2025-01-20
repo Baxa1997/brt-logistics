@@ -113,9 +113,9 @@ const CookiePolicy: React.FC = () => {
           <p className="text-gray-700">
             Email:
             <a
-              href="mailto:info@ustruckingservice.co"
+              href="mailto:sam.hr@brtlog.com"
               className="text-teal-600 underline">
-              info@ustruckingservice.co
+              sam.hr@brtlog.com
             </a>
           </p>
           <p className="text-gray-700">Phone: +1 (347) 263-8089</p>

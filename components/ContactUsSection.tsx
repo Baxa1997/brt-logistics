@@ -37,10 +37,8 @@ function ContactUsSection() {
               </span>
               <div className="flex items-center gap-2">
                 <Mail />
-                <Link
-                  href="mailto:info@ustruckingservice.co"
-                  className="text-gray-600">
-                  info@ustruckingservice.co
+                <Link href="mailto:sam.hr@brtlog.com" className="text-gray-600">
+                  sam.hr@brtlog.com
                 </Link>
               </div>
             </div>
