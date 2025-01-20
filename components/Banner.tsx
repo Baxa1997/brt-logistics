@@ -8,7 +8,7 @@ function Banner() {
       <div className="flex-full min-w-0 relative">
         <Image
           alt="banner photo"
-          src={"/img/truckingBanner.jpg"}
+          src={"/img/bannerImg2.jpg"}
           width={1920}
           height={1080}
           className="absolute w-full h-full object-cover"
