@@ -2,6 +2,7 @@ import ContactUsSection from "@/components/ContactUsSection";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
+import Link from "next/link";
 import React from "react";
 
 const Contact: React.FC = () => {
@@ -122,11 +123,12 @@ const Contact: React.FC = () => {
                 <label htmlFor="privacyPolicy" className="text-gray-700">
                   By selecting this box, you consent to receive SMS messages and
                   agree to our
-                  <a
+                  <Link
+                    target="_blank"
                     href="/privacy-policy"
                     className="text-blue-600 underline ml-1">
                     Privacy Policy
-                  </a>
+                  </Link>
                   .
                 </label>
               </div>
