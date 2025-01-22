@@ -1,15 +1,62 @@
+"use client";
 import ContactUsSection from "@/components/ContactUsSection";
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
 import Link from "next/link";
+import {useRouter} from "next/navigation";
 import React from "react";
+import {useForm, Controller} from "react-hook-form";
+import PhoneInputWithCountrySelect from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import {toast} from "react-toastify";
+
+interface ContactFormInputs {
+  firstname: string;
+  lastname: string;
+  companyName?: string;
+  email: string;
+  phoneNumber: string;
+  is_phone_collectable: boolean;
+  usDot?: string;
+  message?: string;
+}
 
 const Contact: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+    control,
+  } = useForm<ContactFormInputs>();
+  const router = useRouter();
+
+  const notify = () =>
+    toast.success(
+      "Thank you for reaching us, we will contact you as soon as possible!"
+    );
+
+  const submit = async (data: ContactFormInputs) => {
+    await fetch(
+      "https://api.mockfly.dev/mocks/8b1082d3-e6c9-4a19-beec-e7eac4f3fb91/brtlog/contact",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": "12345-abcde-67890-fghij-12345",
+        },
+        body: JSON.stringify(data),
+      }
+    ).then((res) => {
+      notify();
+      router.push("/");
+    });
+  };
+
   return (
     <>
       <section className="min-h-screen flex items-center justify-center bg-[#034e48] relative p-6">
-        <div className="absolute inset-0  opacity-50 z-0"></div>
+        <div className="absolute inset-0 opacity-50 z-0"></div>
         <div className="container mx-auto px-6 z-10 relative">
           <h1 className="text-5xl font-extrabold text-white text-center mb-4">
             Contact Us
@@ -18,100 +65,229 @@ const Contact: React.FC = () => {
             Want to get in touch? We’re more than happy to help.
           </p>
           <div className="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form
+              onSubmit={handleSubmit(submit)}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="col-span-1">
                 <label
-                  htmlFor="firstName"
+                  htmlFor="firstname"
                   className="block text-gray-700 font-medium mb-2">
                   First Name *
                 </label>
-                <Input
-                  id="firstName"
-                  type="text"
-                  className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring focus:ring-green-500"
-                  placeholder="First Name"
-                  required
+                <Controller
+                  name="firstname"
+                  control={control}
+                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                    return (
+                      <Input
+                        onChange={(e) => onChange(e.target.value)}
+                        id="firstname"
+                        type="text"
+                        className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring focus:ring-green-500"
+                        placeholder="First Name"
+                        required
+                      />
+                    );
+                  }}
                 />
               </div>
+
               <div className="col-span-1">
                 <label
-                  htmlFor="lastName"
+                  htmlFor="lastname"
                   className="block text-gray-700 font-medium mb-2">
                   Last Name *
                 </label>
-                <Input
-                  id="lastName"
-                  type="text"
-                  className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring focus:ring-green-500"
-                  placeholder="Last Name"
-                  required
+                <Controller
+                  name="lastname"
+                  control={control}
+                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                    return (
+                      <Input
+                        onChange={(e) => onChange(e.target.value)}
+                        id="lastname"
+                        type="text"
+                        className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring focus:ring-green-500"
+                        placeholder="Last Name"
+                        required
+                      />
+                    );
+                  }}
                 />
               </div>
+
               <div className="col-span-1">
                 <label
                   htmlFor="companyName"
                   className="block text-gray-700 font-medium mb-2">
                   Company Name
                 </label>
-                <Input
-                  id="companyName"
-                  type="text"
-                  className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring focus:ring-green-500"
-                  placeholder="Company Name"
+                <Controller
+                  name="companyName"
+                  control={control}
+                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                    return (
+                      <Input
+                        onChange={(e) => onChange(e.target.value)}
+                        id="companyName"
+                        type="text"
+                        className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring focus:ring-green-500"
+                        placeholder="Company Name"
+                        required
+                      />
+                    );
+                  }}
                 />
               </div>
+
               <div className="col-span-1">
                 <label
                   htmlFor="email"
                   className="block text-gray-700 font-medium mb-2">
                   Email *
                 </label>
-                <Input
-                  id="email"
-                  type="email"
-                  className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring focus:ring-green-500"
-                  placeholder="Email"
-                  required
+                <Controller
+                  name="email"
+                  control={control}
+                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                    return (
+                      <Input
+                        onChange={(e) => onChange(e.target.value)}
+                        id="email"
+                        type="text"
+                        className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring focus:ring-green-500"
+                        placeholder="Email"
+                        required
+                      />
+                    );
+                  }}
                 />
               </div>
-              <div className="col-span-1">
+
+              <div className="col-span-2">
                 <label
                   htmlFor="phoneNumber"
                   className="block text-gray-700 font-medium mb-2">
                   Phone Number *
                 </label>
-                <Input
-                  id="phoneNumber"
-                  type="tel"
-                  className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring focus:ring-green-500"
-                  placeholder="Phone Number"
-                  required
+                <Controller
+                  name="phoneNumber"
+                  control={control}
+                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                    return (
+                      <PhoneInputWithCountrySelect
+                        onChange={(e) => console.log("eeeeeeeeeeee", e)}
+                        id="email"
+                        isValidPhoneNumber
+                        international
+                        type="text"
+                        className="w-full h-[36px] border border-gray-300 rounded-lg p-3 px-3 focus:outline-none  focus:ring-green-500 "
+                        placeholder="phoneNumber"
+                        required
+                      />
+                    );
+                  }}
                 />
+                <div className="flex items-start mt-2">
+                  <p className="text-[13px]">
+                    By providing your phone number, you consent to receive SMS
+                    messages from BRT Logistics, including hiring-related
+                    updates and promotional messages. Message and data rates may
+                    apply. Choose NO to unsubscribe.
+                  </p>
+                </div>
+                <div className="flex gap-4 mt-3">
+                  <div className="flex items-center">
+                    <Controller
+                      name="is_phone_collectable"
+                      control={control}
+                      render={({
+                        field: {onChange, value},
+                        fieldState: {error},
+                      }) => {
+                        return (
+                          <Input
+                            name="is_phone_collectable"
+                            onChange={(e) => onChange(e.target.checked)}
+                            type="radio"
+                            id="yes_phone"
+                            className="mr-2 w-4 h-4 focus:ring focus:ring-green-500"
+                            required
+                          />
+                        );
+                      }}
+                    />
+                    <label htmlFor="yes_phone">AGREE</label>
+                  </div>
+                  <div className="flex items-center">
+                    <Controller
+                      name="is_phone_collectable"
+                      control={control}
+                      render={({
+                        field: {onChange, value},
+                        fieldState: {error},
+                      }) => {
+                        return (
+                          <Input
+                            name="is_phone_collectable"
+                            onChange={(e) => onChange(e.target.checked)}
+                            type="radio"
+                            id="no_phone"
+                            className="mr-2 w-4 h-4 focus:ring focus:ring-green-500"
+                            required
+                          />
+                        );
+                      }}
+                    />
+                    <label htmlFor="no_phone">NO</label>
+                  </div>
+                </div>
               </div>
+
               <div className="col-span-1">
                 <label
                   htmlFor="usDot"
                   className="block text-gray-700 font-medium mb-2">
                   US DOT
                 </label>
-                <Input
-                  id="usDot"
-                  type="text"
-                  className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring focus:ring-green-500"
-                  placeholder="US DOT"
+                <Controller
+                  name="usDot"
+                  control={control}
+                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                    return (
+                      <Input
+                        onChange={(e) => onChange(e.target.value)}
+                        id="email"
+                        type="text"
+                        className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring focus:ring-green-500"
+                        placeholder="US DOT"
+                        required
+                      />
+                    );
+                  }}
                 />
               </div>
+
               <div className="col-span-2">
                 <label
                   htmlFor="needs"
                   className="block text-gray-700 font-medium mb-2">
-                  Describe your hiring needs:
+                  Message:
                 </label>
-                <Textarea
-                  id="needs"
-                  rows={4}
-                  className="w-full border border-gray-300 rounded-lg p-3 resize-none focus:outline-none focus:ring focus:ring-green-500"
-                  placeholder="Describe your hiring needs"></Textarea>
+                <Controller
+                  name="message"
+                  control={control}
+                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                    return (
+                      <Textarea
+                        onChange={(e) => onChange(e.target.value)}
+                        id="needs"
+                        rows={4}
+                        className="w-full border border-gray-300 rounded-lg p-3 resize-none focus:outline-none focus:ring focus:ring-green-500"
+                        placeholder="Describe your hiring needs"></Textarea>
+                    );
+                  }}
+                />
               </div>
               <div className="col-span-2 flex items-center text-[12px]">
                 <Input
@@ -120,18 +296,24 @@ const Contact: React.FC = () => {
                   className="mr-2 w-4 h-4 focus:ring focus:ring-green-500"
                   required
                 />
-                <label htmlFor="privacyPolicy" className="text-gray-700">
-                  By selecting this box, you consent to receive SMS messages and
-                  agree to our
-                  <Link
-                    target="_blank"
-                    href="/privacy-policy"
-                    className="text-blue-600 underline ml-1">
-                    Privacy Policy
-                  </Link>
+                <label
+                  htmlFor="privacyPolicy"
+                  className="text-gray-700 h-[20px]">
+                  <p className="text-[12px]">
+                    By selecting this box, you consent to and agree with our
+                    <Link
+                      target="_blank"
+                      href="/privacy-policy"
+                      className="text-blue-600 underline ml-1">
+                      Privacy Policy
+                    </Link>{" "}
+                    and understand how we collect, use, and protect your
+                    information.
+                  </p>
                   .
                 </label>
               </div>
+
               <div className="col-span-2">
                 <Button
                   type="submit"
