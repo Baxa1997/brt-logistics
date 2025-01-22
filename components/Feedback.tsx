@@ -10,8 +10,6 @@ import {
 } from "./ui/select";
 import {Input} from "./ui/input";
 import Link from "next/link";
-import PhoneInputWithCountrySelect from "react-phone-number-input";
-import PhoneInput from "./PhoneInput";
 
 function Feedback() {
   return (

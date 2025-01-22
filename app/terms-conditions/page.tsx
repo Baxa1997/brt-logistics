@@ -77,8 +77,9 @@ const TermsAndConditions: React.FC = () => {
           <p className="text-gray-700 leading-relaxed">
             By opting into our SMS program, you consent to receive text messages
             related to our services. Message frequency may vary, and message and
-            data rates may apply. You can opt out at any time by Chossing "NO"
-            chekcbox shown. For assistance, reply “HELP” or contact us directly.
+            data rates may apply. You can opt out at any time by Choosing NO at
+            the checkbox shown. For assistance, reply “HELP” or contact us
+            directly.
           </p>
         </section>
 
