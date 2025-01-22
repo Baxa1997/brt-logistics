@@ -65,7 +65,9 @@ function ContactUsSection() {
           </div>
         </div>
         <div className="lg:w-1/2 w-full bg-white p-8 rounded-lg shadow-md">
-          <h3 className="text-2xl font-bold text-[#0f766e] mb-6">Contact Us</h3>
+          <h3 className="text-2xl font-bold text-[#0f766e] mb-6">
+            Feedbacks or Suggestions
+          </h3>
           <form>
             <div className="grid grid-cols-2 gap-6 mb-4">
               <Input
@@ -79,15 +81,8 @@ function ContactUsSection() {
                 className="border border-gray-300 p-2 rounded-lg w-full"
               />
             </div>
-            <div className="grid grid-cols-2 gap-6 mb-4">
-              <Input
-                type="email"
-                placeholder="Email ID"
-                className="border border-gray-300 p-2 rounded-lg w-full"
-              />
-            </div>
             <Textarea
-              placeholder="Message"
+              placeholder="Write your feedbacks or suggestions"
               className="border border-gray-300 p-2 rounded-lg resize-none w-full mb-4"
               rows={4}></Textarea>
             <Button

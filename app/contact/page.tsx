@@ -183,54 +183,6 @@ const Contact: React.FC = () => {
                     );
                   }}
                 />
-                <div className="flex items-start mt-2">
-                  <p className="text-[13px]">
-                    By providing your phone number, you consent to receive SMS
-                    messages from BRT Logistics, including hiring-related
-                    updates and promotional messages. Message and data rates may
-                    apply. Choose NO to unsubscribe.
-                  </p>
-                </div>
-                <div className="flex gap-4 mt-3">
-                  <div className="flex items-center">
-                    <Controller
-                      name="is_phone_collectable"
-                      control={control}
-                      render={({field: {onChange}}) => {
-                        return (
-                          <Input
-                            name="is_phone_collectable"
-                            onChange={(e) => onChange(e.target.checked)}
-                            type="radio"
-                            id="yes_phone"
-                            className="mr-2 w-4 h-4 focus:ring focus:ring-green-500"
-                            required
-                          />
-                        );
-                      }}
-                    />
-                    <label htmlFor="yes_phone">AGREE</label>
-                  </div>
-                  <div className="flex items-center">
-                    <Controller
-                      name="is_phone_collectable"
-                      control={control}
-                      render={({field: {onChange}}) => {
-                        return (
-                          <Input
-                            name="is_phone_collectable"
-                            onChange={(e) => onChange(e.target.checked)}
-                            type="radio"
-                            id="no_phone"
-                            className="mr-2 w-4 h-4 focus:ring focus:ring-green-500"
-                            required
-                          />
-                        );
-                      }}
-                    />
-                    <label htmlFor="no_phone">NO</label>
-                  </div>
-                </div>
               </div>
 
               <div className="col-span-1">
@@ -301,6 +253,56 @@ const Contact: React.FC = () => {
                   </p>
                   .
                 </label>
+              </div>
+              <div className="flex flex-col col-span-2">
+                <div className="flex items-start mt-2">
+                  <label className="text-[12px]">
+                    By providing your phone number, you consent to receive SMS
+                    messages from BRT Logistics, including hiring-related
+                    updates and promotional messages. Message and data rates may
+                    apply. Choose NO to unsubscribe.
+                  </label>
+                </div>
+                <div className="flex gap-4 mt-3">
+                  <div className="flex items-center">
+                    <Controller
+                      name="is_phone_collectable"
+                      control={control}
+                      render={({field: {onChange}}) => {
+                        return (
+                          <Input
+                            name="is_phone_collectable"
+                            onChange={(e) => onChange(e.target.checked)}
+                            type="radio"
+                            id="yes_phone"
+                            className="mr-2 w-4 h-4 focus:ring focus:ring-green-500"
+                            required
+                          />
+                        );
+                      }}
+                    />
+                    <label htmlFor="yes_phone">AGREE</label>
+                  </div>
+                  <div className="flex items-center">
+                    <Controller
+                      name="is_phone_collectable"
+                      control={control}
+                      render={({field: {onChange}}) => {
+                        return (
+                          <Input
+                            name="is_phone_collectable"
+                            onChange={(e) => onChange(e.target.checked)}
+                            type="radio"
+                            id="no_phone"
+                            className="mr-2 w-4 h-4 focus:ring focus:ring-green-500"
+                            required
+                          />
+                        );
+                      }}
+                    />
+                    <label htmlFor="no_phone">NO</label>
+                  </div>
+                </div>
               </div>
 
               <div className="col-span-2">
