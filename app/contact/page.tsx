@@ -23,12 +23,7 @@ interface ContactFormInputs {
 }
 
 const Contact: React.FC = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: {errors},
-    control,
-  } = useForm<ContactFormInputs>();
+  const {handleSubmit, control} = useForm<ContactFormInputs>();
   const router = useRouter();
 
   const notify = () =>
@@ -47,7 +42,7 @@ const Contact: React.FC = () => {
         },
         body: JSON.stringify(data),
       }
-    ).then((res) => {
+    ).then(() => {
       notify();
       router.push("/");
     });
@@ -77,7 +72,7 @@ const Contact: React.FC = () => {
                 <Controller
                   name="firstname"
                   control={control}
-                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                  render={({field: {onChange}}) => {
                     return (
                       <Input
                         onChange={(e) => onChange(e.target.value)}
@@ -101,7 +96,7 @@ const Contact: React.FC = () => {
                 <Controller
                   name="lastname"
                   control={control}
-                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                  render={({field: {onChange}}) => {
                     return (
                       <Input
                         onChange={(e) => onChange(e.target.value)}
@@ -125,7 +120,7 @@ const Contact: React.FC = () => {
                 <Controller
                   name="companyName"
                   control={control}
-                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                  render={({field: {onChange}}) => {
                     return (
                       <Input
                         onChange={(e) => onChange(e.target.value)}
@@ -149,7 +144,7 @@ const Contact: React.FC = () => {
                 <Controller
                   name="email"
                   control={control}
-                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                  render={({field: {onChange}}) => {
                     return (
                       <Input
                         onChange={(e) => onChange(e.target.value)}
@@ -173,10 +168,10 @@ const Contact: React.FC = () => {
                 <Controller
                   name="phoneNumber"
                   control={control}
-                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                  render={({field: {onChange}}) => {
                     return (
                       <PhoneInputWithCountrySelect
-                        onChange={(e) => console.log("eeeeeeeeeeee", e)}
+                        onChange={(e) => onChange(e)}
                         id="email"
                         isValidPhoneNumber
                         international
@@ -201,10 +196,7 @@ const Contact: React.FC = () => {
                     <Controller
                       name="is_phone_collectable"
                       control={control}
-                      render={({
-                        field: {onChange, value},
-                        fieldState: {error},
-                      }) => {
+                      render={({field: {onChange}}) => {
                         return (
                           <Input
                             name="is_phone_collectable"
@@ -223,10 +215,7 @@ const Contact: React.FC = () => {
                     <Controller
                       name="is_phone_collectable"
                       control={control}
-                      render={({
-                        field: {onChange, value},
-                        fieldState: {error},
-                      }) => {
+                      render={({field: {onChange}}) => {
                         return (
                           <Input
                             name="is_phone_collectable"
@@ -253,7 +242,7 @@ const Contact: React.FC = () => {
                 <Controller
                   name="usDot"
                   control={control}
-                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                  render={({field: {onChange}}) => {
                     return (
                       <Input
                         onChange={(e) => onChange(e.target.value)}
@@ -277,7 +266,7 @@ const Contact: React.FC = () => {
                 <Controller
                   name="message"
                   control={control}
-                  render={({field: {onChange, value}, fieldState: {error}}) => {
+                  render={({field: {onChange}}) => {
                     return (
                       <Textarea
                         onChange={(e) => onChange(e.target.value)}
@@ -306,7 +295,7 @@ const Contact: React.FC = () => {
                       href="/privacy-policy"
                       className="text-blue-600 underline ml-1">
                       Privacy Policy
-                    </Link>{" "}
+                    </Link>
                     and understand how we collect, use, and protect your
                     information.
                   </p>
