@@ -43,15 +43,15 @@ const TermsAndConditions: React.FC = () => {
           <h3 className="text-xl font-semibold mt-4">3. Message Frequency:</h3>
           <p className="text-gray-700 leading-relaxed">
             Message frequency may vary depending on the type of communication.
-            Example: "You may receive up to 2 SMS messages per week regarding
-            your appointments or account status."
+            Example: You may receive up to 2 SMS messages per week regarding
+            your appointments or account status.
           </p>
           <h3 className="text-xl font-semibold mt-4">
             4. Potential Fees for SMS Messaging:
           </h3>
           <p className="text-gray-700 leading-relaxed">
-            Standard message and data rates may apply depending on your
-            carrier’s pricing plan. These fees may vary if the message is sent
+            Standard message and data rates may apply depending on your carriers
+            pricing plan. These fees may vary if the message is sent
             domestically or internationally.
           </p>
           <h3 className="text-xl font-semibold mt-4">5. Opt-In Method:</h3>
@@ -67,7 +67,7 @@ const TermsAndConditions: React.FC = () => {
           <h3 className="text-xl font-semibold mt-4">6. Opt-Out Method:</h3>
           <p className="text-gray-700 leading-relaxed">
             You can opt out of receiving SMS messages at any time by replying
-            "STOP" to any SMS message you receive or by contacting us directly.
+            STOP to any SMS message you receive or by contacting us directly.
           </p>
           <h3 className="text-xl font-semibold mt-4">7. Help:</h3>
           <p className="text-gray-700 leading-relaxed">
@@ -83,9 +83,9 @@ const TermsAndConditions: React.FC = () => {
           </h3>
           <ul className="list-disc pl-6 text-gray-700">
             <li>Message and data rates may apply.</li>
-            <li>You can opt-out at any time by texting "STOP."</li>
+            <li>You can opt-out at any time by texting STOP.</li>
             <li>
-              For assistance, text "HELP" or visit our Privacy Policy and Terms
+              For assistance, text HELP or visit our Privacy Policy and Terms
               and Conditions pages.
             </li>
             <li>Message frequency may vary.</li>
@@ -110,7 +110,7 @@ const TermsAndConditions: React.FC = () => {
           <ul className="list-disc pl-6 text-gray-700">
             <li className="mb-2">
               Engage in any activity that disrupts or interferes with the
-              website's functionality.
+              websites functionality.
             </li>
             <li className="mb-2">
               Attempt to gain unauthorized access to any part of the website or
