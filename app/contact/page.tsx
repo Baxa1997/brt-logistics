@@ -59,7 +59,7 @@ const Contact: React.FC = () => {
           <p className="text-lg text-white text-center mb-8">
             Want to get in touch? We’re more than happy to help.
           </p>
-          <div className="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+          <div className="bg-white  rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
             <form
               onSubmit={handleSubmit(submit)}
               className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -230,7 +230,7 @@ const Contact: React.FC = () => {
                   }}
                 />
               </div>
-              <div className="col-span-2 flex items-center text-[12px]">
+              <div className="col-span-2  text-[12px]">
                 <Input
                   type="checkbox"
                   id="privacyPolicy"
@@ -240,69 +240,30 @@ const Contact: React.FC = () => {
                 <label
                   htmlFor="privacyPolicy"
                   className="text-gray-700 h-[20px]">
-                  <p className="text-[12px]">
-                    By selecting this box, you consent to and agree with our
+                  <p className="text-[12px] font-bold cursor-pointer">
+                    By checking this box, I consent to receive SMS messages from
+                    BRT Logistics related to Conversational messages at the
+                    phone number provided above. The SMS frequency may vary.
+                    Data rates may apply. For assistance reply HELP. Reply STOP
+                    to opt out of receiving text messages. Please review our
+                    Privacy Policy
                     <Link
                       target="_blank"
-                      href="/privacy-policy"
-                      className="text-blue-600 underline ml-1">
-                      Privacy Policy
+                      className="text-blue-600 underline ml-1"
+                      href="/privacy-policy">
+                      https://brtlog.com/privacy-policy
                     </Link>
-                    and understand how we collect, use, and protect your
-                    information.
+                    and Terms & Conditions
+                    <Link
+                      target="_blank"
+                      href="/terms-conditions"
+                      className="text-blue-600 underline ml-1">
+                      https://brtlog.com/terms-conditions
+                    </Link>{" "}
+                    By selecting this box, you consent to and agree with our
                   </p>
                   .
                 </label>
-              </div>
-              <div className="flex flex-col col-span-2">
-                <div className="flex items-start mt-2">
-                  <label className="text-[12px]">
-                    By providing your phone number, you consent to receive SMS
-                    messages from BRT Logistics, including hiring-related
-                    updates and promotional messages. Message and data rates may
-                    apply. Choose NO to unsubscribe.
-                  </label>
-                </div>
-                <div className="flex gap-4 mt-3">
-                  <div className="flex items-center">
-                    <Controller
-                      name="is_phone_collectable"
-                      control={control}
-                      render={({field: {onChange}}) => {
-                        return (
-                          <Input
-                            name="is_phone_collectable"
-                            onChange={(e) => onChange(e.target.checked)}
-                            type="radio"
-                            id="yes_phone"
-                            className="mr-2 w-4 h-4 focus:ring focus:ring-green-500"
-                            required
-                          />
-                        );
-                      }}
-                    />
-                    <label htmlFor="yes_phone">AGREE</label>
-                  </div>
-                  <div className="flex items-center">
-                    <Controller
-                      name="is_phone_collectable"
-                      control={control}
-                      render={({field: {onChange}}) => {
-                        return (
-                          <Input
-                            name="is_phone_collectable"
-                            onChange={(e) => onChange(e.target.checked)}
-                            type="radio"
-                            id="no_phone"
-                            className="mr-2 w-4 h-4 focus:ring focus:ring-green-500"
-                            required
-                          />
-                        );
-                      }}
-                    />
-                    <label htmlFor="no_phone">NO</label>
-                  </div>
-                </div>
               </div>
 
               <div className="col-span-2">

@@ -8,6 +8,32 @@ const PrivacyPolicy: React.FC = () => {
       <div className="container mx-auto space-y-8">
         <section>
           <h2 className="text-2xl font-semibold mb-4">
+            Phone Numbers and SMS Consent
+          </h2>
+          <ul className="list-disc pl-6 text-gray-700">
+            <li>
+              <strong>Privacy Policy statement:</strong> SMS opt-in or phone
+              numbers for the purpose of SMS are not being shared with any third
+              party and affiliate company for marketing purposes
+            </li>
+            <li className="mb-2">
+              <strong>Purpose of Collection:</strong> Phone numbers are
+              collected to send SMS notifications and updates regarding our
+              services.
+            </li>
+            <li className="mb-2">
+              <strong>No Third-Party Sharing:</strong> We do not share your
+              phone number with third parties unless required by law or to
+              fulfill the service request.
+            </li>
+            <li>
+              <strong>Security Measures:</strong> We use secure methods to store
+              and protect your phone number.
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">
             The Information We Collect
           </h2>
           <p className="text-gray-700 leading-relaxed">
@@ -92,28 +118,6 @@ const PrivacyPolicy: React.FC = () => {
             accessing our site from outside the U.S., your information will be
             subject to U.S. laws and regulations.
           </p>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">
-            Phone Numbers and SMS Consent
-          </h2>
-          <ul className="list-disc pl-6 text-gray-700">
-            <li className="mb-2">
-              <strong>Purpose of Collection:</strong> Phone numbers are
-              collected to send SMS notifications and updates regarding our
-              services.
-            </li>
-            <li className="mb-2">
-              <strong>No Third-Party Sharing:</strong> We do not share your
-              phone number with third parties unless required by law or to
-              fulfill the service request.
-            </li>
-            <li>
-              <strong>Security Measures:</strong> We use secure methods to store
-              and protect your phone number.
-            </li>
-          </ul>
         </section>
 
         <section>
