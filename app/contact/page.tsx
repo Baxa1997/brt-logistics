@@ -235,7 +235,6 @@ const Contact: React.FC = () => {
                   type="checkbox"
                   id="privacyPolicy"
                   className="mr-2 w-4 h-4 focus:ring focus:ring-green-500"
-                  required
                 />
                 <label
                   htmlFor="privacyPolicy"

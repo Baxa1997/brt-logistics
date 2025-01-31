@@ -78,6 +78,13 @@ const TermsAndConditions: React.FC = () => {
             </Link>
             .
           </p>
+          <p className="mx-3 my-2 font-bold">Additional Options:</p>
+          <ul className="list-disc pl-6 text-gray-700">
+            <li>
+              If you do not wish to receive SMS messages, you can choose not to
+              check the SMS consent box on our forms.
+            </li>
+          </ul>
           <h3 className="text-xl font-semibold mt-4">
             8. Standard Messaging Disclosures:
           </h3>
