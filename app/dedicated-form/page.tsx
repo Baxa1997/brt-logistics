@@ -438,8 +438,8 @@
 
 import React from "react";
 
-function page() {
+function DedicatedForm() {
   return <div>page</div>;
 }
 
-export default page;
+export default DedicatedForm;

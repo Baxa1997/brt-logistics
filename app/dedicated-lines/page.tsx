@@ -110,7 +110,7 @@ const JonPositions: React.FC<JonPositionsProps> = ({
         </div>
         <Link
           href={{
-            pathname: "/dedicated-lines-form",
+            pathname: "/dedicated-form",
             query: {jobTitle: title, schedule: schedule},
           }}
           // href={"/dedicated-form"}
