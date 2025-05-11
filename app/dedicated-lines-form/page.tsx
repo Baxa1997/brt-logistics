@@ -70,6 +70,9 @@ const DedicatedLinesForm: React.FC = () => {
   const {handleSubmit, control} = useForm<ContactFormInputs>();
   const router = useRouter();
 
+  const queryParam = new URLSearchParams();
+  console.log("queryParamqueryParam", queryParam.get("jobTitle"));
+
   const notify = () =>
     toast.success(
       "Thank you for reaching us, we will contact you as soon as possible!"
