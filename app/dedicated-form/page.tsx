@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Link from "next/link";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 import React from "react";
 import {useForm, Controller} from "react-hook-form";
 import "react-phone-number-input/style.css";
