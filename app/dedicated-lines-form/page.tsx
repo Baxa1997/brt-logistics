@@ -4,7 +4,7 @@ import DedicatedForm from "./dedicated-form";
 function DedicatedLinesForm() {
   return (
     <>
-      <Suspense>
+      <Suspense fallback={<div>Loading form...</div>}>
         {" "}
         <DedicatedForm />
       </Suspense>
