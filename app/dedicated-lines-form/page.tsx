@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Link from "next/link";
-import React from "react";
+import React, {useEffect} from "react";
 import {useForm, Controller} from "react-hook-form";
 import "react-phone-number-input/style.css";
 import {toast} from "react-toastify";
@@ -70,8 +70,12 @@ const DedicatedLinesForm: React.FC = () => {
   const {handleSubmit, control} = useForm<ContactFormInputs>();
   const router = useRouter();
 
-  const queryParam = new URLSearchParams(window.location.search);
-  console.log("queryParamqueryParam", queryParam.get("jobTitle"));
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const query = new URLSearchParams(window.location.search);
+      console.log("queryqueryquery", query.get("jobTitle"));
+    }
+  }, []);
 
   const notify = () =>
     toast.success(
