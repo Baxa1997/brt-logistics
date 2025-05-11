@@ -11,7 +11,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Link from "next/link";
-import {useRouter} from "next/navigation";
+import {useRouter} from "next/router";
+// import {useRouter} from "next/navigation";
 import React from "react";
 import {useForm, Controller} from "react-hook-form";
 import "react-phone-number-input/style.css";
@@ -69,10 +70,10 @@ const DedicatedForm: React.FC = () => {
   const {handleSubmit, control} = useForm<ContactFormInputs>();
   const router = useRouter();
 
-  const urlParams = new URLSearchParams(window.location.search);
+  // const urlParams = new URLSearchParams(window.location.search);
 
-  const JobTitle = urlParams.get("jobTitle");
-  const JobSchedule = urlParams.get("schedule");
+  // const JobTitle = urlParams.get("jobTitle");
+  // const JobSchedule = urlParams.get("schedule");
 
   const notify = () =>
     toast.success(
@@ -105,14 +106,14 @@ const DedicatedForm: React.FC = () => {
             Applying for a Job:
           </h1>
 
-          <div className="text-center bg-gray-50 rounded-xl p-4 ">
+          {/* <div className="text-center bg-gray-50 rounded-xl p-4 ">
             <h4 className="text-2xl font-semibold text-[#036760] mb-2">
               {JobTitle}
             </h4>
             <p className="text-gray-600 text-base flex justify-center items-center gap-2">
               🗓️ <span>{JobSchedule}</span>
             </p>
-          </div>
+          </div> */}
 
           <div className="rounded-lg p-8  mx-auto">
             <form
