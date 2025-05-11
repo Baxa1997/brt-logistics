@@ -173,7 +173,6 @@ const Contact: React.FC = () => {
                       <PhoneInputWithCountrySelect
                         onChange={(e) => onChange(e)}
                         id="email"
-                        isValidPhoneNumber
                         international
                         type="text"
                         className="w-full h-[36px] border border-gray-300 rounded-lg p-3 px-3 focus:outline-none  focus:ring-green-500 "

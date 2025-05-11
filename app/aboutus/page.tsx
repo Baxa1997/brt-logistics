@@ -1,16 +1,17 @@
-import ContactUsSection from "@/components/ContactUsSection";
+import Feedback from "@/components/Feedback";
 import Image from "next/image";
 import React from "react";
 
 const AboutUs: React.FC = () => {
   return (
     <div className="mx-auto">
-      <section id="about-us" className="py-16 bg-gray-50">
-        <div className="container mx-auto flex flex-col md:flex-row items-center">
+      <section id="about-us" className="py-16  bg-gray-50">
+        <div className="container mx-auto px-8 flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 md:pr-8">
             <h2 className="text-5xl font-extrabold mb-6 text-[#0f766e]">
               About Us
             </h2>
+            <div className="w-[100px] h-[4px] bg-orange-400  mb-10"></div>
             <p className="text-lg text-gray-700 leading-relaxed">
               BRT Logistics aims to be the trusted partner for both drivers and
               carriers in the transportation industry. We connect qualified CDL
@@ -33,68 +34,15 @@ const AboutUs: React.FC = () => {
         </div>
       </section>
 
-      <section id="values" className="py-16 bg-white">
-        <div className="container mx-auto">
-          <h2 className="text-5xl font-extrabold mb-6  text-[#0f766e] text-center">
-            Our Values
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            <div className="p-6 bg-gray-50 shadow-md rounded-lg text-center">
-              <div className="text-3xl text-blue-600 mb-4">😊</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Happiness
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                We create solutions that bring happiness to everyone involved.
-              </p>
-            </div>
-            <div className="p-6 bg-gray-50 shadow-md rounded-lg text-center">
-              <div className="text-3xl text-blue-600 mb-4">🏅</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Quality
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Striving for excellence in every detail.
-              </p>
-            </div>
-            <div className="p-6 bg-gray-50 shadow-md rounded-lg text-center">
-              <div className="text-3xl text-blue-600 mb-4">⚡</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Speed
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Delivering fast and efficient solutions for your success.
-              </p>
-            </div>
-            <div className="p-6 bg-gray-50 shadow-md rounded-lg text-center">
-              <div className="text-3xl text-blue-600 mb-4">🔄</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Responsibility
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Integrity and accountability in every step.
-              </p>
-            </div>
-            <div className="p-6 bg-gray-50 shadow-md rounded-lg text-center">
-              <div className="text-3xl text-blue-600 mb-4">🎯</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                Goal-Oriented
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                Achieving great goals together.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="services" className="py-16 bg-[#0f766e] px-5">
-        <div className="container mx-auto ">
-          <h2 className="text-5xl font-extrabold mb-6 text-white text-center">
+      <section id="services" className="py-16 bg-white px-5">
+        <div className="container mx-auto px-8">
+          <h2 className="text-5xl font-extrabold mb-6 text-[#0f766e] text-center">
             Our Services
           </h2>
+          <div className="w-[100px] h-[4px] bg-orange-400 mx-auto mb-10" />
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8 mt-12 place-items-center">
-            <div className="p-6 bg-white shadow-md rounded-lg text-center">
+            <div className="p-6 bg-white shadow-md border-[1px] rounded-lg text-center">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Driver-Carrier Connection
               </h3>
@@ -103,7 +51,7 @@ const AboutUs: React.FC = () => {
                 logistics operations.
               </p>
             </div>
-            <div className="p-6 bg-white shadow-md rounded-lg text-center">
+            <div className="p-6 bg-white shadow-md border-[1px] rounded-lg text-center">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Qualified CDL Drivers
               </h3>
@@ -112,7 +60,7 @@ const AboutUs: React.FC = () => {
                 nationwide.
               </p>
             </div>
-            <div className="p-6 bg-white shadow-md rounded-lg text-center">
+            <div className="p-6 bg-white shadow-md border-[1px] rounded-lg text-center">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 Job Matching
               </h3>
@@ -125,7 +73,63 @@ const AboutUs: React.FC = () => {
         </div>
       </section>
 
-      <ContactUsSection />
+      <section
+        id="values"
+        className="py-20 bg-gradient-to-br from-white to-gray-100">
+        <div className="container mx-auto px-12">
+          <h2 className="text-5xl font-bold  text-[#0f766e]">
+            What We Stand For
+          </h2>
+          {/* <div className="w-[100px] h-[4px] bg-orange-400 mx-auto my-6" /> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-14">
+            {[
+              {
+                icon: "😊",
+                title: "Happiness",
+                desc: "We create solutions that bring happiness to everyone involved.",
+              },
+              {
+                icon: "🏅",
+                title: "Quality",
+                desc: "Striving for excellence in every detail.",
+              },
+              {
+                icon: "⚡",
+                title: "Speed",
+                desc: "Delivering fast and efficient solutions for your success.",
+              },
+              {
+                icon: "🔄",
+                title: "Responsibility",
+                desc: "Integrity and accountability in every step.",
+              },
+              {
+                icon: "🎯",
+                title: "Goal-Oriented",
+                desc: "Achieving great goals together.",
+              },
+            ].map((val, idx) => (
+              <div
+                key={idx}
+                className="relative bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition duration-300 group">
+                <div className="text-4xl mb-4 group-hover:scale-110 transition">
+                  {val.icon}
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-800 mb-3">
+                  {val.title}
+                </h3>
+                <p className="text-gray-600 text-lg">{val.desc}</p>
+                <div className="absolute top-2 right-4 text-sm text-gray-300 group-hover:text-orange-400">
+                  #{idx + 1}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Feedback />
     </div>
   );
 };

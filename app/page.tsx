@@ -1,5 +1,4 @@
 import Banner from "@/components/Banner";
-import BlogSection from "@/components/BlogSection";
 import Feedback from "@/components/Feedback";
 import Mission from "@/components/Mission";
 import QuestionsSection from "@/components/QuestionsSection";
@@ -11,7 +10,6 @@ export default function Home() {
       <Banner />
       <Mission />
       <Services />
-      <BlogSection />
       <QuestionsSection />
       <Feedback />
     </main>

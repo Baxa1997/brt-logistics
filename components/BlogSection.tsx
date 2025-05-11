@@ -12,11 +12,6 @@ function BlogSection() {
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 text-justify ">
           <div className="bg-white shadow-lg rounded-lg overflow-hidden flex">
-            {/* <img
-              src="https://via.placeholder.com/200x200"
-              alt="Blog Post"
-              className="w-1/3 h-auto object-cover"
-            /> */}
             <div className="p-6 flex flex-col justify-between w-2/3">
               <div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -35,11 +30,6 @@ function BlogSection() {
           </div>
 
           <div className="bg-white shadow-lg rounded-lg overflow-hidden flex">
-            {/* <img
-              src="https://via.placeholder.com/200x200"
-              alt="Blog Post"
-              className="w-1/3 h-auto object-cover"
-            /> */}
             <div className="p-6 flex flex-col justify-between w-2/3">
               <div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -58,11 +48,6 @@ function BlogSection() {
           </div>
 
           <div className="bg-white shadow-lg rounded-lg overflow-hidden flex">
-            {/* <img
-              src="https://via.placeholder.com/200x200"
-              alt="Blog Post"
-              className="w-1/3 h-auto object-cover"
-            /> */}
             <div className="p-6 flex flex-col justify-between w-2/3">
               <div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -81,11 +66,6 @@ function BlogSection() {
           </div>
 
           <div className="bg-white shadow-lg rounded-lg overflow-hidden flex">
-            {/* <img
-              src="https://via.placeholder.com/200x200"
-              alt="Blog Post"
-              className="w-1/3 h-auto object-cover"
-            /> */}
             <div className="p-6 flex flex-col justify-between w-2/3">
               <div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -104,11 +84,6 @@ function BlogSection() {
           </div>
 
           <div className="bg-white shadow-lg rounded-lg overflow-hidden flex">
-            {/* <img
-              src="https://via.placeholder.com/200x200"
-              alt="Blog Post"
-              className="w-1/3 h-auto object-cover"
-            /> */}
             <div className="p-6 flex flex-col justify-between w-2/3">
               <div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -126,11 +101,6 @@ function BlogSection() {
           </div>
 
           <div className="bg-white shadow-lg rounded-lg overflow-hidden flex">
-            {/* <img
-              src="https://via.placeholder.com/200x200"
-              alt="Blog Post"
-              className="w-1/3 h-auto object-cover"
-            /> */}
             <div className="p-6 flex flex-col justify-between w-2/3">
               <div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">

@@ -10,9 +10,10 @@ function QuestionsSection() {
   return (
     <div className="bg-gray-50 py-16">
       <div className="container mx-auto px-6 text-justify md:px-12">
-        <h2 className="text-3xl font-bold text-gray-800 md:text-4xl mb-8">
+        <h2 className="text-3xl text-center font-bold text-gray-800 md:text-4xl mb-8">
           Frequently Asked Questions
         </h2>
+        <div className="w-[100px] h-[4px] bg-orange-400 mx-auto mb-10"></div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <div>
