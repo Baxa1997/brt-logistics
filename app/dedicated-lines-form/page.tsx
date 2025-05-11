@@ -1,4 +1,5 @@
 "use client";
+
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {
@@ -11,7 +12,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Link from "next/link";
-// import {useRouter} from "next/navigation";
 import React from "react";
 import {useForm, Controller} from "react-hook-form";
 import "react-phone-number-input/style.css";
@@ -67,14 +67,6 @@ const selectEquipmentOption = [
 
 const DedicatedLinesForm: React.FC = () => {
   const {handleSubmit, control} = useForm<ContactFormInputs>();
-  //   const router = useRouter();
-
-  //   const urlParams = new URLSearchParams(window.location.search);
-
-  //   const JobTitle = urlParams.get("jobTitle");
-  //   const JobSchedule = urlParams.get("schedule");
-
-  //   console.log("JobTitleJobTitle", JobTitle, JobSchedule);
 
   const notify = () =>
     toast.success(
@@ -94,7 +86,6 @@ const DedicatedLinesForm: React.FC = () => {
       }
     ).then(() => {
       notify();
-      //   router.push("/");
     });
   };
 
