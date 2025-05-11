@@ -164,7 +164,7 @@ const Contact: React.FC = () => {
                           <SelectGroup>
                             <SelectLabel>Trip types</SelectLabel>
                             {selectOption?.map((item) => (
-                              <SelectItem value={item?.value}>
+                              <SelectItem key={item?.value} value={item?.value}>
                                 {item?.label}
                               </SelectItem>
                             ))}
@@ -200,7 +200,7 @@ const Contact: React.FC = () => {
                           <SelectGroup>
                             <SelectLabel>Trip types</SelectLabel>
                             {selectLoadOption?.map((item) => (
-                              <SelectItem value={item?.value}>
+                              <SelectItem key={item?.value} value={item?.value}>
                                 {item?.label}
                               </SelectItem>
                             ))}
@@ -379,7 +379,7 @@ const Contact: React.FC = () => {
                           <SelectGroup>
                             <SelectLabel> Equipment types</SelectLabel>
                             {selectEquipmentOption?.map((item) => (
-                              <SelectItem value={item?.value}>
+                              <SelectItem key={item?.value} value={item?.value}>
                                 {item?.label}
                               </SelectItem>
                             ))}
