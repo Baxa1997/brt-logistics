@@ -19,7 +19,7 @@ type JonPositionsProps = {
   experience: string;
 };
 
-function DedicatedLines() {
+const DedicatedLines: React.FC = () => {
   return (
     <div className="flex bg-gray-50">
       <div className="h-full overflow-auto w-full pt-10">
@@ -48,7 +48,7 @@ function DedicatedLines() {
       </div>
     </div>
   );
-}
+};
 
 const JonPositions: React.FC<JonPositionsProps> = ({
   title,
