@@ -11,8 +11,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Link from "next/link";
-import {useRouter, useSearchParams} from "next/navigation";
-import React, {Suspense} from "react";
+import {useRouter} from "next/navigation";
+import React from "react";
 import {useForm, Controller} from "react-hook-form";
 import "react-phone-number-input/style.css";
 import {toast} from "react-toastify";
@@ -68,10 +68,11 @@ const selectEquipmentOption = [
 const DedicatedForm: React.FC = () => {
   const {handleSubmit, control} = useForm<ContactFormInputs>();
   const router = useRouter();
-  const searchParams = useSearchParams();
 
-  const JobTitle = searchParams.get("jobTitle");
-  const JobSchedule = searchParams.get("schedule");
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const JobTitle = urlParams.get("jobTitle");
+  const JobSchedule = urlParams.get("schedule");
 
   const notify = () =>
     toast.success(
