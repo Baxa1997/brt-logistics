@@ -16,6 +16,7 @@ import React from "react";
 import {useForm, Controller} from "react-hook-form";
 import "react-phone-number-input/style.css";
 import {toast} from "react-toastify";
+import {useRouter} from "next/navigation";
 
 interface ContactFormInputs {
   brokerName: string;
@@ -65,8 +66,10 @@ const selectEquipmentOption = [
   },
 ];
 
-const DedicatedForm: React.FC = () => {
+const DedicatedlinesForm: React.FC = () => {
   const {handleSubmit, control} = useForm<ContactFormInputs>();
+  const router = useRouter();
+  console.log("routerrouter", router);
 
   const notify = () =>
     toast.success(
@@ -434,4 +437,4 @@ const DedicatedForm: React.FC = () => {
   );
 };
 
-export default DedicatedForm;
+export default DedicatedlinesForm;
