@@ -5,6 +5,7 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PlaceIcon from "@mui/icons-material/Place";
 import HomeWorkIcon from "@mui/icons-material/HomeWork";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
+import Link from "next/link";
 
 type JonPositionsProps = {
   title: string;
@@ -42,18 +43,6 @@ function DedicatedLines() {
               homeTime="Home Daily"
               experience="2+ Years CDL Class A"
             />
-
-            <JonPositions
-              title="Dedicated Night Route – Chicago to Indianapolis"
-              rate="$1,600/week"
-              location="Chicago, IL → Indianapolis, IN"
-              transport="Volvo Day Cab (Manual)"
-              jobTitle="Night Shift CDL-A Driver"
-              company="FastHaul Express"
-              schedule="Sunday–Thursday, 8PM Start"
-              homeTime="Home Daily"
-              experience="1 Year CDL A"
-            />
           </div>
         </div>
       </div>
@@ -74,7 +63,6 @@ const JonPositions: React.FC<JonPositionsProps> = ({
 }) => {
   return (
     <div className="p-6 border rounded-[16px] border-[#EAECF0] mb-6 w-full flex shadow-sm bg-white">
-      {/* Left Side */}
       <div className="border-r-[1px] pr-6 w-[70%]">
         <h3 className="text-[24px] lg:text-[26px] font-semibold text-[#036760] mb-4">
           {title}
@@ -113,7 +101,6 @@ const JonPositions: React.FC<JonPositionsProps> = ({
         </div>
       </div>
 
-      {/* Right Side */}
       <div className="w-[30%] px-6 flex flex-col justify-between">
         <div>
           <h3 className="text-[18px] text-[#030A21] font-bold mb-4">
@@ -121,9 +108,15 @@ const JonPositions: React.FC<JonPositionsProps> = ({
           </h3>
           <p className="text-sm text-gray-500">Dedicated Line Position</p>
         </div>
-        <button className="h-[45px] w-full bg-[#036760] hover:bg-[#02544f] transition rounded-sm text-[18px] text-white font-bold mt-4">
-          Apply Now
-        </button>
+        <Link
+          href={{
+            pathname: "/dedicated-lines-form",
+            query: {jobTitle: title, schedule: schedule},
+          }}>
+          <button className="h-[45px] w-full bg-[#036760] hover:bg-[#02544f] transition rounded-sm text-[18px] text-white font-bold mt-4">
+            Apply Now
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -244,19 +244,18 @@ const Contact: React.FC = () => {
                     phone number provided above. The SMS frequency may vary.
                     Data rates may apply. For assistance reply HELP. Reply STOP
                     to opt out of receiving text messages. Please review our
-                    Privacy Policy
                     <Link
                       target="_blank"
                       className="text-blue-600 underline ml-1"
                       href="/privacy-policy">
-                      https://brtlog.com/privacy-policy
+                      Privacy Policy and Terms & Conditions{" "}
                     </Link>
-                    and Terms & Conditions
+                    and{" "}
                     <Link
                       target="_blank"
                       href="/terms-conditions"
                       className="text-blue-600 underline ml-1">
-                      https://brtlog.com/terms-conditions
+                      Terms and Conditions
                     </Link>{" "}
                     By selecting this box, you consent to and agree with our
                   </p>

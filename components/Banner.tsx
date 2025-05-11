@@ -25,10 +25,14 @@ function Banner() {
           <Button className="hover:bg-[#049e8e] lg:w-[48%] lg:h-[65px] bg-[#35bcaf] lg:text-[20px] text-[16px]">
             I am a Driver
           </Button>
-          <Button className="hover:bg-[#ffffffd7]  lg:w-[48%] lg:h-[65px] bg-white lg:text-[20px] text-black  shake text-[16px]">
+          <Link
+            className="hover:bg-[#ffffffd7] flex items-center gap-[10px] rounded-[6px] justify-center lg:w-[48%] lg:h-[65px] bg-white lg:text-[20px] text-black  shake text-[16px]"
+            href={"/dedicated-lines"}>
+            {/* <Button className="hover:bg-[#ffffffd7]  lg:w-[48%] lg:h-[65px] bg-white lg:text-[20px] text-black  shake text-[16px]"> */}
             <DirectionsIcon style={{width: "24px", height: "24px"}} />
-            <Link href={"/dedicated-lines"}> Dedicated Lanes</Link>
-          </Button>
+            Dedicated Lanes
+            {/* </Button> */}
+          </Link>
 
           <Button className="hover:bg-white hover:text-black mt-5 w-full lg:h-[65px] lg:text-[20px] text-[16px] bg-transparent border-[2px]">
             Search Jobs

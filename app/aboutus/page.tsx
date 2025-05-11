@@ -34,7 +34,7 @@ const AboutUs: React.FC = () => {
         </div>
       </section>
 
-      <section id="services" className="py-16 bg-white px-5">
+      {/* <section id="services" className="py-16 bg-white px-5">
         <div className="container mx-auto px-8">
           <h2 className="text-5xl font-extrabold mb-6 text-[#0f766e] text-center">
             Our Services
@@ -71,16 +71,16 @@ const AboutUs: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section
         id="values"
         className="py-20 bg-gradient-to-br from-white to-gray-100">
         <div className="container mx-auto px-12">
-          <h2 className="text-5xl font-bold  text-[#0f766e]">
+          <h2 className="text-5xl font-bold text-center text-[#0f766e]">
             What We Stand For
           </h2>
-          {/* <div className="w-[100px] h-[4px] bg-orange-400 mx-auto my-6" /> */}
+          <div className="w-[100px] h-[4px] bg-orange-400 mx-auto my-6" />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-14">
             {[
