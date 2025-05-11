@@ -70,7 +70,7 @@ const DedicatedLinesForm: React.FC = () => {
   const {handleSubmit, control} = useForm<ContactFormInputs>();
   const router = useRouter();
 
-  const queryParam = new URLSearchParams();
+  const queryParam = new URLSearchParams(window.location.search);
   console.log("queryParamqueryParam", queryParam.get("jobTitle"));
 
   const notify = () =>
