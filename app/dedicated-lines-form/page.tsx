@@ -69,12 +69,12 @@ const DedicatedLinesForm: React.FC = () => {
   const {handleSubmit, control} = useForm<ContactFormInputs>();
   const router = useRouter();
 
-  const urlParams = new URLSearchParams(window.location.search);
+  //   const urlParams = new URLSearchParams(window.location.search);
 
-  const JobTitle = urlParams.get("jobTitle");
-  const JobSchedule = urlParams.get("schedule");
+  //   const JobTitle = urlParams.get("jobTitle");
+  //   const JobSchedule = urlParams.get("schedule");
 
-  console.log("JobTitleJobTitle", JobTitle, JobSchedule);
+  //   console.log("JobTitleJobTitle", JobTitle, JobSchedule);
 
   const notify = () =>
     toast.success(
