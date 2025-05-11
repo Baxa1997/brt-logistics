@@ -109,10 +109,11 @@ const JonPositions: React.FC<JonPositionsProps> = ({
           <p className="text-sm text-gray-500">Dedicated Line Position</p>
         </div>
         <Link
-          href={{
-            pathname: "/dedicated-lines-form",
-            query: {jobTitle: title, schedule: schedule},
-          }}>
+          // href={{
+          //   pathname: "/dedicated-lines-form",
+          //   query: {jobTitle: title, schedule: schedule},
+          // }}
+          href={"/dedicated-lines-form"}>
           <button className="h-[45px] w-full bg-[#036760] hover:bg-[#02544f] transition rounded-sm text-[18px] text-white font-bold mt-4">
             Apply Now
           </button>
