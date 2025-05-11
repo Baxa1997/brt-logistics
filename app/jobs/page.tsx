@@ -2,7 +2,6 @@
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import PlaceIcon from "@mui/icons-material/Place";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import Image from "next/image";
 
 type JonPositionsProps = {
   title: string;
