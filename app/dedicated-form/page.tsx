@@ -12,7 +12,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Link from "next/link";
-import {useRouter} from "next/navigation";
 import React from "react";
 import {useForm, Controller} from "react-hook-form";
 import "react-phone-number-input/style.css";
@@ -68,9 +67,6 @@ const selectEquipmentOption = [
 
 const DedicatedForm: React.FC = () => {
   const {handleSubmit, control} = useForm<ContactFormInputs>();
-  const router = useRouter();
-
-  console.log("routerrouter", router);
 
   const notify = () =>
     toast.success(
