@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Link from "next/link";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useForm, Controller} from "react-hook-form";
 import "react-phone-number-input/style.css";
 import {toast} from "react-toastify";
@@ -28,6 +28,11 @@ interface ContactFormInputs {
   contractDuration: string;
   loadsPerWeek: string;
 }
+
+type QueryParams = {
+  jobTitle: string | null;
+  schedule: string | null;
+};
 
 const selectOption = [
   {
@@ -69,11 +74,16 @@ const selectEquipmentOption = [
 const DedicatedLinesForm: React.FC = () => {
   const {handleSubmit, control} = useForm<ContactFormInputs>();
   const router = useRouter();
+  const [queryObject, setQueryObject] = useState<QueryParams | undefined>();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const query = new URLSearchParams(window.location.search);
-      console.log("queryqueryquery", query.get("jobTitle"));
+
+      setQueryObject({
+        jobTitle: query.get("jobTitle"),
+        schedule: query.get("schedule"),
+      });
     }
   }, []);
 
@@ -108,14 +118,14 @@ const DedicatedLinesForm: React.FC = () => {
             Applying for a Job:
           </h1>
 
-          {/* <div className="text-center bg-gray-50 rounded-xl p-4 ">
+          <div className="text-center bg-gray-50 rounded-xl p-4 ">
             <h4 className="text-2xl font-semibold text-[#036760] mb-2">
-              {JobTitle}
+              {queryObject?.jobTitle}
             </h4>
             <p className="text-gray-600 text-base flex justify-center items-center gap-2">
-              🗓️ <span>{JobSchedule}</span>
+              🗓️ <span>{queryObject?.schedule}</span>
             </p>
-          </div> */}
+          </div>
 
           <div className="rounded-lg p-8  mx-auto">
             <form
