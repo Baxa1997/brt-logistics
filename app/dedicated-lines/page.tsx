@@ -1,22 +1,25 @@
 "use client";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import AddRoadIcon from "@mui/icons-material/AddRoad";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import FlagIcon from "@mui/icons-material/Flag";
+import HomeWorkIcon from "@mui/icons-material/HomeWork";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PlaceIcon from "@mui/icons-material/Place";
-import HomeWorkIcon from "@mui/icons-material/HomeWork";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 import Link from "next/link";
 
 type JonPositionsProps = {
-  title: string;
-  rate: string;
-  location: string;
-  transport: string;
   jobTitle: string;
-  company: string;
-  schedule: string;
-  homeTime: string;
-  experience: string;
+  brokerName: string;
+  roadType: string;
+  freightLoad: string;
+  pickUpAddress: string;
+  deliveryAddress: string;
+  miles: string;
+  rate: string;
+  durationContract: string;
+  loadsCount: string;
+  transportType: string;
 };
 
 const DedicatedLines: React.FC = () => {
@@ -33,15 +36,17 @@ const DedicatedLines: React.FC = () => {
         <div className="px-12 w-full flex justify-center">
           <div className="lg:w-[80%]">
             <JonPositions
-              title="Dedicated Route – Dallas to Memphis"
-              rate="$300/day"
-              location="Dallas, TX → Memphis, TN"
-              transport="Freightliner Sleeper (Automatic)"
-              jobTitle="CDL-A Dedicated Driver"
-              company="SpeedLogix Transport"
-              schedule="Monday – Friday, 6AM Start"
-              homeTime="Home Daily"
-              experience="2+ Years CDL Class A"
+              jobTitle="Dedicated Route – Dallas to Memphis"
+              brokerName="Amazon"
+              roadType="Live Load"
+              freightLoad="Drop and Hook"
+              pickUpAddress="Columbus OH"
+              deliveryAddress="Phoenix AZ"
+              miles="2400 miles"
+              rate="$7500"
+              durationContract="6 months"
+              loadsCount="17 loads"
+              transportType="Flatbed"
             />
           </div>
         </div>
@@ -51,67 +56,83 @@ const DedicatedLines: React.FC = () => {
 };
 
 const JonPositions: React.FC<JonPositionsProps> = ({
-  title,
-  rate,
-  location,
-  transport,
   jobTitle,
-  company,
-  schedule,
-  homeTime,
-  experience,
+  brokerName,
+  roadType,
+  freightLoad,
+  pickUpAddress,
+  deliveryAddress,
+  miles,
+  rate,
+  durationContract,
+  loadsCount,
+  transportType,
 }) => {
   return (
     <div className="p-6 border rounded-[16px] border-[#EAECF0] mb-6 w-full flex shadow-sm bg-white">
       <div className="border-r-[1px] pr-6 w-[70%]">
         <h3 className="text-[24px] lg:text-[26px] font-semibold text-[#036760] mb-4">
-          {title}
+          {jobTitle}
         </h3>
 
         <div className="space-y-3 text-[18px] lg:text-[20px] text-gray-700">
           <p className="flex items-center gap-2">
-            <AttachMoneyIcon style={{color: "#036760"}} />
-            {rate} Flat Rate
-          </p>
-          <p className="flex items-center gap-2">
             <PlaceIcon style={{color: "#036760"}} />
-            Route: {location}
+            <span className="text-[18px] font-bold"> Route:</span>{" "}
+            {`${pickUpAddress} - ${deliveryAddress}`}
+          </p>
+
+          <p className="flex items-center gap-2">
+            <AddRoadIcon style={{color: "#036760"}} />
+            <span className="text-[18px] font-bold"> Trip Type:</span>{" "}
+            {roadType}
+          </p>
+
+          <p className="flex items-center gap-2">
+            <LocalShippingIcon style={{color: "#036760"}} />
+            <span className="text-[18px] font-bold">Freight Load:</span>{" "}
+            {freightLoad}
           </p>
           <p className="flex items-center gap-2">
             <LocalShippingIcon style={{color: "#036760"}} />
-            Equipment: {transport}
+            <span className="text-[18px] font-bold">Trailer Type:</span>{" "}
+            {transportType}
           </p>
           <p className="flex items-center gap-2">
-            <AccessTimeIcon style={{color: "#036760"}} /> Schedule:{" "}
-            <span className="ml-2 text-gray-600">{schedule}</span>
-          </p>
-          <p className="flex items-center gap-2">
-            <HomeWorkIcon style={{color: "#036760"}} /> Home Time:{" "}
-            <span className="ml-2 text-gray-600">{homeTime}</span>
-          </p>
-          <p className="flex items-center gap-2">
-            <TrackChangesIcon style={{color: "#036760"}} /> Experience Required:{" "}
-            <span className="ml-2 text-gray-600">{experience}</span>
+            <AttachMoneyIcon style={{color: "#036760"}} />
+            <span className="text-[18px] font-bold">Rate:</span>
+            {rate}
           </p>
 
-          <div className="mt-6 text-gray-800">
-            <p className="font-semibold">Job Title:</p>
-            <p className="text-gray-600">{jobTitle}</p>
-          </div>
+          <p className="flex items-center gap-2">
+            <FlagIcon style={{color: "#036760"}} />{" "}
+            <span className="text-[18px] font-bold">Miles:</span>
+            <span className="text-gray-600">{miles}</span>
+          </p>
+          <p className="flex items-center gap-2">
+            <HomeWorkIcon style={{color: "#036760"}} />{" "}
+            <span className="text-[18px] font-bold">Contract duration:</span>{" "}
+            <span className="text-gray-600">{durationContract}</span>
+          </p>
+          <p className="flex items-center gap-2">
+            <TrackChangesIcon style={{color: "#036760"}} />{" "}
+            <span className="text-[18px] font-bold">Loads per week:</span>{" "}
+            <span className="ml-2 text-gray-600">{loadsCount}</span>
+          </p>
         </div>
       </div>
 
       <div className="w-[30%] px-6 flex flex-col justify-between">
         <div>
           <h3 className="text-[18px] text-[#030A21] font-bold mb-4">
-            {company}
+            {brokerName}
           </h3>
           <p className="text-sm text-gray-500">Dedicated Line Position</p>
         </div>
         <Link
           href={{
             pathname: "/dedicated-lines-form",
-            query: {jobTitle: title, schedule: schedule},
+            query: {jobTitle: jobTitle},
           }}>
           <button className="h-[45px] w-full bg-[#036760] hover:bg-[#02544f] transition rounded-sm text-[18px] text-white font-bold mt-4">
             Apply Now

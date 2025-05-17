@@ -89,7 +89,7 @@ const DedicatedLinesForm: React.FC = () => {
 
   return (
     <>
-      <section className="min-h-screen flex items-center justify-center bg-[#F9FAFB] relative p-3">
+      <section className="min-h-screen flex justify-center bg-[#F9FAFB] relative p-3">
         <div className="absolute inset-0 opacity-50 z-0"></div>
         <div className="container minH-[100vh] mx-auto px-6 z-10 relative">
           <h1 className="text-3xl font-extrabold text-[#034e48] text-center mt-3">
