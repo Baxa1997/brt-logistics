@@ -84,6 +84,7 @@ const JobsPage: React.FC = () => {
           <div className="w-[330px] mx-auto border border-[#EAECF0] rounded-[8px] h-[54px] mb-3 bg-[#F9FAFB] p-[6px] flex items-center gap-[6px]">
             {jobTypes?.map((job) => (
               <Button
+                key={job?.value}
                 onClick={() => setActiveBtn(job.value)}
                 className={`min-w-[90px] hover:bg-[#F9FAFB] text-black ${
                   job.value === activeBtn
