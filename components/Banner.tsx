@@ -18,10 +18,10 @@ function Banner() {
       </div>
 
       <div className=" md:inline absolute mt-0 top-0 pt-20 lg:pt-60 md:pt-44 h-full w-full bg-transparent bg-gradient-to-r from-gray-800/90 to-transparent px-8 md:px-12">
-        <h2 className="text-center md:text-justify text-[36px] lg:text-6xl md:text-5xl max-w-[400px] lg:w-[700px] md:w-[550px]  text-white font-bold">
+        <h2 className="text-center sm:text-justify sm:text-[36px] text-[24px] lg:text-6xl md:text-5xl sm:w-[400px] lg:w-[700px] md:w-[550px]  text-white font-bold">
           WE CONNECT <span className="text-[#F3A95A]">DRIVERS</span> FOR SUCCESS
         </h2>
-        <div className="mt-20 md:mt-14 md:w-[500px] max-w-[100%] flex items-center justify-between flex-wrap sm:justify-center md:gap-[20px]">
+        <div className="mt-12 md:mt-14 md:w-[500px] max-w-[100%] flex items-center justify-between flex-wrap sm:justify-center md:gap-[20px]">
           <Link
             className="hover:bg-[#049e8e] flex justify-center items-center gap-2 rounded-[6px] w-[100%] md:w-[48%] h-[65px] md:h-[56px] bg-[#35bcaf] lg:text-[20px] text-[16px] text-white"
             href={"jobs"}>
