@@ -140,6 +140,11 @@ const JobsPage: React.FC = () => {
                 jobTitle="Owner Operator - Regional Freight"
               />
             )}
+            {activeBtn === "leaseDrivers" && (
+              <div className="h-[250px] flex items-center justify-center">
+                No jobs available yet
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -186,32 +191,32 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
         {type === "drivers" && (
           <>
             {payment && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <PaymentIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold"> Payment:</span>{" "}
                 {payment}
               </p>
             )}
             {otr && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <AddRoadIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold"> OTR:</span> {otr}
               </p>
             )}
             {off && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <EventRepeatIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold"> OFF:</span> {off}
               </p>
             )}
             {escrow && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <DataThresholdingIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold"> Escrow:</span> {escrow}
               </p>
             )}
             {flightTicket && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <FlightIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Flight Ticket:
@@ -220,26 +225,26 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
               </p>
             )}
             {truck && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <LocalShippingIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">Truck:</span> {truck}
               </p>
             )}
             {loads && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <AutorenewIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">Loads:</span> {loads}
               </p>
             )}
             {firstPayment && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <AttachMoneyIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">1st Payment:</span>{" "}
                 {firstPayment}
               </p>
             )}
             {weeklyMiles && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <FlagIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Weekly Guaranteed Miles:
@@ -253,7 +258,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
         {type === "operators" && (
           <>
             {dispatchFee && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <PaymentIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Dispatch Fee:
@@ -263,44 +268,44 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
             )}
 
             {insurance && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <AddIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">Insurance:</span>{" "}
                 {insurance}
               </p>
             )}
             {eld && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <AddIcCallIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">ELD:</span> {eld}
               </p>
             )}
             {ifta && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <AttachEmailIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">IFTA:</span> {ifta}
               </p>
             )}
             {otr && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <CellTowerIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">OTR:</span> {otr}
               </p>
             )}
             {off && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <EventRepeatIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">OFF:</span> {off}
               </p>
             )}
             {loads && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <AutorenewIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">Loads</span> {loads}
               </p>
             )}
             {plateProgram && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <FastfoodIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Plate Program:
@@ -309,7 +314,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
               </p>
             )}
             {coverageArea && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <AreaChartIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Coverage Area
@@ -318,7 +323,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
               </p>
             )}
             {grossSolo && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <AreaChartIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Gross Avg Solo (Weekly):
@@ -327,7 +332,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
               </p>
             )}
             {grossTeam && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <AreaChartIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Gross Avg Team (Weekly):
@@ -336,21 +341,21 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
               </p>
             )}
             {payment && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <PaymentIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">Payment:</span>{" "}
                 {payment}
               </p>
             )}
             {provided && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <AreaChartIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">Provided:</span>{" "}
                 {provided}
               </p>
             )}
             {requiredExp && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <AreaChartIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Required Experience:
@@ -359,7 +364,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
               </p>
             )}
             {address && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <BusinessIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Company Address:
@@ -368,7 +373,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
               </p>
             )}
             {yard && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <BusinessIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Company Yard:
@@ -377,7 +382,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
               </p>
             )}
             {availableLanes && (
-              <p className="flex items-center gap-2">
+              <p className="flex items-center gap-2 mb-1">
                 <ListAltIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Available Lanes:

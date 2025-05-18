@@ -75,7 +75,7 @@ const JonPositions: React.FC<JonPositionsProps> = ({
           {jobTitle}
         </h3>
 
-        <div className="space-y-3 text-[18px] lg:text-[20px] text-gray-700">
+        <div className="space-y-1 text-[18px] lg:text-[20px] text-gray-700">
           <p className="flex items-center gap-2">
             <PlaceIcon style={{color: "#036760"}} />
             <span className="text-[18px] font-bold"> Route:</span>{" "}
