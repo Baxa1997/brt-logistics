@@ -32,9 +32,10 @@ function HFTextField({
         name={name}
         control={control}
         defaultValue={defaultValue}
-        render={({field: {onChange}}) => {
+        render={({field: {onChange, value}}) => {
           return (
             <Input
+              value={value}
               defaultValue={defaultValue}
               onChange={(e) => onChange(e.target.value)}
               id={name}

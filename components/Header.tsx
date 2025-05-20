@@ -11,7 +11,7 @@ import {Phone} from "lucide-react";
 
 export default function Header() {
   return (
-    <header className="flex h-[75px] justify-between w-full shrink-0 items-center px-4 md:px-6 z-50 overflow-hidden">
+    <header className="flex h-[80px] justify-between w-full shrink-0 items-center px-4 md:px-6 z-50 overflow-hidden">
       <Link
         href="/"
         className="ml-[-20px] block md:hidden cursor-pointer"
@@ -20,7 +20,7 @@ export default function Header() {
           alt="logo"
           width={130}
           height={30}
-          src={"/img/brtLogo1.png"}
+          src={"/img/logo4.svg"}
           objectFit="cover"
         />
       </Link>
@@ -29,7 +29,7 @@ export default function Header() {
           alt="logo"
           width={170}
           height={35}
-          src={"/img/brtLogo1.png"}
+          src={"/img/logo4.svg"}
           objectFit="cover"
         />
       </Link>

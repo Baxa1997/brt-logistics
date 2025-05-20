@@ -50,6 +50,7 @@ type JonPositionsProps = {
   address?: string;
   yard?: string;
   availableLanes?: string;
+  activeBtn?: string;
 };
 
 const jobTypes = [
@@ -101,6 +102,7 @@ const JobsPage: React.FC = () => {
           <div className="lg:w-[80%]">
             {activeBtn === "drivers" && (
               <JonPositions
+                activeBtn={activeBtn}
                 type="drivers"
                 company="ABC Logistics"
                 payment="$1500/week"
@@ -118,6 +120,7 @@ const JobsPage: React.FC = () => {
 
             {activeBtn === "operators" && (
               <JonPositions
+                activeBtn={activeBtn}
                 type="operators"
                 company="ABC Logistics"
                 dispatchFee="12%"
@@ -179,6 +182,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
     address,
     yard,
     availableLanes,
+    activeBtn,
   } = props;
 
   return (
@@ -396,7 +400,11 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
 
       <div className="minH-[270px] w-[30%] px-6 flex flex-col justify-between">
         <h3 className="text-[18px] text-[#030A21] font-bold">{company}</h3>
-        <Link href={"/"}>
+        <Link
+          href={{
+            pathname: "/jobs-form",
+            query: {jobTitle: jobTitle, jobType: activeBtn},
+          }}>
           <button className="h-[45px] w-full bg-[#036760] rounded-sm text-[18px] text-white font-bold">
             Apply now
           </button>

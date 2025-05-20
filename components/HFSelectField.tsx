@@ -46,9 +46,12 @@ function HFSelectField({
         name={name}
         control={control}
         defaultValue={defaultValue}
-        render={({field: {onChange}}) => {
+        render={({field: {onChange, value}}) => {
+          console.log("valueeeeeee", value);
+
           return (
             <Select
+              value={value}
               required={true}
               onValueChange={(e) => {
                 onChange(e);
