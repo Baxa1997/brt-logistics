@@ -50,20 +50,20 @@ const Contact: React.FC = () => {
 
   return (
     <>
-      <section className="min-h-screen flex items-center justify-center bg-[#034e48] relative p-6">
+      <section className="min-h-screen flex items-center justify-center pt-20 relative md:px-6 px-2">
         <div className="absolute inset-0 opacity-50 z-0"></div>
-        <div className="container mx-auto px-6 z-10 relative">
-          <h1 className="text-5xl font-extrabold text-white text-center mb-4">
+        <div className="container mx-auto md:px-6 px-2 z-10 relative">
+          <h1 className="md:text-5xl text-2xl font-extrabold text-black text-center mb-4">
             Contact Us
           </h1>
-          <p className="text-lg text-white text-center mb-8">
+          <p className="md:text-lg text-[14px] text-black text-center md:mb-8 mb-4">
             Want to get in touch? We’re more than happy to help.
           </p>
-          <div className="bg-white  rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+          <div className="bg-white  rounded-lg shadow-lg  md:p-8 p-4 max-w-4xl mx-auto">
             <form
               onSubmit={handleSubmit(submit)}
               className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="col-span-1">
+              <div className="md:col-span-1 col-span-2 ">
                 <label
                   htmlFor="firstname"
                   className="block text-gray-700 font-medium mb-2">
@@ -87,7 +87,7 @@ const Contact: React.FC = () => {
                 />
               </div>
 
-              <div className="col-span-1">
+              <div className="md:col-span-1 col-span-2">
                 <label
                   htmlFor="lastname"
                   className="block text-gray-700 font-medium mb-2">
@@ -111,7 +111,7 @@ const Contact: React.FC = () => {
                 />
               </div>
 
-              <div className="col-span-1">
+              <div className="md:col-span-1 col-span-2">
                 <label
                   htmlFor="companyName"
                   className="block text-gray-700 font-medium mb-2">
@@ -135,7 +135,7 @@ const Contact: React.FC = () => {
                 />
               </div>
 
-              <div className="col-span-1">
+              <div className="md:col-span-1 col-span-2">
                 <label
                   htmlFor="email"
                   className="block text-gray-700 font-medium mb-2">
@@ -184,7 +184,7 @@ const Contact: React.FC = () => {
                 />
               </div>
 
-              <div className="col-span-1">
+              <div className="md:col-span-1 col-span-2">
                 <label
                   htmlFor="usDot"
                   className="block text-gray-700 font-medium mb-2">

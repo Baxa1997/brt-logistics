@@ -72,8 +72,8 @@ const JobsPage: React.FC = () => {
   const [activeBtn, setActiveBtn] = useState<string>("drivers");
 
   return (
-    <div className="flex bg-white">
-      <div className="h-full overflow-auto w-full pt-10">
+    <div className="flex bg-white pt-24">
+      <div className="h-full overflow-auto w-full">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-800 lg:text-5xl mb-6">
             We’re looking for the best
@@ -82,24 +82,24 @@ const JobsPage: React.FC = () => {
         </div>
 
         <div className="container mx-auto">
-          <div className="w-[330px] mx-auto border border-[#EAECF0] rounded-[8px] h-[54px] mb-3 bg-[#F9FAFB] p-[6px] flex items-center gap-[6px]">
+          <div className="md:w-[330px] w-[300px] mx-auto border border-[#EAECF0] rounded-[8px] h-[54px] mb-3 bg-[#F9FAFB] p-[6px] flex items-center justify-between gap-[6px]">
             {jobTypes?.map((job) => (
               <Button
                 key={job?.value}
                 onClick={() => setActiveBtn(job.value)}
-                className={`min-w-[90px] hover:bg-[#F9FAFB] text-black ${
+                className={`md:w-[90px] w-[80px] hover:bg-[#F9FAFB] text-black ${
                   job.value === activeBtn
                     ? "bg-white hover:bg-white shadow-md"
                     : "bg-[#F9FAFB] shadow-none"
-                } h-[40px]  rounded-[6px] flex items-center justify-center text-[14px] font-semibold`}>
+                } h-[40px]  rounded-[6px] md:text-[14px] flex items-center justify-center text-[12px] font-semibold`}>
                 {job.label}
               </Button>
             ))}
           </div>
         </div>
 
-        <div className="px-12 w-full flex justify-center">
-          <div className="lg:w-[80%]">
+        <div className="md:px-12 px-5 w-full flex justify-center">
+          <div className="md:w-[80%] w-[100%]">
             {activeBtn === "drivers" && (
               <JonPositions
                 activeBtn={activeBtn}
@@ -186,8 +186,11 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
   } = props;
 
   return (
-    <div className="p-6 border rounded-[16px] border-[#EAECF0] mb-6 w-full flex shadow-sm">
-      <div className="border-r-[2px] w-[70%] pr-6">
+    <div className="p-6 border rounded-[16px] border-[#EAECF0] mb-6 flex shadow-sm md:flex-row flex-col w-full">
+      <div className="md:border-r-[2px] border-r-0 md:w-[70%] w-[100%] md:pr-6 pr-0">
+        <h3 className="text-[18px] text-[#030A21] font-bold md:block">
+          {company}
+        </h3>
         <h3 className="lg:text-[26px] font-semibold text-[#036760] mb-4">
           {jobTitle}
         </h3>
@@ -398,14 +401,16 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
         )}
       </div>
 
-      <div className="minH-[270px] w-[30%] px-6 flex flex-col justify-between">
-        <h3 className="text-[18px] text-[#030A21] font-bold">{company}</h3>
+      <div className="minH-[270px] md:w-[30%] w-[100%]  px-6 flex flex-col justify-between">
+        <h3 className="text-[18px] text-[#030A21] font-bold hidden md:block">
+          {company}
+        </h3>
         <Link
           href={{
             pathname: "/jobs-form",
             query: {jobTitle: jobTitle, jobType: activeBtn},
           }}>
-          <button className="h-[45px] w-full bg-[#036760] rounded-sm text-[18px] text-white font-bold">
+          <button className="h-[45px] mt-4 md:mt-0 w-full bg-[#036760] rounded-sm text-[18px] text-white font-bold">
             Apply now
           </button>
         </Link>

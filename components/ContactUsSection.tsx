@@ -11,7 +11,7 @@ function ContactUsSection() {
             Get In Touch With Us Now!
           </h3>
           <div className="grid grid-cols-2 gap-6">
-            <div className="flex flex-col ">
+            <div className="flex flex-col sm:col-span-1 col-span-2">
               <span className="text-xl font-bold text-gray-700 mb-2">
                 Phone Number
               </span>
@@ -28,7 +28,7 @@ function ContactUsSection() {
                 </Link>
               </div>
             </div>
-            <div className="flex flex-col ">
+            <div className="flex flex-col sm:col-span-1 col-span-2">
               <span className="text-xl font-bold text-gray-700 mb-2">
                 Email
               </span>
@@ -39,7 +39,7 @@ function ContactUsSection() {
                 </Link>
               </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col sm:col-span-1 col-span-2">
               <span className="text-xl font-bold text-gray-700 mb-2">
                 Location
               </span>
@@ -50,7 +50,7 @@ function ContactUsSection() {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col ">
+            <div className="flex flex-col sm:col-span-1 col-span-2">
               <span className="text-xl font-bold text-gray-700 mb-2">
                 Working Hours
               </span>

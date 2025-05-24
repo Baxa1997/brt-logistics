@@ -1,33 +1,11 @@
 import {LetterText, Mail, Phone, ReceiptText, ShieldCheck} from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 function Footer() {
   return (
     <footer className="bg-teal-700 text-white pt-10 pb-5">
-      <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-5 gap-6">
-        <div>
-          <Link
-            href="#"
-            className="ml-[-20px] block md:hidden"
-            prefetch={false}>
-            <Image
-              alt="logo"
-              width={130}
-              height={30}
-              src={"/img/brtLogo1.png"}
-              objectFit="cover"
-            />
-          </Link>
-          <p className="text-sm">
-            BRT Logistics means to serve as a best friend for both drivers and
-            carriers in the transportation industry. We provide qualified CDL
-            Class A drivers for motor carriers and help drivers find the job
-            that matches their criteria.
-          </p>
-        </div>
-
+      <div className="container mx-auto px-6 grid sm:grid-cols-2 grid-cols-1 md:grid-cols-4 gap-6">
         <div className="max-w-[220px]">
           <h3 className="text-lg font-bold mb-4">For Drivers</h3>
           <ul className="space-y-2">
