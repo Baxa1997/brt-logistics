@@ -8,7 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 function Banner() {
   return (
-    <div className="flex lg:h-[calc(100vh-35px)] md:h-[calc(100vh-240px)] h-[calc(100vh-150px)] relative bg-blue-500 w-full">
+    <div className="flex lg:h-[calc(100vh)] md:h-[calc(100vh-240px)] h-[calc(100vh-100px)] relative bg-blue-500 w-full">
       <div className="flex-full min-w-0 relative">
         <Image
           alt="banner photo"
