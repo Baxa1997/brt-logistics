@@ -73,7 +73,7 @@ const ServiceComponent = ({
           <h2 className="text-4xl font-bold lg:text-justify md:md:text-center text-gray-900 mb-4">
             {title}
           </h2>
-          <p className="text-lg lg:text-justify md:text-center md:max-w-[424px] md:mx-auto text-gray-600">
+          <p className="text-lg lg:text-justify md:text-center text-gray-600">
             {description}
           </p>
         </div>
@@ -82,7 +82,7 @@ const ServiceComponent = ({
           <div className="absolute w-full h-full bg-gradient-to-tr from-green-200 to-blue-100 rounded-3xl -z-10" />
 
           <div className="flex justify-center items-end">
-            <div className="w-full h-[420px] sm:w-[100%] relative">
+            <div className="w-full h-[420px] relative">
               <Image
                 layout="fill"
                 src={img}
