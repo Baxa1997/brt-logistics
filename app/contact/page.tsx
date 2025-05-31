@@ -50,16 +50,16 @@ const Contact: React.FC = () => {
 
   return (
     <>
-      <section className="min-h-screen flex items-center justify-center pt-20 relative md:px-6 px-2">
+      <section className="min-h-screen flex items-center justify-center pt-10 relative md:px-6 px-2 py-4">
         <div className="absolute inset-0 opacity-50 z-0"></div>
         <div className="container mx-auto md:px-6 px-2 z-10 relative">
-          <h1 className="md:text-5xl text-2xl font-extrabold text-black text-center mb-4">
+          <h1 className="md:text-5xl text-4xl text-2xl font-extrabold text-black text-center mb-4">
             Contact Us
           </h1>
           <p className="md:text-lg text-[14px] text-black text-center md:mb-8 mb-4">
             Want to get in touch? We’re more than happy to help.
           </p>
-          <div className="bg-white  rounded-lg shadow-lg  md:p-8 p-4 max-w-4xl mx-auto">
+          <div className="bg-white rounded-lg shadow-2xl md:p-8 p-4 max-w-4xl mx-auto">
             <form
               onSubmit={handleSubmit(submit)}
               className="grid grid-cols-1 md:grid-cols-2 gap-6">

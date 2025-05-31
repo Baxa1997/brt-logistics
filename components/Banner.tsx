@@ -1,53 +1,75 @@
+"use client";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import {Button} from "./ui/button";
-import Link from "next/link";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Person2Icon from "@mui/icons-material/Person2";
 import SearchIcon from "@mui/icons-material/Search";
 
-function Banner() {
+export default function Banner() {
   return (
-    <div className="flex lg:h-[calc(100vh)] md:h-[calc(100vh-240px)] h-[calc(100vh-100px)] relative bg-blue-500 w-full">
-      <div className="flex-full min-w-0 relative">
-        <Image
-          alt="banner photo"
-          src={"/img/truck2.jpg"}
-          width={1920}
-          height={1080}
-          className="absolute w-full h-full object-cover"
-        />
-      </div>
+    <section className="relative h-screen w-full overflow-hidden bg-black text-white">
+      <Image
+        src="/img/truck2.jpg"
+        alt="Hero Background"
+        fill
+        priority
+        className="absolute object-cover w-full h-full"
+      />
 
-      <div className="absolute inset-0 h-full w-full bg-gradient-to-tr from-gray-800/85 to-transparent px-6 sm:px-12 pt-40 md:pt-44 lg:pt-60">
-        <h2 className="text-white font-bold text-[24px] sm:text-[32px] md:text-5xl lg:text-6xl max-w-[90%] sm:max-w-[400px] md:max-w-[550px] lg:max-w-[700px] text-center sm:text-left mx-auto sm:mx-0">
+      {/* <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+        <div className="flex flex-col items-center space-y-0">
+          {[0, 1, 2].map((i) => (
+            <motion.div
+              key={i}
+              animate={{y: [0, 10, 0]}}
+              transition={{
+                duration: 1.5,
+                delay: i * 0.1,
+                repeat: Infinity,
+              }}>
+              <ChevronDown className="w-12 h-12 text-white" />
+            </motion.div>
+          ))}
+        </div>
+      </div> */}
+
+      <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/50 to-transparent z-10" />
+
+      <div className="relative z-20 flex flex-col justify-center items-center lg:items-start h-full px-4 sm:px-10 lg:px-24 py-20 text-center lg:text-left">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight max-w-4xl mb-10">
           WE CONNECT <span className="text-[#FB923C]">DRIVERS</span> FOR SUCCESS
-        </h2>
+        </h1>
 
-        <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row sm:flex-wrap sm:justify-start sm:gap-4 items-center max-w-full sm:max-w-[500px] mx-auto sm:mx-0">
-          <Link
-            href="jobs"
-            className="hover:bg-[#049e8e] flex items-center justify-center gap-2 rounded-[6px] bg-[#35bcaf] text-white text-[16px] lg:text-[18px] h-[56px] w-full sm:w-[242px] mb-4 sm:mb-0">
-            <Person2Icon style={{width: "24px", height: "24px"}} />I am Driver
+        <div className="w-full max-w-xl flex flex-col sm:flex-row sm:gap-4 space-y-4 sm:space-y-0 mb-5">
+          <Link href="/jobs" className="w-full sm:w-1/2">
+            <Button className="w-full h-[54px] gap-2 bg-[#35bcaf] hover:bg-[#049e8e] text-white text-base">
+              <Person2Icon style={{width: "24px", height: "24px"}} /> I am
+              Driver
+            </Button>
           </Link>
 
-          <Link
-            href="/dedicated-lines"
-            className="hover:bg-[#ffffffd7] flex items-center justify-center gap-2 rounded-[6px] bg-white text-black text-[16px] lg:text-[18px] h-[56px] w-full sm:w-[242px] mb-4 sm:mb-0">
-            <LocationOnIcon style={{width: "24px", height: "24px"}} />
-            Dedicated Lanes
+          <Link href="/dedicated-lines" className="w-full sm:w-1/2">
+            <Button className="w-full h-[54px] gap-2 bg-white text-black hover:bg-gray-100 text-base">
+              <LocationOnIcon style={{width: "24px", height: "24px"}} />{" "}
+              Dedicated Lanes
+            </Button>
           </Link>
+        </div>
 
-          <Link href="jobs" className="w-full">
-            <Button className="w-full h-[56px] lg:text-[18px] text-[16px] bg-transparent border-2 text-white hover:bg-white hover:text-black">
-              <SearchIcon style={{width: "26px", height: "26px"}} />
-              Search Jobs
+        <div className="w-full max-w-xl">
+          <Link href="/jobs">
+            <Button
+              className={`
+                w-full h-[54px] gap-2 border border-white text-white bg-transparent text-base 
+                hover:bg-white hover:text-black transition-colors duration-200
+              `}>
+              <SearchIcon style={{width: "24px", height: "24px"}} /> Search Jobs
             </Button>
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
-
-export default Banner;

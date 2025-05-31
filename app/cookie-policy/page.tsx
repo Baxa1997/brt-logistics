@@ -3,7 +3,9 @@ import React from "react";
 const CookiePolicy: React.FC = () => {
   return (
     <div className="bg-gray-50 px-6 py-12">
-      <h1 className="text-4xl font-bold mb-8 text-center">Cookie Policy</h1>
+      <h1 className="md:text-4xl text-3xl font-bold mb-8 text-center">
+        Cookie Policy
+      </h1>
       <div className="container mx-auto space-y-8">
         <section>
           <p className="text-gray-700 leading-relaxed">

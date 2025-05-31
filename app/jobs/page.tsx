@@ -63,7 +63,7 @@ const jobTypes = [
     value: "operators",
   },
   {
-    label: "Lease Drviers",
+    label: "Lease Drivers",
     value: "leaseDrivers",
   },
 ];
@@ -72,7 +72,7 @@ const JobsPage: React.FC = () => {
   const [activeBtn, setActiveBtn] = useState<string>("drivers");
 
   return (
-    <div className="flex bg-white pt-24">
+    <div className="flex bg-white pt-20">
       <div className="h-full overflow-auto w-full">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-800 lg:text-5xl mb-6">
@@ -87,7 +87,7 @@ const JobsPage: React.FC = () => {
               <Button
                 key={job?.value}
                 onClick={() => setActiveBtn(job.value)}
-                className={`md:w-[90px] w-[80px] hover:bg-[#F9FAFB] text-black ${
+                className={`md:w-[120px] w-[80px] hover:bg-[#F9FAFB] text-black ${
                   job.value === activeBtn
                     ? "bg-white hover:bg-white shadow-md"
                     : "bg-[#F9FAFB] shadow-none"

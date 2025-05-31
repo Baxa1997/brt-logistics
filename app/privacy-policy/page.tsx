@@ -4,7 +4,9 @@ import React from "react";
 const PrivacyPolicy: React.FC = () => {
   return (
     <section className=" px-6 py-12 bg-gray-50">
-      <h1 className="text-4xl font-bold mb-8 text-center">Privacy Policy</h1>
+      <h1 className="md:text-4xl text-3xl font-bold mb-8 text-center">
+        Privacy Policy
+      </h1>
       <div className="container mx-auto space-y-8">
         <section>
           <h2 className="text-2xl font-semibold mb-4">

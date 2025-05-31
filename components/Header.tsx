@@ -1,147 +1,152 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import {usePathname} from "next/navigation";
 import {Sheet, SheetTrigger, SheetContent} from "@/components/ui/sheet";
 import {Button} from "@/components/ui/button";
-import Link from "next/link";
+import {Phone, Menu} from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
-import Image from "next/image";
-import {Phone} from "lucide-react";
+import {useState} from "react";
 
-export default function Header() {
+function NavLink({href, label}: {href: string; label: string}) {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+  const isHome = pathname === "/";
+
   return (
-    <header className="flex bg-none absolute h-[80px] justify-between w-full shrink-0 items-center px-4 md:px-6 z-50 overflow-hidden">
+    <NavigationMenuLink asChild>
       <Link
-        href="/"
-        className="ml-[-20px] block md:hidden cursor-pointer"
-        prefetch={false}>
-        <Image
-          alt="logo"
-          width={130}
-          height={30}
-          src={"/img/newLogo2.png"}
-          objectFit="cover"
-        />
+        href={href}
+        prefetch={true}
+        className={`inline-flex h-9 items-center justify-center px-4 py-2 rounded-md transition-colors text-[16px] lg:text-[20px] font-medium ${
+          isHome
+            ? "text-white hover:text-[#FB923C]"
+            : "text-black hover:text-blue-600"
+        } ${isActive ? "underline underline-offset-4" : ""}`}>
+        {label}
       </Link>
-      <Link href="/" className="mr-6 hidden md:block " prefetch={false}>
-        <Image
-          alt="logo"
-          width={170}
-          height={35}
-          src={"/img/newLogo2.png"}
-          objectFit="cover"
-        />
-      </Link>
-      <NavigationMenu className="hidden lg:flex">
-        <NavigationMenuList>
-          <NavigationMenuLink asChild>
-            <Link
-              href="/aboutus"
-              className="cursor-pointer group inline-flex h-9  w-max items-center justify-center rounded-md px-4 py-2 lg:text-[20px] text-[16px] font-medium transition-colors  focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-              prefetch={true}>
-              About Us
-            </Link>
-          </NavigationMenuLink>
-          <NavigationMenuLink asChild>
-            <Link
-              href="/jobs"
-              className="cursor-pointer group inline-flex h-9  w-max items-center justify-center rounded-md px-4 py-2 lg:text-[20px] text-[16px] font-medium transition-colors  focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-              prefetch={true}>
-              Jobs
-            </Link>
-          </NavigationMenuLink>
-          <NavigationMenuLink asChild>
-            <Link
-              href="/contact"
-              className="cursor-pointer group inline-flex h-9  w-max items-center justify-center rounded-md px-4 py-2 lg:text-[20px] text-[16px] font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-              prefetch={true}>
-              Contact Us
-            </Link>
-          </NavigationMenuLink>
-        </NavigationMenuList>
-      </NavigationMenu>
-      <div className="ml-auto gap-2 hidden lg:flex">
-        <Button
-          variant="outline"
-          className="w-[110px] h-[45px] bg-transparent lg:text-[20px] text-[18px] border-[1px] text-black border-black hover:bg-[#026860] hover:text-white ">
-          Log in
-        </Button>
-      </div>
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="lg:hidden mr-3">
-            <MenuIcon className="h-6 w-6" />
-            <span className="sr-only">Toggle navigation menu</span>
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="left">
-          <div className="grid gap-2 py-6">
-            <Link
-              href="#"
-              className="flex w-full items-center py-2 text-[20px] font-semibold"
-              prefetch={true}>
-              Admin
-            </Link>
-            <Link
-              href="#"
-              className="flex w-full items-center py-2 text-[20px] font-semibold"
-              prefetch={true}>
-              About Us
-            </Link>
-            <Link
-              href="/jobs"
-              className="flex w-full items-center py-2 text-[20px] font-semibold"
-              prefetch={true}>
-              Jobs
-            </Link>
-            <Link
-              href="#"
-              className="flex w-full items-center py-2 text-[20px]  font-semibold"
-              prefetch={true}>
-              Contact Us
-            </Link>
-          </div>
-        </SheetContent>
-      </Sheet>
-      <div className="hidden lg:block ml-6">
-        <div className="flex">
-          <Phone style={{color: "#036760"}} />
-          <Link
-            href="tel:+1(347)2638089"
-            className="ml-2 lg:text-[18px] font-bold">
-            +1 (347) 263-8089
-          </Link>
-        </div>
-        <div className="flex">
-          <Phone style={{color: "#036760"}} />
-          <Link
-            href="tel:+1(347)2638165"
-            className="ml-2 lg:text-[18px] font-bold">
-            +1 (347) 263-8165
-          </Link>
-        </div>
-      </div>
-    </header>
+    </NavigationMenuLink>
   );
 }
 
-function MenuIcon(props: any) {
+export default function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [open, setOpen] = useState(false);
   return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round">
-      <line x1="4" x2="20" y1="12" y2="12" />
-      <line x1="4" x2="20" y1="6" y2="6" />
-      <line x1="4" x2="20" y1="18" y2="18" />
-    </svg>
+    <header
+      className={`${
+        isHome
+          ? "absolute bg-transparent text-white"
+          : "relative bg-white text-black shadow-md"
+      } z-50 w-full flex items-center justify-between px-6 md:px-6 h-[80px] transition-colors duration-300`}>
+      <Link href="/" prefetch={false}>
+        <Image
+          alt="logo"
+          src={isHome ? "/img/newLogo5.svg" : "/img/newLogoBlack.svg"}
+          width={200}
+          height={35}
+          className="hidden md:block mr-[25px]"
+        />
+        <Image
+          alt="logo"
+          src={isHome ? "/img/newLogo5.svg" : "/img/newLogoBlack.svg"}
+          width={200}
+          height={35}
+          className="block md:hidden ml-[-20px]"
+        />
+      </Link>
+
+      <nav className="hidden lg:flex">
+        <NavigationMenu aria-label="Main Navigation">
+          <NavigationMenuList>
+            <NavLink href="/aboutus" label="About Us" />
+            <NavLink href="/jobs" label="Jobs" />
+            <NavLink href="/contact" label="Contact Us" />
+          </NavigationMenuList>
+        </NavigationMenu>
+      </nav>
+
+      <div className="ml-auto hidden lg:flex gap-2">
+        <Button
+          variant="outline"
+          className={`w-[110px] h-[45px] border ${
+            isHome
+              ? "border-white text-white hover:bg-white hover:text-black"
+              : "border-black text-black hover:bg-black hover:text-white"
+          } text-[18px] lg:text-[20px] bg-transparent`}>
+          Log in
+        </Button>
+      </div>
+
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetTrigger asChild>
+          <Button variant="outline" size="icon" className="lg:hidden mr-3">
+            <Menu className="h-6 w-6 text-black" />
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="left" className="bg-white flex flex-col">
+          <div className="grid gap-4 text-black text-[20px] font-normal">
+            <Link href="/" prefetch={false} onClick={() => setOpen(false)}>
+              <Image
+                alt="logo"
+                src={"/img/newLogoBlack.svg"}
+                width={200}
+                height={35}
+                className="block  ml-[-20px]"
+              />
+            </Link>
+            <Link
+              href="/aboutus"
+              prefetch={true}
+              onClick={() => setOpen(false)}>
+              About Us
+            </Link>
+            <Link href="/jobs" prefetch={true} onClick={() => setOpen(false)}>
+              Jobs
+            </Link>
+            <Link
+              href="/contact"
+              prefetch={true}
+              onClick={() => setOpen(false)}>
+              Contact Us
+            </Link>
+            <Link href="#" prefetch={true}>
+              Admin
+            </Link>
+          </div>
+
+          <div className="mt-auto text-lg">
+            <div className="flex items-center gap-2">
+              <Phone className="w-6 h-6" />
+              <Link href="tel:+13472638089">+1 (347) 263-8089</Link>
+            </div>
+            <div className="flex items-center gap-2 mt-2">
+              <Phone className="w-6 h-6" />
+              <Link href="tel:+13472638165">+1 (347) 263-8165</Link>
+            </div>
+          </div>
+        </SheetContent>
+      </Sheet>
+
+      <div
+        className={`hidden lg:flex flex-col gap-1 ml-6  text-[18px] font-bold ${
+          isHome ? "text-white" : "text-black"
+        }`}>
+        <div className="flex items-center gap-2">
+          <Phone className="w-4 h-4" />
+          <Link href="tel:+13472638089">+1 (347) 263-8089</Link>
+        </div>
+        <div className="flex items-center gap-2">
+          <Phone className="w-4 h-4" />
+          <Link href="tel:+13472638165">+1 (347) 263-8165</Link>
+        </div>
+      </div>
+    </header>
   );
 }

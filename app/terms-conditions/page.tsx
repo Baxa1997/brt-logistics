@@ -3,8 +3,8 @@ import React from "react";
 
 const TermsAndConditions: React.FC = () => {
   return (
-    <div className="container mx-auto px-6 py-12">
-      <h1 className="text-4xl font-bold mb-8 text-center">
+    <div className="container mx-auto lg:px-6 px-4 py-12">
+      <h1 className="lg:text-4xl text-3xl font-bold mb-8 text-center">
         Terms and Conditions
       </h1>
       <div className="space-y-8">
