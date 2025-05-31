@@ -32,21 +32,26 @@ function HFTextField({
         name={name}
         control={control}
         defaultValue={defaultValue}
-        render={({field: {onChange, value}}) => {
-          return (
+        rules={{required}}
+        render={({field, fieldState}) => (
+          <>
             <Input
-              value={value}
-              defaultValue={defaultValue}
-              onChange={(e) => onChange(e.target.value)}
+              {...field}
               id={name}
               type={type}
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring focus:ring-green-500"
               placeholder={placeholder}
-              required={required}
               disabled={disabled}
+              className={`w-full border rounded-lg p-3 focus:outline-none focus:ring ${
+                fieldState.error
+                  ? "border-red-500 focus:ring-red-300"
+                  : "border-gray-300 focus:ring-green-500"
+              }`}
             />
-          );
-        }}
+            {fieldState.error && (
+              <p className="text-red-500 text-sm mt-1">{title} is required.</p>
+            )}
+          </>
+        )}
       />
     </div>
   );

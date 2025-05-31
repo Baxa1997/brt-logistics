@@ -73,15 +73,18 @@ export default function Header() {
       </nav>
 
       <div className="ml-auto hidden lg:flex gap-2">
-        <Button
-          variant="outline"
-          className={`w-[110px] h-[45px] border ${
-            isHome
-              ? "border-white text-white hover:bg-white hover:text-black"
-              : "border-black text-black hover:bg-black hover:text-white"
-          } text-[18px] lg:text-[20px] bg-transparent`}>
-          Log in
-        </Button>
+        <Link href={"/login"}>
+          {" "}
+          <Button
+            variant="outline"
+            className={`w-[110px] h-[45px] border ${
+              isHome
+                ? "border-white text-white hover:bg-white hover:text-black"
+                : "border-black text-black hover:bg-black hover:text-white"
+            } text-[18px] lg:text-[20px] bg-transparent`}>
+            Log in
+          </Button>
+        </Link>
       </div>
 
       <Sheet open={open} onOpenChange={setOpen}>
