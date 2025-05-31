@@ -36,7 +36,7 @@ function HFSelectField({
   defaultValue = "",
 }: Props) {
   return (
-    <div className="col-span-1">
+    <div className="md:col-span-1 col-span-2">
       <label
         htmlFor="trailerType"
         className="block text-gray-700 font-medium mb-2">

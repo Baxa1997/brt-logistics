@@ -7,21 +7,6 @@ type Props = {
   control: Control<any>;
 };
 
-const selectEquipmentOption = [
-  {
-    label: "Dry Van",
-    value: "dryVan",
-  },
-  {
-    label: "Reefer",
-    value: "reefer",
-  },
-  {
-    label: "Flatbed",
-    value: "flatbed",
-  },
-];
-
 const selectMiles = [
   {
     label: "800 miles/daily +",
@@ -65,14 +50,6 @@ function CompanyDriverForm({control}: Props) {
         control={control}
         required={true}
         name="experience"
-      />
-
-      <HFSelectField
-        title="Applying as"
-        control={control}
-        name="trailerType"
-        required={true}
-        options={selectEquipmentOption}
       />
 
       <HFSelectField

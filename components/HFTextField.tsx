@@ -24,7 +24,7 @@ function HFTextField({
   defaultValue = "",
 }: Props) {
   return (
-    <div className="col-span-1">
+    <div className="md:col-span-1 col-span-2">
       <label htmlFor={name} className="block text-gray-700 font-medium mb-2">
         {title} {required && <span className="text-red-400">*</span>}
       </label>

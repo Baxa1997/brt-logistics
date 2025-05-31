@@ -96,13 +96,12 @@ const JobsForm: React.FC = () => {
       setValue("jobType", "Operator");
     }
   }, [queryObject, watch("applyIngAs")]);
-  console.log("jobtTypessssss", watch("applyIngAs"));
 
   return (
     <>
       <section className="min-h-screen flex justify-center bg-[#F9FAFB] relative p-3">
         <div className="absolute inset-0 opacity-50 z-0"></div>
-        <div className="container minH-[100vh] mx-auto px-6 z-10 relative">
+        <div className="container minH-[100vh] mx-auto md:px-6 px-0 z-10 relative">
           <h1 className="text-3xl font-extrabold text-[#034e48] text-center mt-3">
             Applying for a Job:
           </h1>
@@ -113,7 +112,7 @@ const JobsForm: React.FC = () => {
             </h4>
           </div>
 
-          <div className="rounded-lg p-8  mx-auto">
+          <div className="rounded-lg md:p-8 p-2 mx-auto">
             <form
               onSubmit={handleSubmit(submit)}
               className="grid grid-cols-1 md:grid-cols-2 gap-6">
