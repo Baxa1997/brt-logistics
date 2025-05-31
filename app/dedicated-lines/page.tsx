@@ -33,7 +33,7 @@ const DedicatedLines: React.FC = () => {
           <div className="w-[100px] h-[4px] bg-orange-400 mx-auto mb-10" />
         </div>
 
-        <div className="px-12 w-full flex justify-center">
+        <div className="md:px-12 px-5 w-full flex justify-center">
           <div className="lg:w-[80%]">
             <JonPositions
               jobTitle="Dedicated Route – Dallas to Memphis"
@@ -69,61 +69,82 @@ const JonPositions: React.FC<JonPositionsProps> = ({
   transportType,
 }) => {
   return (
-    <div className="p-6 border rounded-[16px] border-[#EAECF0] mb-6 w-full flex shadow-sm bg-white">
-      <div className="border-r-[1px] pr-6 w-[70%]">
-        <h3 className="text-[24px] lg:text-[26px] font-semibold text-[#036760] mb-4">
+    <div className="md:p-6 p-4 border rounded-[16px] border-[#EAECF0] mb-6 w-full flex flex-col md:flex-row shadow-sm bg-white">
+      <div className="md:border-r-[1px] border-r-0 md:pr-6 pr-0 md:w-[70%] w-[100%]">
+        <h3 className="text-[20px] lg:text-[26px] font-semibold text-[#036760] md:mb-4 mb-1">
           {jobTitle}
         </h3>
 
-        <div className="space-y-1 text-[18px] lg:text-[20px] text-gray-700">
+        <div className="md:hidden flex items-center gap-3 mb-4 ">
+          <h3 className="md:text-[18px] text-[16px] text-[#030A21] font-bold ">
+            {brokerName}
+          </h3>
+          <p className="text-sm text-gray-500">Dedicated Line Position</p>
+        </div>
+
+        <div className="space-y-1 text-[15px] lg:text-[20px] text-gray-700">
           <p className="flex items-center gap-2">
             <PlaceIcon style={{color: "#036760"}} />
-            <span className="text-[18px] font-bold"> Route:</span>{" "}
+            <span className="md:text-[18px] text-[16px] font-bold">
+              {" "}
+              Route:
+            </span>{" "}
             {`${pickUpAddress} - ${deliveryAddress}`}
           </p>
 
           <p className="flex items-center gap-2">
             <AddRoadIcon style={{color: "#036760"}} />
-            <span className="text-[18px] font-bold"> Trip Type:</span>{" "}
+            <span className="md:text-[18px] text-[16px] font-bold">
+              {" "}
+              Trip Type:
+            </span>{" "}
             {roadType}
           </p>
 
           <p className="flex items-center gap-2">
             <LocalShippingIcon style={{color: "#036760"}} />
-            <span className="text-[18px] font-bold">Freight Load:</span>{" "}
+            <span className="md:text-[18px] text-[16px] font-bold">
+              Freight Load:
+            </span>{" "}
             {freightLoad}
           </p>
           <p className="flex items-center gap-2">
             <LocalShippingIcon style={{color: "#036760"}} />
-            <span className="text-[18px] font-bold">Trailer Type:</span>{" "}
+            <span className="md:text-[18px] text-[16px] font-bold">
+              Trailer Type:
+            </span>{" "}
             {transportType}
           </p>
           <p className="flex items-center gap-2">
             <AttachMoneyIcon style={{color: "#036760"}} />
-            <span className="text-[18px] font-bold">Rate:</span>
+            <span className="md:text-[18px] text-[16px] font-bold">Rate:</span>
             {rate}
           </p>
 
           <p className="flex items-center gap-2">
             <FlagIcon style={{color: "#036760"}} />{" "}
-            <span className="text-[18px] font-bold">Miles:</span>
+            <span className="md:text-[18px] text-[16px] font-bold">Miles:</span>
             <span className="text-gray-600">{miles}</span>
           </p>
           <p className="flex items-center gap-2">
             <HomeWorkIcon style={{color: "#036760"}} />{" "}
-            <span className="text-[18px] font-bold">Contract duration:</span>{" "}
+            <span className="md:text-[18px] text-[16px] font-bold">
+              Contract duration:
+            </span>{" "}
             <span className="text-gray-600">{durationContract}</span>
           </p>
           <p className="flex items-center gap-2">
             <TrackChangesIcon style={{color: "#036760"}} />{" "}
-            <span className="text-[18px] font-bold">Loads per week:</span>{" "}
+            <span className="md:text-[18px] text-[16px] font-bold">
+              Loads per week:
+            </span>{" "}
             <span className="ml-2 text-gray-600">{loadsCount}</span>
           </p>
         </div>
       </div>
 
-      <div className="w-[30%] px-6 flex flex-col justify-between">
-        <div>
+      <div className="md:w-[30%] w-full px-6 flex flex-col justify-between">
+        <div className="md:block hidden">
           <h3 className="text-[18px] text-[#030A21] font-bold mb-4">
             {brokerName}
           </h3>

@@ -87,7 +87,7 @@ const JobsPage: React.FC = () => {
               <Button
                 key={job?.value}
                 onClick={() => setActiveBtn(job.value)}
-                className={`md:w-[120px] w-[80px] hover:bg-[#F9FAFB] text-black ${
+                className={`md:w-[120px] w-[100px] hover:bg-[#F9FAFB] text-black ${
                   job.value === activeBtn
                     ? "bg-white hover:bg-white shadow-md"
                     : "bg-[#F9FAFB] shadow-none"
