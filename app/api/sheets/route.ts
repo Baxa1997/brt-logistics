@@ -1,11 +1,10 @@
 import {google} from "googleapis";
 
-// Helper to normalize sheet headers to camelCase (or safe keys)
 const normalizeKey = (key: string) =>
   key
-    .replace(/[^a-zA-Z0-9 ]/g, "") // remove special chars
-    .replace(/\s+(.)/g, (_, c) => c.toUpperCase()) // to camelCase
-    .replace(/^./, (str) => str.toLowerCase()); // first char to lowercase
+    .replace(/[^a-zA-Z0-9 ]/g, "")
+    .replace(/\s+(.)/g, (_, c) => c.toUpperCase())
+    .replace(/^./, (str) => str.toLowerCase());
 
 export async function GET() {
   const auth = await google.auth.getClient({
