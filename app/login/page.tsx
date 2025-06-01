@@ -18,10 +18,7 @@ const JobsForm: React.FC = () => {
   const {handleSubmit, control} = useForm<ContactFormInputs>();
   const router = useRouter();
 
-  const notify = (text: string) =>
-    toast.success(
-      "Thank you for reaching us, we will contact you as soon as possible!"
-    );
+  const notify = (text: string) => toast.success(text);
 
   const submit = async (data: ContactFormInputs) => {
     const {login, password} = data;

@@ -70,22 +70,12 @@ function CustomAppTitle() {
   );
 }
 
-interface DemoProps {
-  window?: () => Window;
-}
-
-export default function DashboardLayoutSlots(props: DemoProps) {
-  const {window} = props;
+export default function Admin() {
   const router = useDemoRouter("drivers");
-  const demoWindow = window !== undefined ? window() : undefined;
 
   return (
-    <DemoProvider window={demoWindow}>
-      <AppProvider
-        navigation={NAVIGATION}
-        router={router}
-        theme={demoTheme}
-        window={demoWindow}>
+    <DemoProvider>
+      <AppProvider navigation={NAVIGATION} router={router} theme={demoTheme}>
         <DashboardLayout
           defaultSidebarCollapsed
           slots={{

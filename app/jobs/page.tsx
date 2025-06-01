@@ -131,22 +131,24 @@ const JobsPage: React.FC = () => {
             {activeBtn === "driver" &&
               rows
                 ?.filter((el) => el?.job === "driver" || Boolean(!el?.job))
-                .map((item) => (
-                  <JonPositions
-                    activeBtn={activeBtn}
-                    type="drivers"
-                    company={item?.company}
-                    payment={item?.payment}
-                    otr={item?.oTR}
-                    off={item?.oFF}
-                    escrow={item?.escrow}
-                    flightTicket={item?.flightTickect}
-                    truck={item?.truck}
-                    loads={item?.loads}
-                    firstPayment={item?.firtPayment}
-                    weeklyMiles={item?.weeklyGuaranteedMiles}
-                    jobTitle={item?.jobTitle}
-                  />
+                .map((item, index) => (
+                  <div key={index}>
+                    <JonPositions
+                      activeBtn={activeBtn}
+                      type="drivers"
+                      company={item?.company}
+                      payment={item?.payment}
+                      otr={item?.oTR}
+                      off={item?.oFF}
+                      escrow={item?.escrow}
+                      flightTicket={item?.flightTickect}
+                      truck={item?.truck}
+                      loads={item?.loads}
+                      firstPayment={item?.firtPayment}
+                      weeklyMiles={item?.weeklyGuaranteedMiles}
+                      jobTitle={item?.jobTitle}
+                    />
+                  </div>
                 ))}
 
             {activeBtn === "leaseDrivers" && (
