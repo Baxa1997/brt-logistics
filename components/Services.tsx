@@ -1,10 +1,23 @@
+"use client";
+
 import Image from "next/image";
+import {motion} from "framer-motion";
 
 type ServiceProps = {
   title: string;
   description: string;
   img?: any;
   reverse?: boolean;
+};
+
+const textVariants = {
+  hidden: {opacity: 0, x: -100},
+  visible: {opacity: 1, x: 0},
+};
+
+const imageVariants = {
+  hidden: {opacity: 0, x: 100},
+  visible: {opacity: 1, x: 0},
 };
 
 function Services() {
@@ -57,6 +70,7 @@ function Services() {
     </div>
   );
 }
+
 const ServiceComponent = ({
   title,
   description,
@@ -64,21 +78,30 @@ const ServiceComponent = ({
   reverse = false,
 }: ServiceProps) => {
   return (
-    <section className="bg-white lg:py-16 md:py-16 py-10">
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{once: false, amount: 0.3}}
+      className="bg-white lg:py-16 md:py-16 py-10">
       <div
         className={`container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12 ${
           reverse ? "lg:flex-row-reverse" : ""
         }`}>
-        <div className="xl:text-justify text-center xl:max-w-2xl md:max-w-4xl">
+        <motion.div
+          variants={textVariants}
+          transition={{duration: 0.6, ease: "easeOut"}}
+          className="xl:text-justify text-center xl:max-w-2xl md:max-w-4xl">
           <h2 className="text-2xl md:text-4xl font-bold lg:text-justify text-gray-900 mb-4">
             {title}
           </h2>
           <p className="text-lg text-gray-600">{description}</p>
-        </div>
+        </motion.div>
 
-        <div className="relative w-full max-w-4xl">
+        <motion.div
+          variants={imageVariants}
+          transition={{duration: 0.6, ease: "easeOut"}}
+          className="relative w-full max-w-4xl">
           <div className="absolute w-full h-full bg-gradient-to-tr from-green-200 to-blue-100 rounded-3xl -z-10" />
-
           <div className="flex justify-center items-end">
             <div className="w-full lg:h-[420px] h-[300px] sm:h-[420px] relative">
               <Image
@@ -89,9 +112,9 @@ const ServiceComponent = ({
               />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.div>
   );
 };
 

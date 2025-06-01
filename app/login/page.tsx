@@ -1,101 +1,58 @@
 "use client";
 
 import {Button} from "@/components/ui/button";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {useForm} from "react-hook-form";
 import "react-phone-number-input/style.css";
 import {toast} from "react-toastify";
-import {useRouter} from "next/navigation";
-import HFSelectField from "@/components/HFSelectField";
 import HFTextField from "@/components/HFTextField";
-import CompanyDriverForm from "../dedicated-lines-form/CompanyDriverForm";
-import OwnerOperatorForm from "../dedicated-lines-form/OwnerOperatorForm";
-import LeaseDriverForm from "../dedicated-lines-form/LeaseDriverForm";
+import {generateGUID} from "@/hooks/generateId";
+import {useRouter} from "next/navigation";
 
 interface ContactFormInputs {
-  applyIngAs?: string;
-  brokerName?: string;
-  jobType?: string;
-  miles?: number;
-  fullName?: string;
-  previousCompany?: string;
-  weeksOnRoad?: string;
-  trailerType?: string;
-  experience?: string;
-  emailAddress?: string;
-  phoneNumber?: string;
-  violations?: string;
-  downPayment?: string;
-  leaseTo?: string;
+  login: string;
+  password: string;
 }
 
-type QueryParams = {
-  jobTitle: string | null;
-  jobType?: string | null;
-};
-
-const selectDriverType = [
-  {
-    label: "Apply as Company Driver",
-    value: "companyDriver",
-  },
-  {
-    label: "Apply as Owner Operator",
-    value: "companyOperator",
-  },
-  {
-    label: "Apply as Lease Driver",
-    value: "companyLease",
-  },
-];
-
 const JobsForm: React.FC = () => {
-  const {handleSubmit, control, watch, setValue} = useForm<ContactFormInputs>();
+  const {handleSubmit, control} = useForm<ContactFormInputs>();
   const router = useRouter();
-  const [queryObject, setQueryObject] = useState<QueryParams | undefined>();
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const query = new URLSearchParams(window.location.search);
-
-      setQueryObject({
-        jobTitle: query.get("jobTitle"),
-        jobType: query.get("jobType"),
-      });
-    }
-  }, []);
-
-  const notify = () =>
+  const notify = (text: string) =>
     toast.success(
       "Thank you for reaching us, we will contact you as soon as possible!"
     );
 
   const submit = async (data: ContactFormInputs) => {
-    await fetch(
-      "https://api.mockfly.dev/mocks/8b1082d3-e6c9-4a19-beec-e7eac4f3fb91/brtlog/contact",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": "12345-abcde-67890-fghij-12345",
-        },
-        body: JSON.stringify(data),
-      }
-    ).then(() => {
-      notify();
-      router.push("/");
-    });
-  };
+    const {login, password} = data;
 
-  useEffect(() => {
-    if (queryObject?.jobType === "drivers") {
-      setValue("applyIngAs", "companyDriver");
-      setValue("jobType", "Driver");
-    } else if (queryObject?.jobType === "operators") {
-      setValue("applyIngAs", "companyOperator");
-      setValue("jobType", "Operator");
+    const validEmail = "admin@example.com";
+    const validPassword = "admin123";
+
+    if (login === validEmail && password === validPassword) {
+      const sessionId = generateGUID();
+      sessionStorage.setItem("sessionId", sessionId);
+
+      notify("Login successful!");
+
+      try {
+        const response = await fetch("/api/some-protected-route", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${sessionId}`,
+          },
+        });
+
+        router.push("/admin");
+
+        if (!response.ok) throw new Error("Request failed");
+      } catch (error) {
+        console.error("API Error:", error);
+      }
+    } else {
+      toast.error("Invalid email or password.");
     }
-  }, [queryObject, watch("applyIngAs")]);
+  };
 
   return (
     <>

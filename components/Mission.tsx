@@ -1,8 +1,14 @@
-import React from "react";
+"use client";
 
-function Mission() {
+import React from "react";
+import {motion} from "framer-motion";
+
+const Mission = () => {
   return (
-    <div className="w-full py-10 px-4 sm:py-16 sm:px-8 relative bg-gray-50">
+    <motion.div
+      initial={{scale: 0}}
+      animate={{scale: 1}}
+      className="w-full py-10 px-4 sm:py-16 sm:px-8 relative bg-gray-50">
       <div className="max-w-[1140px] mx-auto bg-white border rounded-lg shadow-lg px-6 py-8 sm:px-12 sm:py-12">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl text-center font-semibold text-gray-800 mb-4">
           Our Mission
@@ -19,8 +25,8 @@ function Mission() {
           and work-life balance they deserve.
         </p>
       </div>
-    </div>
+    </motion.div>
   );
-}
+};
 
 export default Mission;

@@ -6,6 +6,7 @@ import {Button} from "./ui/button";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Person2Icon from "@mui/icons-material/Person2";
 import SearchIcon from "@mui/icons-material/Search";
+import {motion} from "framer-motion";
 
 export default function Banner() {
   return (
@@ -18,26 +19,13 @@ export default function Banner() {
         className="absolute object-cover w-full h-full"
       />
 
-      {/* <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
-        <div className="flex flex-col items-center space-y-0">
-          {[0, 1, 2].map((i) => (
-            <motion.div
-              key={i}
-              animate={{y: [0, 10, 0]}}
-              transition={{
-                duration: 1.5,
-                delay: i * 0.1,
-                repeat: Infinity,
-              }}>
-              <ChevronDown className="w-12 h-12 text-white" />
-            </motion.div>
-          ))}
-        </div>
-      </div> */}
-
       <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/50 to-transparent z-10" />
 
-      <div className="relative z-20 flex flex-col justify-center items-center lg:items-start h-full px-4 sm:px-10 lg:px-24 py-20 text-center lg:text-left">
+      <motion.div
+        viewport={{once: false}}
+        initial={{scale: 0}}
+        animate={{scale: 1}}
+        className="relative z-20 flex flex-col justify-center items-center lg:items-start h-full px-4 sm:px-10 lg:px-24 py-20 text-center lg:text-left">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight max-w-4xl mb-10">
           WE CONNECT <span className="text-[#FB923C]">DRIVERS</span> FOR SUCCESS
         </h1>
@@ -69,7 +57,7 @@ export default function Banner() {
             </Button>
           </Link>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

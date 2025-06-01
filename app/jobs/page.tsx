@@ -18,7 +18,7 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PaymentIcon from "@mui/icons-material/Payment";
 import Link from "next/link";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 type JonPositionsProps = {
   type: "drivers" | "operators" | "leaseDrivers";
@@ -27,7 +27,7 @@ type JonPositionsProps = {
   location?: string;
   transport?: string;
   jobTitle?: string;
-  company: string;
+  company?: string;
   otr?: string;
   off?: string;
   escrow?: string;
@@ -56,20 +56,48 @@ type JonPositionsProps = {
 const jobTypes = [
   {
     label: "Drivers",
-    value: "drivers",
+    value: "driver",
   },
   {
     label: "Operators",
-    value: "operators",
+    value: "operator",
   },
   {
     label: "Lease Drivers",
-    value: "leaseDrivers",
+    value: "leaseDriver",
   },
 ];
 
+interface Data {
+  jobTitle?: string;
+  company?: string;
+  payment?: string;
+  oTR?: string;
+  oFF?: string;
+  escrow?: string;
+  flightTickect?: string;
+  truck?: string;
+  loads?: string;
+  firtPayment?: string;
+  weeklyGuaranteedMiles?: string;
+  job?: string;
+}
+
 const JobsPage: React.FC = () => {
-  const [activeBtn, setActiveBtn] = useState<string>("drivers");
+  const [rows, setRows] = useState<Data[]>();
+
+  const [activeBtn, setActiveBtn] = useState<string>("driver");
+
+  const handleOnGetSheetDataClick = async () => {
+    const res = await fetch("/api/sheets");
+    const json = await res.json();
+    setRows(json?.data || []);
+  };
+
+  useEffect(() => {
+    handleOnGetSheetDataClick();
+  }, []);
+  console.log("rowsrows", rows);
 
   return (
     <div className="flex bg-white pt-20">
@@ -100,49 +128,27 @@ const JobsPage: React.FC = () => {
 
         <div className="md:px-12 px-5 w-full flex justify-center">
           <div className="md:w-[80%] w-[100%]">
-            {activeBtn === "drivers" && (
-              <JonPositions
-                activeBtn={activeBtn}
-                type="drivers"
-                company="ABC Logistics"
-                payment="$1500/week"
-                otr="Yes"
-                off="Weekends"
-                escrow="$500"
-                flightTicket="Provided"
-                truck="New Freightliner"
-                loads="Dry Van"
-                firstPayment="End of first week"
-                weeklyMiles="2500"
-                jobTitle="Company Driver - Regional"
-              />
-            )}
+            {activeBtn === "driver" &&
+              rows
+                ?.filter((el) => el?.job === "driver" || Boolean(!el?.job))
+                .map((item) => (
+                  <JonPositions
+                    activeBtn={activeBtn}
+                    type="drivers"
+                    company={item?.company}
+                    payment={item?.payment}
+                    otr={item?.oTR}
+                    off={item?.oFF}
+                    escrow={item?.escrow}
+                    flightTicket={item?.flightTickect}
+                    truck={item?.truck}
+                    loads={item?.loads}
+                    firstPayment={item?.firtPayment}
+                    weeklyMiles={item?.weeklyGuaranteedMiles}
+                    jobTitle={item?.jobTitle}
+                  />
+                ))}
 
-            {activeBtn === "operators" && (
-              <JonPositions
-                activeBtn={activeBtn}
-                type="operators"
-                company="ABC Logistics"
-                dispatchFee="12%"
-                insurance="Required or offered"
-                eld="Provided"
-                ifta="Handled by company"
-                otr="Yes"
-                off="Flexible"
-                loads="Dry Van"
-                plateProgram="Available"
-                coverageArea="East Coast"
-                grossSolo="$6000-$8000"
-                grossTeam="$0"
-                payment="Weekly"
-                provided="Trailer, ELD"
-                requiredExp="2 years"
-                address="123 Main St, Dallas TX"
-                yard="Dallas Terminal"
-                availableLanes="TX to FL, TX to GA"
-                jobTitle="Owner Operator - Regional Freight"
-              />
-            )}
             {activeBtn === "leaseDrivers" && (
               <div className="h-[250px] flex items-center justify-center">
                 No jobs available yet
