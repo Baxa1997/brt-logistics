@@ -41,7 +41,7 @@ export default function Banner() {
           <Link href="/dedicated-lines" className="w-full sm:w-1/2">
             <Button className="w-full h-[54px] gap-2 bg-white text-black hover:bg-gray-100 text-base">
               <LocationOnIcon style={{width: "24px", height: "24px"}} />{" "}
-              Dedicated Lanes
+              Dedicated Lanes {""}
             </Button>
           </Link>
         </div>
