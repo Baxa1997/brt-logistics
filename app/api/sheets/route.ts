@@ -48,7 +48,7 @@ export async function GET() {
       headers: {"Content-Type": "application/json"},
     });
   } catch (error) {
-    console.error("Sheets API Error", error);
+    console.error("Sheets APIError", error);
     return new Response(JSON.stringify({error: "Failed to fetch sheet data"}), {
       status: 500,
     });
