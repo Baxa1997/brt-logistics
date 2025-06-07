@@ -126,7 +126,7 @@ const JobsPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="md:px-12 px-5 w-full flex justify-center">
+        <div className="md:px-12 px-5 w-full flex justify-center min-h-[calc(100vh-605px)]">
           <div className="md:w-[80%] w-[100%]">
             {activeBtn === "driver" &&
               rows
