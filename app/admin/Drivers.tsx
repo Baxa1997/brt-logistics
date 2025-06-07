@@ -4,7 +4,6 @@ import {Button} from "@/components/ui/button";
 import React, {useEffect, useState} from "react";
 import AddIcon from "@mui/icons-material/Add";
 import {Input} from "@/components/ui/input";
-import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
@@ -12,6 +11,14 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import CreateEditForm from "./CreateEditForm";
+import {Table} from "@mui/material";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import CancelIcon from "@mui/icons-material/Cancel";
+import EventNoteIcon from "@mui/icons-material/EventNote";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import LocalAirportIcon from "@mui/icons-material/LocalAirport";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import PaymentsIcon from "@mui/icons-material/Payments";
 
 interface ColumnLabel {
   label: string;
@@ -87,11 +94,11 @@ function Drivers() {
         <div className="flex items-center gap-4">
           <Button
             onClick={handleOpen}
-            className="bg-white text-black hover:bg-white border border-[black]">
+            className="bg-white text-black hover:bg-white border border-[#E0E0E0]">
             <AddIcon style={{width: "20px", height: "20px"}} />
           </Button>
 
-          <Input placeholder="Search" className="border border-[black]" />
+          <Input placeholder="Search" className="border border-[#E0E0E0]" />
         </div>
       </div>
       <StickyHeadTable rows={rows || []} />
@@ -107,68 +114,158 @@ function Drivers() {
 
 function StickyHeadTable({rows}: {rows: Data[]}) {
   return (
-    <>
-      <TableContainer className="h-[calc(100vh-50px)]">
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead className="h-[36px]">
-            <TableRow>
+    <TableContainer className="h-[calc(100vh-50px)]">
+      <Table stickyHeader aria-label="sticky table">
+        <TableHead className="h-[36px]">
+          <TableRow>
+            <TableCell
+              sx={{
+                width: "70px",
+                height: "40px",
+                padding: "0",
+                fontWeight: "700",
+                borderRight: "1px solid #E0E0E0",
+                textAlign: "center",
+              }}>
+              <p className="w-[50px]"> №</p>
+            </TableCell>
+            {columns.map((column, index) => (
               <TableCell
-                sx={{padding: "6px 12px", fontWeight: "700"}}
-                width={40}>
-                №
+                key={index}
+                sx={{
+                  minWidth: "220px",
+                  height: "40px",
+                  padding: "5px",
+                  fontWeight: "700",
+                  textAlign: "center",
+                  borderRight: "1px solid #E0E0E0",
+                }}>
+                {column.label}
               </TableCell>
-              {columns.map((column, index) => (
-                <TableCell
-                  sx={{padding: "6px 12px", fontWeight: "700"}}
-                  key={index}>
-                  {column.label}
-                </TableCell>
-              ))}
-              <TableCell width={70}></TableCell>
+            ))}
+            <TableCell
+              sx={{borderRight: "1px solid #E0E0E0"}}
+              width={70}></TableCell>
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          {rows.map((row, index) => (
+            <TableRow hover key={index}>
+              <TableCell
+                sx={{
+                  width: "80px",
+                  textAlign: "center",
+                  padding: "5px",
+                  borderRight: "1px solid #E0E0E0",
+                }}>
+                {index + 1}
+              </TableCell>
+
+              <TableCell
+                sx={{
+                  padding: "5px 10px 0 10px",
+                  borderRight: "1px solid #E0E0E0",
+                  color: "green",
+                }}>
+                {row?.payment}
+              </TableCell>
+
+              <TableCell
+                sx={{
+                  padding: "5px 10px 0 10px",
+                  borderRight: "1px solid #E0E0E0",
+                  color: row?.oTR?.toLowerCase() === "yes" ? "green" : "red",
+                }}>
+                {row?.oTR?.toLowerCase() === "yes" ? (
+                  <CheckCircleOutlineIcon sx={{fontSize: 18, mr: 0.5}} />
+                ) : (
+                  <CancelIcon sx={{fontSize: 18, mr: 0.5}} />
+                )}
+                {row?.oTR}
+              </TableCell>
+
+              <TableCell
+                sx={{
+                  padding: "5px 10px 0 10px",
+                  borderRight: "1px solid #E0E0E0",
+                  fontStyle: "italic",
+                }}>
+                <EventNoteIcon sx={{fontSize: 18, mr: 0.5}} />
+                {row?.oFF}
+              </TableCell>
+
+              <TableCell
+                sx={{
+                  padding: "5px 10px 0 10px",
+                  borderRight: "1px solid #E0E0E0",
+                }}>
+                <PaymentsIcon sx={{fontSize: 18, mr: 0.5}} />
+                {row?.escrow}
+              </TableCell>
+
+              <TableCell
+                sx={{
+                  padding: "5px 10px 0 10px",
+                  borderRight: "1px solid #E0E0E0",
+                }}>
+                <LocalAirportIcon sx={{fontSize: 18, mr: 0.5}} />
+                {row?.flightTickect}
+              </TableCell>
+
+              <TableCell
+                sx={{
+                  padding: "5px 10px 0 10px",
+                  borderRight: "1px solid #E0E0E0",
+                }}>
+                <LocalShippingIcon sx={{fontSize: 18, mr: 0.5}} />
+                {row?.truck}
+              </TableCell>
+
+              <TableCell
+                sx={{
+                  padding: "5px 10px 0 10px",
+                  borderRight: "1px solid #E0E0E0",
+                }}>
+                <AssignmentIcon sx={{fontSize: 18, mr: 0.5}} />
+                {row?.loads}
+              </TableCell>
+
+              <TableCell
+                sx={{
+                  padding: "5px 10px 0 10px",
+                  borderRight: "1px solid #E0E0E0",
+                }}>
+                💵 {row?.firtPayment}
+              </TableCell>
+
+              <TableCell
+                sx={{
+                  padding: "5px 10px 0 10px",
+                  borderRight: "1px solid #E0E0E0",
+                  color: "#1976d2",
+                  fontWeight: 500,
+                }}>
+                🚚 {row?.weeklyGuaranteedMiles}
+              </TableCell>
+
+              <TableCell
+                sx={{
+                  padding: "5px",
+                  borderRight: "1px solid #E0E0E0",
+                }}>
+                <Button className="bg-transparent border w-[40px] h-[30px] border-red-500 hover:bg-transparent">
+                  <DeleteOutlineIcon
+                    style={{width: "20px", height: "20px"}}
+                    className="text-red-500"
+                  />
+                </Button>
+              </TableCell>
             </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row, index) => {
-              return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                  <TableCell sx={{padding: "6px 12px"}}>{index + 1}</TableCell>
-                  <TableCell sx={{padding: "6px 12px"}}>
-                    {row?.payment}
-                  </TableCell>
-                  <TableCell sx={{padding: "6px 12px"}}>{row?.oTR}</TableCell>
-                  <TableCell sx={{padding: "6px 12px"}}>{row?.oFF}</TableCell>
-                  <TableCell sx={{padding: "6px 12px"}}>
-                    {row?.escrow}
-                  </TableCell>
-
-                  <TableCell sx={{padding: "6px 12px"}}>
-                    {row?.flightTickect}
-                  </TableCell>
-                  <TableCell sx={{padding: "6px 12px"}}>{row?.truck}</TableCell>
-                  <TableCell sx={{padding: "6px 12px"}}>{row?.loads}</TableCell>
-                  <TableCell sx={{padding: "6px 12px"}}>
-                    {row?.firtPayment}
-                  </TableCell>
-
-                  <TableCell sx={{padding: "6px 12px"}}>
-                    {row?.weeklyGuaranteedMiles}
-                  </TableCell>
-
-                  <TableCell sx={{padding: "6px 12px"}}>
-                    <Button className="bg-transparent border w-[40px] h-[30px] border-red-500 hover:bg-transparent">
-                      <DeleteOutlineIcon
-                        style={{width: "20px", height: "20px"}}
-                        className="text-red-500"
-                      />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
 

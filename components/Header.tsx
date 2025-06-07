@@ -11,7 +11,15 @@ import {
   NavigationMenuList,
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+
+function useIsMounted() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  return mounted;
+}
 
 function NavLink({href, label}: {href: string; label: string}) {
   const pathname = usePathname();
@@ -36,8 +44,12 @@ function NavLink({href, label}: {href: string; label: string}) {
 
 export default function Header() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const isMounted = useIsMounted();
   const [open, setOpen] = useState(false);
+
+  if (!isMounted) return null;
+  const isHome = pathname === "/";
+
   return (
     <header
       className={`${
@@ -51,6 +63,8 @@ export default function Header() {
           src={isHome ? "/img/newLogo5.svg" : "/img/newLogoBlack.svg"}
           width={200}
           height={35}
+          priority
+          loading="eager"
           className="hidden md:block mr-[25px]"
         />
         <Image
@@ -58,6 +72,8 @@ export default function Header() {
           src={isHome ? "/img/newLogo5.svg" : "/img/newLogoBlack.svg"}
           width={200}
           height={35}
+          priority
+          loading="eager"
           className="block md:hidden ml-[-20px]"
         />
       </Link>
@@ -74,7 +90,6 @@ export default function Header() {
 
       <div className="ml-auto hidden lg:flex gap-2">
         <Link href={"/login"}>
-          {" "}
           <Button
             variant="outline"
             className={`w-[110px] h-[45px] border ${
@@ -101,7 +116,9 @@ export default function Header() {
                 src={"/img/newLogoBlack.svg"}
                 width={200}
                 height={35}
-                className="block  ml-[-20px]"
+                priority
+                loading="eager"
+                className="block ml-[-20px]"
               />
             </Link>
             <Link
@@ -119,7 +136,7 @@ export default function Header() {
               onClick={() => setOpen(false)}>
               Contact Us
             </Link>
-            <Link href="#" prefetch={true}>
+            <Link href="/admin" prefetch={true} onClick={() => setOpen(false)}>
               Admin
             </Link>
           </div>
@@ -138,7 +155,7 @@ export default function Header() {
       </Sheet>
 
       <div
-        className={`hidden lg:flex flex-col gap-1 ml-6  text-[18px] font-bold ${
+        className={`hidden lg:flex flex-col gap-1 ml-6 text-[18px] font-bold ${
           isHome ? "text-white" : "text-black"
         }`}>
         <div className="flex items-center gap-2">

@@ -12,7 +12,7 @@ export default function Banner() {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-black text-white">
       <Image
-        src="/img/truck2.jpg"
+        src="/img/truck22.webp"
         alt="Hero Background"
         fill
         priority

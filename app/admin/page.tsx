@@ -62,16 +62,14 @@ function DemoPageContent({pathname}: {pathname: string}) {
   );
 }
 
-function CustomAppTitle() {
-  return (
-    <Stack direction="row" height={"1px"} alignItems="center" spacing={2}>
-      <Typography variant="h6"></Typography>
-    </Stack>
-  );
-}
-
 export default function Admin() {
   const router = useDemoRouter("drivers");
+  console.log("env", {
+    project_id: process.env.GOOGLE_SHEET_ID,
+    private_key_id: process.env.GOOGLE_PRIVATE_KEY,
+    private_key_len: process.env.GOOGLE_PROJECT_ID,
+    client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+  });
 
   return (
     <DemoProvider>
@@ -85,5 +83,13 @@ export default function Admin() {
         </DashboardLayout>
       </AppProvider>
     </DemoProvider>
+  );
+}
+
+function CustomAppTitle() {
+  return (
+    <Stack direction="row" height={"1px"} alignItems="center" spacing={2}>
+      <Typography variant="h6"></Typography>
+    </Stack>
   );
 }

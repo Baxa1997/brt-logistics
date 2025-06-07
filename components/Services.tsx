@@ -81,7 +81,7 @@ const ServiceComponent = ({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{once: false, amount: 0.3}}
+      viewport={{once: true, amount: 0.3}}
       className="bg-white lg:py-16 md:py-16 py-10">
       <div
         className={`container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-12 ${

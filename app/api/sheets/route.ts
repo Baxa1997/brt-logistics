@@ -62,7 +62,7 @@ export async function POST(req: Request) {
     credentials: {
       project_id: process.env.GOOGLE_PROJECT_ID,
       private_key_id: process.env.GOOGLE_PRIVATE_KEY_ID,
-      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+      private_key: process.env.GOOGLE_PRIVATE_KEY,
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
       universe_domain: "googleapis.com",
       type: "service_account",
