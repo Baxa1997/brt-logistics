@@ -54,8 +54,6 @@ const JobsForm: React.FC = () => {
     }
   };
 
-  console.log("localstorage", sessionStorage.getItem("sessionId"));
-
   return (
     <>
       <section className="h-[calc(100vh-341px)] flex py-6 px-10 justify-center bg-[#F9FAFB] relative">
