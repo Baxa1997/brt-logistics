@@ -10,6 +10,7 @@ import Link from "next/link";
 import {useEffect, useState} from "react";
 
 type JonPositionsProps = {
+  key: number;
   jobTitle: string;
   brokerName?: string;
   wayType?: string;
@@ -52,8 +53,9 @@ const DedicatedLines: React.FC = () => {
 
         <div className="md:px-12 px-5 w-full flex justify-center">
           <div className="lg:w-[80%]">
-            {rows?.map((el) => (
+            {rows?.map((el, index) => (
               <JonPositions
+                key={index}
                 jobTitle={el?.jobTitle}
                 brokerName={el?.brokerName}
                 wayType={el?.wayType}
@@ -75,6 +77,7 @@ const DedicatedLines: React.FC = () => {
 };
 
 const JonPositions: React.FC<JonPositionsProps> = ({
+  key,
   jobTitle,
   brokerName,
   wayType,
@@ -88,7 +91,9 @@ const JonPositions: React.FC<JonPositionsProps> = ({
   transport,
 }) => {
   return (
-    <div className="md:p-6 p-4 border rounded-[16px] border-[#EAECF0] mb-6 w-full flex flex-col md:flex-row shadow-sm bg-white">
+    <div
+      key={key}
+      className="md:p-6 p-4 border rounded-[16px] border-[#EAECF0] mb-6 w-full flex flex-col md:flex-row shadow-sm bg-white">
       <div className="md:border-r-[1px] border-r-0 md:pr-6 pr-0 md:w-[70%] w-[100%]">
         <h3 className="text-[20px] lg:text-[26px] font-semibold text-[#036760] md:mb-4 mb-1">
           {jobTitle}
