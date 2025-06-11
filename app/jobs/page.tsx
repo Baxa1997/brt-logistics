@@ -89,7 +89,8 @@ const JobsPage: React.FC = () => {
   const [activeBtn, setActiveBtn] = useState<string>("driver");
 
   const handleOnGetSheetDataClick = async () => {
-    const res = await fetch("/api/sheets");
+    const sheetName = "Drivers";
+    const res = await fetch(`/api/sheets?sheetName=${sheetName}`);
     const json = await res.json();
     setRows(json?.data || []);
   };

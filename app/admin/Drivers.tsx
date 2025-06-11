@@ -19,12 +19,14 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import LocalAirportIcon from "@mui/icons-material/LocalAirport";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import PaymentsIcon from "@mui/icons-material/Payments";
+import TitleIcon from "@mui/icons-material/Title";
 
 interface ColumnLabel {
   label: string;
 }
 
 const columns: readonly ColumnLabel[] = [
+  {label: "Job Title"},
   {
     label: "Payment",
   },
@@ -57,6 +59,7 @@ const columns: readonly ColumnLabel[] = [
 ];
 
 interface Data {
+  jobTitle: string;
   payment?: string;
   oTR?: string;
   oFF?: string;
@@ -64,7 +67,7 @@ interface Data {
   flightTickect?: string;
   truck?: string;
   loads?: string;
-  firtPayment?: string;
+  firstPayment?: string;
   weeklyGuaranteedMiles?: string;
   job?: string;
 }
@@ -133,7 +136,7 @@ function StickyHeadTable({rows}: {rows: Data[]}) {
               <TableCell
                 key={index}
                 sx={{
-                  minWidth: "220px",
+                  minWidth: "240px",
                   height: "40px",
                   padding: "5px",
                   fontWeight: "700",
@@ -166,7 +169,16 @@ function StickyHeadTable({rows}: {rows: Data[]}) {
                 sx={{
                   padding: "5px 10px 0 10px",
                   borderRight: "1px solid #E0E0E0",
-                  color: "green",
+                  color: "black",
+                }}>
+                <TitleIcon />
+                {row?.jobTitle}
+              </TableCell>
+
+              <TableCell
+                sx={{
+                  padding: "5px 10px 0 10px",
+                  borderRight: "1px solid #E0E0E0",
                 }}>
                 {row?.payment}
               </TableCell>
@@ -236,7 +248,7 @@ function StickyHeadTable({rows}: {rows: Data[]}) {
                   padding: "5px 10px 0 10px",
                   borderRight: "1px solid #E0E0E0",
                 }}>
-                💵 {row?.firtPayment}
+                💵 {row?.firstPayment}
               </TableCell>
 
               <TableCell

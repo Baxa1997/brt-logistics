@@ -1,13 +1,13 @@
 "use client";
 
-import {Button} from "@/components/ui/button";
-import React from "react";
+import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import "react-phone-number-input/style.css";
 import {toast} from "react-toastify";
 import HFTextField from "@/components/HFTextField";
 import {generateGUID} from "@/hooks/generateId";
 import {useRouter} from "next/navigation";
+import {Button, CircularProgress} from "@mui/material";
 
 interface ContactFormInputs {
   login: string;
@@ -17,14 +17,16 @@ interface ContactFormInputs {
 const JobsForm: React.FC = () => {
   const {handleSubmit, control} = useForm<ContactFormInputs>();
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const notify = (text: string) => toast.success(text);
 
   const submit = async (data: ContactFormInputs) => {
+    setLoading(true);
     const {login, password} = data;
 
-    const validEmail = "admin@example.com";
-    const validPassword = "admin123";
+    const validEmail = "sam.hr@brtlog.com";
+    const validPassword = "parolsiz1997";
 
     if (login === validEmail && password === validPassword) {
       const sessionId = generateGUID();
@@ -44,12 +46,15 @@ const JobsForm: React.FC = () => {
 
         if (!response.ok) throw new Error("Request failed");
       } catch (error) {
+        setLoading(false);
         console.error("API Error:", error);
       }
     } else {
       toast.error("Invalid email or password.");
     }
   };
+
+  console.log("localstorage", sessionStorage.getItem("sessionId"));
 
   return (
     <>
@@ -82,9 +87,15 @@ const JobsForm: React.FC = () => {
 
               <div className="mt-10">
                 <Button
+                  variant="contained"
                   type="submit"
+                  sx={{background: "#0f766e", fontWeight: "700"}}
                   className="w-full h-[50px] bg-[#0f766e] hover:bg-[#05322e] text-white font-bold text-[18px] py-3 px-4 rounded-lg focus:outline-none focus:ring focus:ring-green-500">
-                  Login
+                  {loading ? (
+                    <CircularProgress style={{color: "white"}} size={30} />
+                  ) : (
+                    "Login"
+                  )}
                 </Button>
               </div>
             </form>

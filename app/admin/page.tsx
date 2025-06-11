@@ -13,6 +13,7 @@ import {DemoProvider, useDemoRouter} from "@toolpad/core/internal";
 import Drivers from "./Drivers";
 import Operators from "./Operators";
 import Dedicated from "./Dedicated";
+import {useRouter} from "next/navigation";
 
 const NAVIGATION: Navigation = [
   {
@@ -64,12 +65,13 @@ function DemoPageContent({pathname}: {pathname: string}) {
 
 export default function Admin() {
   const router = useDemoRouter("drivers");
-  console.log("env", {
-    project_id: process.env.GOOGLE_SHEET_ID,
-    private_key_id: process.env.GOOGLE_PRIVATE_KEY,
-    private_key_len: process.env.GOOGLE_PROJECT_ID,
-    client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-  });
+  const route = useRouter();
+
+  React.useEffect(() => {
+    if (!sessionStorage.getItem("sessionId")) {
+      route.push("/login");
+    }
+  }, []);
 
   return (
     <DemoProvider>

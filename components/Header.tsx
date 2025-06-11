@@ -89,7 +89,7 @@ export default function Header() {
       </nav>
 
       <div className="ml-auto hidden lg:flex gap-2">
-        <Link href={"/login"}>
+        <Link href={sessionStorage.getItem("sessionId") ? "/admin" : "/login"}>
           <Button
             variant="outline"
             className={`w-[110px] h-[45px] border ${
@@ -136,7 +136,10 @@ export default function Header() {
               onClick={() => setOpen(false)}>
               Contact Us
             </Link>
-            <Link href="/admin" prefetch={true} onClick={() => setOpen(false)}>
+            <Link
+              href={sessionStorage.getItem("sessionId") ? "/admin" : "login"}
+              prefetch={true}
+              onClick={() => setOpen(false)}>
               Admin
             </Link>
           </div>

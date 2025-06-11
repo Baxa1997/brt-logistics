@@ -5,10 +5,13 @@ import React, {useState} from "react";
 import {useForm, SubmitHandler} from "react-hook-form";
 import DriverCreateForm from "./Forms/DriverCreateForm";
 import {toast} from "react-toastify";
+import OperatorsCreateForm from "./Forms/OperatorsCreateForm";
+import DedicatedCreateForm from "./Forms/DedicatedCreateForm";
 
 type JobType = "driver" | "operator" | "dedicated";
 
 interface DriverFormValues {
+  jobTitle: string;
   payment: string;
   oTR: string;
   oFF: string;
@@ -21,20 +24,47 @@ interface DriverFormValues {
   job?: string;
 }
 
-interface ManagerFormValues {
-  department: string;
-  experienceYears: number;
+interface OperatorFormValues {
+  sheetName?: string;
+  jobTitle?: string;
+  iFTA?: string;
+  dispatchFee?: string;
+  insurance?: string;
+  eLD?: string;
+  oFF?: string;
+  loads?: string;
+  plateProgram?: string;
+  coverageArea?: string;
+  grossAverageSolo?: string;
+  grossAverageTeam?: string;
+  payment?: string;
+  provided?: string;
+  requiredExperience?: string;
+  companyAddress?: string;
+  companyYard?: string;
+  availableLanes?: string;
+  job?: string;
 }
 
-interface DeveloperFormValues {
-  language: string;
-  githubProfile: string;
+interface DedicatedFormValues {
+  jobTitle: string;
+  brokerName?: string;
+  wayType?: string;
+  loadsType?: string;
+  pickUp?: string;
+  deliveryAddress?: string;
+  miles?: string;
+  rate?: string;
+  durationOfContract?: string;
+  loadsPerWeek?: string;
+  transport?: string;
+  job?: string;
 }
 
 type FormValuesMap = {
   driver: DriverFormValues;
-  operator: ManagerFormValues;
-  dedicated: DeveloperFormValues;
+  operator: OperatorFormValues;
+  dedicated: DedicatedFormValues;
 };
 
 interface Props<T extends JobType> {
@@ -55,47 +85,98 @@ function CreateEditForm<T extends JobType>({
 
   const notify = (title: string) => toast.success(title);
 
+  function getMappedData(jobType: string, data: any): Record<string, any> {
+    switch (jobType) {
+      case "driver":
+        const d = data as DriverFormValues;
+        return {
+          sheetName: "Drivers",
+          "Job Title": d?.jobTitle,
+          Payment: d.payment,
+          OTR: d.oTR,
+          OFF: d.oFF,
+          Escrow: d.escrow,
+          "Flight Ticket": d.flightTickect,
+          Truck: d.truck,
+          Loads: d.loads,
+          "First Payment": d.firtPayment,
+          "Weekly Guaranteed Miles": d.weeklyGuaranteedMiles,
+          Job: "driver",
+        };
+
+      case "operator":
+        const o = data as OperatorFormValues;
+        return {
+          sheetName: "Operators",
+          "Job Title": o.jobTitle,
+          "Dispatch Fee": o.dispatchFee,
+          Insurance: o.insurance,
+          ELD: o.eLD,
+          IFTA: o.iFTA,
+          OFF: o.oFF,
+          Loads: o.loads,
+          "Plate Program": o.plateProgram,
+          "Coverage Area": o.coverageArea,
+          "Gross Average Solo": o.grossAverageSolo,
+          "Gross Average Team": o.grossAverageTeam,
+          Payment: o.payment,
+          Provided: o.provided,
+          "Required Experience": o.requiredExperience,
+          "Company Address": o.companyAddress,
+          "Company Yard": o.companyYard,
+          "Available Lanes": o.availableLanes,
+          Job: "Operator",
+        };
+      case "dedicated":
+        const s = data as DedicatedFormValues;
+        return {
+          sheetName: "Dedicated Lanes",
+          "Job Title": s?.jobTitle,
+          "Broker Name": s.brokerName,
+          "Way Type": s.wayType,
+          "Pick Up": s.pickUp,
+          "Delivery Address": s.deliveryAddress,
+          Miles: s.miles,
+          Rate: s.rate,
+          "Duration Of Contract": s.durationOfContract,
+          "Loads Per Week": s.loadsPerWeek,
+          Transport: s.transport,
+          Job: "Dedicated Lines",
+          "Loads Type": s.loadsType,
+        };
+
+      default:
+        throw new Error("Unsupported job type");
+    }
+  }
+
   const onSubmit: SubmitHandler<FormValuesMap[T]> = async (data) => {
     setLoading(true);
-    if (jobType === "driver") {
-      const driverData = data as DriverFormValues;
 
-      const mappedData = {
-        Payment: driverData.payment,
-        OTR: driverData.oTR,
-        OFF: driverData.oFF,
-        Escrow: driverData.escrow,
-        "Flight Ticket": driverData.flightTickect,
-        Truck: driverData.truck,
-        Loads: driverData.loads,
-        "First Payment": driverData.firtPayment,
-        "Weekly Guaranteed Miles": driverData.weeklyGuaranteedMiles,
-        Job: "driver",
-      };
+    try {
+      const mappedData = getMappedData(jobType, data);
 
-      try {
-        const response = await fetch("/api/sheets", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(mappedData),
-        });
+      const response = await fetch("/api/sheets", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(mappedData),
+      });
 
-        const result = await response.json();
+      const result = await response.json();
 
-        if (response.ok && result.success) {
-          await refetch();
-          handleClose();
-          setLoading(false);
-          notify("The Driver Job successfully created!");
-        } else {
-          console.error("Server error:", result.error, result);
-        }
-      } catch (error) {
-        setLoading(false);
-        console.error("Client error:", error);
+      if (response.ok && result.success) {
+        await refetch();
+        handleClose();
+        notify(`The ${jobType} job successfully created!`);
+      } else {
+        console.error("Server error:", result.error, result);
       }
+    } catch (error) {
+      console.error("Client error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -113,10 +194,14 @@ function CreateEditForm<T extends JobType>({
             </>
           )}
           {jobType === "operator" && (
-            <>{/* Render manager-specific fields */}</>
+            <>
+              <OperatorsCreateForm control={control} loading={loading} />
+            </>
           )}
           {jobType === "dedicated" && (
-            <>{/* Render developer-specific fields */}</>
+            <>
+              <DedicatedCreateForm control={control} loading={loading} />
+            </>
           )}
         </form>
       </Box>

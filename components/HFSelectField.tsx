@@ -36,7 +36,7 @@ function HFSelectField({
   defaultValue = "",
 }: Props) {
   return (
-    <div className="md:col-span-1 col-span-2">
+    <div style={{zIndex: 99999}} className="md:col-span-1 col-span-2">
       <label
         htmlFor="trailerType"
         className="block text-gray-700 font-medium mb-2">
@@ -47,8 +47,6 @@ function HFSelectField({
         control={control}
         defaultValue={defaultValue}
         render={({field: {onChange, value}}) => {
-          console.log("valueeeeeee", value);
-
           return (
             <Select
               value={value}
@@ -59,7 +57,7 @@ function HFSelectField({
               <SelectTrigger className="w-full">
                 <SelectValue placeholder={placeholder} />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="z-[1400]">
                 <SelectGroup>
                   {options?.map((item) => (
                     <SelectItem key={item?.value} value={item?.value}>

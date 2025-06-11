@@ -7,22 +7,39 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PlaceIcon from "@mui/icons-material/Place";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 import Link from "next/link";
+import {useEffect, useState} from "react";
 
 type JonPositionsProps = {
   jobTitle: string;
-  brokerName: string;
-  roadType: string;
-  freightLoad: string;
-  pickUpAddress: string;
-  deliveryAddress: string;
-  miles: string;
-  rate: string;
-  durationContract: string;
-  loadsCount: string;
-  transportType: string;
+  brokerName?: string;
+  wayType?: string;
+  loadsType?: string;
+  pickUp?: string;
+  deliveryAddress?: string;
+  miles?: string;
+  rate?: string;
+  durationOfContract?: string;
+  loadsPerWeek?: string;
+  transport?: string;
+  job?: string;
 };
 
 const DedicatedLines: React.FC = () => {
+  const [rows, setRows] = useState<JonPositionsProps[]>();
+
+  const handleOnGetSheetDataClick = async () => {
+    const sheetName = "Dedicated Lanes";
+    const res = await fetch(`/api/sheets?sheetName=${sheetName}`);
+    const json = await res.json();
+    setRows(json?.data || []);
+  };
+
+  useEffect(() => {
+    handleOnGetSheetDataClick();
+  }, []);
+
+  console.log("rowsrows", rows);
+
   return (
     <div className="flex bg-gray-50">
       <div className="h-full overflow-auto w-full pt-10">
@@ -35,19 +52,21 @@ const DedicatedLines: React.FC = () => {
 
         <div className="md:px-12 px-5 w-full flex justify-center">
           <div className="lg:w-[80%]">
-            <JonPositions
-              jobTitle="Dedicated Route – Dallas to Memphis"
-              brokerName="Amazon"
-              roadType="Live Load"
-              freightLoad="Drop and Hook"
-              pickUpAddress="Columbus OH"
-              deliveryAddress="Phoenix AZ"
-              miles="2400 miles"
-              rate="$7500"
-              durationContract="6 months"
-              loadsCount="17 loads"
-              transportType="Flatbed"
-            />
+            {rows?.map((el) => (
+              <JonPositions
+                jobTitle={el?.jobTitle}
+                brokerName={el?.brokerName}
+                wayType={el?.wayType}
+                loadsType={el?.loadsType}
+                pickUp={el?.pickUp}
+                deliveryAddress={el?.deliveryAddress}
+                miles={el?.miles}
+                rate={el?.rate}
+                durationOfContract={el?.durationOfContract}
+                loadsPerWeek={el?.loadsPerWeek}
+                transport={el?.transport}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -58,15 +77,15 @@ const DedicatedLines: React.FC = () => {
 const JonPositions: React.FC<JonPositionsProps> = ({
   jobTitle,
   brokerName,
-  roadType,
-  freightLoad,
-  pickUpAddress,
+  wayType,
+  loadsType,
+  pickUp,
   deliveryAddress,
   miles,
   rate,
-  durationContract,
-  loadsCount,
-  transportType,
+  durationOfContract,
+  loadsPerWeek,
+  transport,
 }) => {
   return (
     <div className="md:p-6 p-4 border rounded-[16px] border-[#EAECF0] mb-6 w-full flex flex-col md:flex-row shadow-sm bg-white">
@@ -89,7 +108,7 @@ const JonPositions: React.FC<JonPositionsProps> = ({
               {" "}
               Route:
             </span>{" "}
-            {`${pickUpAddress} - ${deliveryAddress}`}
+            {`${pickUp} - ${deliveryAddress}`}
           </p>
 
           <p className="flex items-center gap-2">
@@ -98,7 +117,7 @@ const JonPositions: React.FC<JonPositionsProps> = ({
               {" "}
               Trip Type:
             </span>{" "}
-            {roadType}
+            {wayType}
           </p>
 
           <p className="flex items-center gap-2">
@@ -106,14 +125,14 @@ const JonPositions: React.FC<JonPositionsProps> = ({
             <span className="md:text-[18px] text-[16px] font-bold">
               Freight Load:
             </span>{" "}
-            {freightLoad}
+            {loadsType}
           </p>
           <p className="flex items-center gap-2">
             <LocalShippingIcon style={{color: "#036760"}} />
             <span className="md:text-[18px] text-[16px] font-bold">
               Trailer Type:
             </span>{" "}
-            {transportType}
+            {transport}
           </p>
           <p className="flex items-center gap-2">
             <AttachMoneyIcon style={{color: "#036760"}} />
@@ -131,14 +150,14 @@ const JonPositions: React.FC<JonPositionsProps> = ({
             <span className="md:text-[18px] text-[16px] font-bold">
               Contract duration:
             </span>{" "}
-            <span className="text-gray-600">{durationContract}</span>
+            <span className="text-gray-600">{durationOfContract}</span>
           </p>
           <p className="flex items-center gap-2">
             <TrackChangesIcon style={{color: "#036760"}} />{" "}
             <span className="md:text-[18px] text-[16px] font-bold">
               Loads per week:
             </span>{" "}
-            <span className="ml-2 text-gray-600">{loadsCount}</span>
+            <span className="ml-2 text-gray-600">{loadsPerWeek}</span>
           </p>
         </div>
       </div>

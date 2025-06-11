@@ -15,6 +15,7 @@ function DriverCreateForm({control, loading}: Props) {
     <div className="w-[550px] min-h-10">
       <h2 className="font-semibold text-center text-[18px]">Post Driver job</h2>
       <div className="grid grid-cols-2 gap-6 mt-4 rounded-[8px]">
+        <HFTextField name="jobTitle" title="Job title" control={control} />
         <HFTextField name="payment" title="Payment" control={control} />
         <HFTextField name="oTR" title="OTR" control={control} />
         <HFTextField name="oFF" title="OFF" control={control} />
