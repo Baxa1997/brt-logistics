@@ -11,12 +11,14 @@ export async function GET(req: Request) {
   const sheetName = url.searchParams.get("sheetName") || "Drivers";
   const range = `${sheetName}!A:Z`;
 
+  console.log("📥 GET Request received for sheet:", sheetName);
+
   const auth = await google.auth.getClient({
     credentials: {
       type: "service_account",
       project_id: process.env.GOOGLE_PROJECT_ID,
       private_key_id: process.env.GOOGLE_PRIVATE_KEY_ID,
-      private_key: process.env.GOOGLE_PRIVATE_KEY,
+      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
       universe_domain: "googleapis.com",
     },
@@ -26,12 +28,15 @@ export async function GET(req: Request) {
   const sheets = google.sheets({version: "v4", auth});
 
   try {
+    console.log("📡 Fetching from Google Sheets:", range);
+
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID!,
       range,
     });
 
     const rows = response.data.values || [];
+    console.log("✅ Rows fetched:", rows.length);
 
     if (rows.length === 0) {
       return new Response(JSON.stringify({data: []}), {
@@ -52,7 +57,7 @@ export async function GET(req: Request) {
       headers: {"Content-Type": "application/json"},
     });
   } catch (error) {
-    console.error("Sheets API Error", error);
+    console.error("❌ Sheets API Error", error);
     return new Response(JSON.stringify({error: "Failed to fetch sheet data"}), {
       status: 500,
     });
