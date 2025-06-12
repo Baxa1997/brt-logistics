@@ -17,6 +17,7 @@ import FlightIcon from "@mui/icons-material/Flight";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PaymentIcon from "@mui/icons-material/Payment";
+import {CircularProgress} from "@mui/material";
 import Link from "next/link";
 import {useEffect, useState} from "react";
 
@@ -46,25 +47,29 @@ type JonPositionsProps = {
   grossTeam?: string;
   payment?: string;
   provided?: string;
-  requiredExp?: string;
-  address?: string;
-  yard?: string;
+  requiredExperience?: string;
+  companyAddress?: string;
   availableLanes?: string;
   activeBtn?: string;
+  companyYard?: string;
+  grossAverageSolo?: string;
+  grossAverageTeam?: string;
+  eLD?: string;
+  iFTA?: string;
 };
 
 const jobTypes = [
   {
     label: "Drivers",
-    value: "driver",
+    value: "Drivers",
   },
   {
     label: "Operators",
-    value: "operator",
+    value: "Operators",
   },
   {
     label: "Lease Drivers",
-    value: "leaseDriver",
+    value: "Lease Drivers",
   },
 ];
 
@@ -81,24 +86,48 @@ interface Data {
   firtPayment?: string;
   weeklyGuaranteedMiles?: string;
   job?: string;
+  dispatchFee?: string;
+  insurance?: string;
+  eLD?: string;
+  iFTA?: string;
+  companyAddress?: string;
+  companyYard?: string;
+  coverageArea?: string;
+  grossAverageSolo?: string;
+  grossAverageTeam?: string;
+  plateProgram?: string;
+  provided?: string;
+  requiredExperience?: string;
+  availableLanes?: string;
 }
 
 const JobsPage: React.FC = () => {
   const [rows, setRows] = useState<Data[]>();
-
-  const [activeBtn, setActiveBtn] = useState<string>("driver");
+  const [loading, setLoading] = useState(false);
+  const [activeBtn, setActiveBtn] = useState<string>("Drivers");
 
   const handleOnGetSheetDataClick = async () => {
-    const sheetName = "Drivers";
-    const res = await fetch(`/api/sheets?sheetName=${sheetName}`);
-    const json = await res.json();
-    setRows(json?.data || []);
+    try {
+      setLoading(true);
+      const sheetName = "Drivers";
+
+      const res = await fetch(`/api/sheets?sheetName=${activeBtn}`);
+      if (!res.ok) {
+        setRows([]);
+        return;
+      }
+      const json = await res.json();
+      setRows(json?.data || []);
+    } catch (error) {
+      setRows([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     handleOnGetSheetDataClick();
-  }, []);
-  console.log("rowsrows", rows);
+  }, [activeBtn]);
 
   return (
     <div className="flex bg-white pt-20">
@@ -128,36 +157,75 @@ const JobsPage: React.FC = () => {
         </div>
 
         <div className="md:px-12 px-5 w-full flex justify-center min-h-[calc(100vh-605px)]">
-          <div className="md:w-[80%] w-[100%]">
-            {activeBtn === "driver" &&
-              rows
-                ?.filter((el) => el?.job === "driver" || Boolean(!el?.job))
-                .map((item, index) => (
-                  <div key={index}>
-                    <JonPositions
-                      activeBtn={activeBtn}
-                      type="drivers"
-                      company={item?.company}
-                      payment={item?.payment}
-                      otr={item?.oTR}
-                      off={item?.oFF}
-                      escrow={item?.escrow}
-                      flightTicket={item?.flightTickect}
-                      truck={item?.truck}
-                      loads={item?.loads}
-                      firstPayment={item?.firtPayment}
-                      weeklyMiles={item?.weeklyGuaranteedMiles}
-                      jobTitle={item?.jobTitle}
-                    />
-                  </div>
-                ))}
+          {loading ? (
+            <div className="">
+              <CircularProgress size={50} />
+            </div>
+          ) : (
+            <div className="md:w-[80%] w-[100%]">
+              {activeBtn === "Drivers" && rows?.length ? (
+                rows
+                  ?.filter((el) => el?.job === "driver" || Boolean(!el?.job))
+                  .map((item, index) => (
+                    <div key={index}>
+                      <JonPositions
+                        activeBtn={activeBtn}
+                        type="drivers"
+                        company={item?.company}
+                        payment={item?.payment}
+                        otr={item?.oTR}
+                        off={item?.oFF}
+                        escrow={item?.escrow}
+                        flightTicket={item?.flightTickect}
+                        truck={item?.truck}
+                        loads={item?.loads}
+                        firstPayment={item?.firtPayment}
+                        weeklyMiles={item?.weeklyGuaranteedMiles}
+                        jobTitle={item?.jobTitle}
+                      />
+                    </div>
+                  ))
+              ) : activeBtn === "Operators" ? (
+                rows
+                  ?.filter((el) => el?.job === "driver" || Boolean(!el?.job))
+                  .map((item, index) => (
+                    <div key={index}>
+                      <JonPositions
+                        activeBtn={activeBtn}
+                        type="operators"
+                        dispatchFee={item?.dispatchFee}
+                        payment={item?.payment}
+                        insurance={item?.insurance}
+                        off={item?.oFF}
+                        companyAddress={item?.companyAddress}
+                        companyYard={item?.companyYard}
+                        loads={item?.loads}
+                        jobTitle={item?.jobTitle}
+                        coverageArea={item?.coverageArea}
+                        grossAverageSolo={item?.grossAverageSolo}
+                        grossAverageTeam={item?.grossAverageTeam}
+                        eLD={item?.eLD}
+                        iFTA={item?.iFTA}
+                        availableLanes={item?.availableLanes}
+                        plateProgram={item?.plateProgram}
+                        provided={item?.provided}
+                        requiredExperience={item?.requiredExperience}
+                      />
+                    </div>
+                  ))
+              ) : (
+                <div className="h-[250px] flex items-center justify-center">
+                  No jobs available yet
+                </div>
+              )}
 
-            {activeBtn === "leaseDrivers" && (
-              <div className="h-[250px] flex items-center justify-center">
-                No jobs available yet
-              </div>
-            )}
-          </div>
+              {activeBtn === "leaseDrivers" && (
+                <div className="h-[250px] flex items-center justify-center">
+                  No jobs available yet
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -183,13 +251,13 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
     ifta,
     plateProgram,
     coverageArea,
-    grossSolo,
-    grossTeam,
+    grossAverageSolo,
+    grossAverageTeam,
     payment,
     provided,
-    requiredExp,
-    address,
-    yard,
+    requiredExperience,
+    companyAddress,
+    companyYard,
     availableLanes,
     activeBtn,
   } = props;
@@ -338,22 +406,22 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
                 {coverageArea}
               </p>
             )}
-            {grossSolo && (
+            {grossAverageSolo && (
               <p className="flex items-center gap-2 mb-1">
                 <AreaChartIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Gross Avg Solo (Weekly):
                 </span>{" "}
-                {grossSolo}
+                {grossAverageSolo}
               </p>
             )}
-            {grossTeam && (
+            {grossAverageTeam && (
               <p className="flex items-center gap-2 mb-1">
                 <AreaChartIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Gross Avg Team (Weekly):
                 </span>{" "}
-                {grossTeam}
+                {grossAverageTeam}
               </p>
             )}
             {payment && (
@@ -370,31 +438,31 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
                 {provided}
               </p>
             )}
-            {requiredExp && (
+            {requiredExperience && (
               <p className="flex items-center gap-2 mb-1">
                 <AreaChartIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Required Experience:
                 </span>{" "}
-                {requiredExp}
+                {requiredExperience}
               </p>
             )}
-            {address && (
+            {companyAddress && (
               <p className="flex items-center gap-2 mb-1">
                 <BusinessIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Company Address:
                 </span>{" "}
-                {address}
+                {companyAddress}
               </p>
             )}
-            {yard && (
+            {companyYard && (
               <p className="flex items-center gap-2 mb-1">
                 <BusinessIcon style={{color: "#036760"}} />
                 <span className="text-[16px] font-bold">
                   Company Yard:
                 </span>{" "}
-                {yard}
+                {companyYard}
               </p>
             )}
             {availableLanes && (

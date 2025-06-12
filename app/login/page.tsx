@@ -46,7 +46,6 @@ const JobsForm: React.FC = () => {
 
         if (!response.ok) throw new Error("Request failed");
       } catch (error) {
-        setLoading(false);
         console.error("API Error:", error);
       }
     } else {
