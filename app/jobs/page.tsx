@@ -118,6 +118,8 @@ const JobsPage: React.FC = () => {
       const json = await res.json();
       setRows(json?.data || []);
     } catch (error) {
+      console.log("errorerror", error);
+
       setRows([]);
     } finally {
       setLoading(false);
