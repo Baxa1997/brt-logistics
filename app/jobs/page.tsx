@@ -109,7 +109,6 @@ const JobsPage: React.FC = () => {
   const handleOnGetSheetDataClick = async () => {
     try {
       setLoading(true);
-      const sheetName = "Drivers";
 
       const res = await fetch(`/api/sheets?sheetName=${activeBtn}`);
       if (!res.ok) {
