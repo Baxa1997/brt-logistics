@@ -56,7 +56,7 @@ const selectDriverType = [
 
 const DedicatedLinesForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const {handleSubmit, control, watch} = useForm<ContactFormInputs>();
+  const {handleSubmit, control} = useForm<ContactFormInputs>();
   const router = useRouter();
   const [queryObject, setQueryObject] = useState<QueryParams | undefined>();
 
