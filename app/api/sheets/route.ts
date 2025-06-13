@@ -11,8 +11,6 @@ export async function GET(req: Request) {
   const sheetName = url.searchParams.get("sheetName") || "Drivers";
   const range = `${sheetName}!A:Z`;
 
-  console.log("📥 GET Request received for sheet:", sheetName);
-
   const auth = await google.auth.getClient({
     credentials: {
       type: "service_account",
@@ -28,15 +26,12 @@ export async function GET(req: Request) {
   const sheets = google.sheets({version: "v4", auth});
 
   try {
-    console.log("📡 Fetching from Google Sheets:", range);
-
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID!,
       range,
     });
 
     const rows = response.data.values || [];
-    console.log("✅ Rows fetched:", rows.length);
 
     if (rows.length === 0) {
       return new Response(JSON.stringify({data: []}), {

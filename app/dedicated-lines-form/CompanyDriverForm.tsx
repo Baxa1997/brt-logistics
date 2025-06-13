@@ -33,7 +33,7 @@ function CompanyDriverForm({control}: Props) {
         title="Your phone number"
         control={control}
         required={true}
-        name="phoneNumber"
+        name="yourPhoneNumber"
         placeholder="Enter phone number"
       />
 
@@ -41,7 +41,7 @@ function CompanyDriverForm({control}: Props) {
         title="Your email address"
         control={control}
         required={true}
-        name="emailAddress"
+        name="yourEmailAddress"
         placeholder="Enter email address"
       />
 
@@ -49,13 +49,13 @@ function CompanyDriverForm({control}: Props) {
         title="How many years you have experience as truck driver ?"
         control={control}
         required={true}
-        name="experience"
+        name="yearsOfExperience"
       />
 
       <HFSelectField
         title="Daily miles that you can do"
         control={control}
-        name="miles"
+        name="dailyMiles"
         required={true}
         options={selectMiles}
       />
@@ -64,14 +64,14 @@ function CompanyDriverForm({control}: Props) {
         title="How many weeks you can stay out on the road ?"
         control={control}
         required={true}
-        name="weeksOnRoad"
+        name="weeksAvailable"
       />
 
       <HFTextField
         title="Name of the company that you worked before ?"
         control={control}
         required={true}
-        name="previousCompany"
+        name="pastCompany"
       />
 
       <HFTextField

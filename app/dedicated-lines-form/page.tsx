@@ -2,54 +2,60 @@
 
 import {Button} from "@/components/ui/button";
 import React, {useEffect, useState} from "react";
-import {useForm} from "react-hook-form";
+import {SubmitHandler, useForm} from "react-hook-form";
 import "react-phone-number-input/style.css";
 import {toast} from "react-toastify";
 import {useRouter} from "next/navigation";
-import CompanyDriverForm from "./CompanyDriverForm";
 import HFSelectField from "@/components/HFSelectField";
 import HFTextField from "@/components/HFTextField";
-import OwnerOperatorForm from "./OwnerOperatorForm";
-import LeaseDriverForm from "./LeaseDriverForm";
+import DedicatedLanesForm from "./DedicatedLanesForm";
 
 interface ContactFormInputs {
   applyIngAs?: string;
-  brokerName?: string;
   jobType?: string;
-  miles?: number;
   fullName?: string;
-  previousCompany?: string;
-  weeksOnRoad?: string;
-  trailerType?: string;
-  experience?: string;
-  emailAddress?: string;
-  phoneNumber?: string;
+  yourPhoneNumber?: string;
+  yourEmailAddress?: string;
+  yearsOfExperience?: string;
+  dailyMiles?: string;
+  weeksAvailable?: string;
+  pastCompany?: string;
+  accidents?: string;
   violations?: string;
-  downPayment?: string;
-  leaseTo?: string;
+  startDate?: string;
+  truckModel?: string;
+  plateProgram?: string;
+  trailerExistance?: string;
+  brokerName?: string;
+  wayType?: string;
+  loadsType?: string;
+  pickUp?: string;
+  deliveryAddress?: string;
+  miles?: string;
+  rate?: string;
+  durationOfContract?: string;
+  loadsPerWeek?: string;
+  transport?: string;
 }
 
-type QueryParams = {
+interface QueryParams {
   jobTitle: string | null;
-  schedule: string | null;
-};
+  jobType?: string | null;
+}
 
 const selectDriverType = [
   {
     label: "Apply as Company Driver",
-    value: "companyDriver",
+    value: "Applied As Company Driver",
   },
   {
     label: "Apply as Owner Operator",
-    value: "companyOperator",
-  },
-  {
-    label: "Apply as Lease Driver",
-    value: "companyLease",
+    value: "Applied As Owner Operator",
   },
 ];
 
 const DedicatedLinesForm: React.FC = () => {
+  const [loading, setLoading] = useState(false);
   const {handleSubmit, control, watch} = useForm<ContactFormInputs>();
   const router = useRouter();
   const [queryObject, setQueryObject] = useState<QueryParams | undefined>();
@@ -60,7 +66,6 @@ const DedicatedLinesForm: React.FC = () => {
 
       setQueryObject({
         jobTitle: query.get("jobTitle"),
-        schedule: query.get("schedule"),
       });
     }
   }, []);
@@ -70,21 +75,45 @@ const DedicatedLinesForm: React.FC = () => {
       "Thank you for reaching us, we will contact you as soon as possible!"
     );
 
-  const submit = async (data: ContactFormInputs) => {
-    await fetch(
-      "https://api.mockfly.dev/mocks/8b1082d3-e6c9-4a19-beec-e7eac4f3fb91/brtlog/contact",
-      {
+  const onSubmit: SubmitHandler<ContactFormInputs> = async (data) => {
+    setLoading(true);
+    try {
+      const payload = {
+        sheetName: "Dedicated Job Appliers",
+        "Job Title": queryObject?.jobTitle,
+        "Applying As": data.applyIngAs,
+        "Full Name": data.fullName,
+        "Your Phone Number": data.yourPhoneNumber,
+        "Your Email Address": data.yourEmailAddress,
+        "Years of Experience": data.yearsOfExperience,
+        "Daily Miles": data.dailyMiles,
+        "Trailer Existance": data.trailerExistance,
+        "Weeks Available": data.weeksAvailable,
+        "Past Company": data?.pastCompany,
+        Accidents: data.accidents,
+        Violations: data.violations,
+        "Start Date": data.startDate,
+        "Job Type": queryObject?.jobType,
+      };
+      const res = await fetch("/api/sheets", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": "12345-abcde-67890-fghij-12345",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
+      });
+
+      const result = await res.json();
+
+      if (res.ok && result.success) {
+        router.push("/");
+        notify();
+      } else {
       }
-    ).then(() => {
-      notify();
-      router.push("/");
-    });
+    } catch (err: any) {
+      console.error("Submission error:", err);
+    } finally {
+    }
   };
 
   return (
@@ -104,7 +133,7 @@ const DedicatedLinesForm: React.FC = () => {
 
           <div className="rounded-lg md:p-8 p-2 mx-auto">
             <form
-              onSubmit={handleSubmit(submit)}
+              onSubmit={handleSubmit(onSubmit)}
               className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="md:col-span-1 col-span-2">
                 <HFSelectField
@@ -125,24 +154,14 @@ const DedicatedLinesForm: React.FC = () => {
                   disabled={true}
                 />
               </div>
-
-              {watch("applyIngAs") === "companyDriver" && (
-                <CompanyDriverForm control={control} />
-              )}
-
-              {watch("applyIngAs") === "companyOperator" && (
-                <OwnerOperatorForm control={control} />
-              )}
-
-              {watch("applyIngAs") === "companyLease" && (
-                <LeaseDriverForm control={control} />
-              )}
+              {<DedicatedLanesForm control={control} />}
 
               <div className="col-span-2">
                 <Button
                   type="submit"
-                  className="w-full h-[50px] bg-[#0f766e] hover:bg-[#05322e] text-white font-bold text-[18px] py-3 px-4 rounded-lg focus:outline-none focus:ring focus:ring-green-500">
-                  Apply
+                  className="w-full h-[50px] bg-[#0f766e] hover:bg-[#05322e] text-white font-bold text-[18px] py-3 px-4 rounded-lg"
+                  disabled={loading}>
+                  {loading ? "Submitting..." : "Apply"}
                 </Button>
               </div>
             </form>

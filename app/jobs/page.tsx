@@ -67,10 +67,6 @@ const jobTypes = [
     label: "Operators",
     value: "Operators",
   },
-  {
-    label: "Lease Drivers",
-    value: "Lease Drivers",
-  },
 ];
 
 interface Data {
@@ -159,7 +155,7 @@ const JobsPage: React.FC = () => {
 
         <div className="md:px-12 px-5 w-full flex justify-center min-h-[calc(100vh-605px)]">
           {loading ? (
-            <div className="">
+            <div className="h-[250px] flex items-center justify-center">
               <CircularProgress size={50} />
             </div>
           ) : (

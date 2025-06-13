@@ -14,6 +14,9 @@ import Drivers from "./Drivers";
 import Operators from "./Operators";
 import Dedicated from "./Dedicated";
 import {useRouter} from "next/navigation";
+import DriverJobAppliers from "./DriverJobs";
+import OperatorJobAppliers from "./OperatorJobs";
+import DedicatedJobAppliers from "./DedicatedJobs";
 
 const NAVIGATION: Navigation = [
   {
@@ -29,6 +32,22 @@ const NAVIGATION: Navigation = [
   {
     segment: "dedicated",
     title: "Dedicated Lines",
+    icon: <ShoppingCartIcon />,
+  },
+  {
+    segment: "appliedDedicated",
+    title: "Dedicated Lanes Jobs",
+    icon: <ShoppingCartIcon />,
+  },
+
+  {
+    segment: "driverJobs",
+    title: "Driver Jobs",
+    icon: <DashboardIcon />,
+  },
+  {
+    segment: "appliedOperator",
+    title: "Operator Jobs",
     icon: <ShoppingCartIcon />,
   },
 ];
@@ -50,15 +69,23 @@ const demoTheme = createTheme({
 });
 
 function DemoPageContent({pathname}: {pathname: string}) {
+  console.log("pathnamepathnamepathname", pathname);
+
   const drivers = pathname?.includes("drivers");
   const operators = pathname?.includes("operators");
   const dedicated = pathname?.includes("dedicated");
+  const driverJobs = pathname?.includes("driverJobs");
+  const operatorJobs = pathname?.includes("appliedOperator");
+  const dedicatedJobs = pathname?.includes("appliedDedicated");
 
   return (
     <Box>
       {drivers && <Drivers />}
       {operators && <Operators />}
       {dedicated && <Dedicated />}
+      {driverJobs && <DriverJobAppliers />}
+      {operatorJobs && <OperatorJobAppliers />}
+      {dedicatedJobs && <DedicatedJobAppliers />}
     </Box>
   );
 }

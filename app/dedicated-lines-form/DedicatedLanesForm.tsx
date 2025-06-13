@@ -7,29 +7,18 @@ type Props = {
   control: Control<any>;
 };
 
-const selectPlateProgram = [
+const selectMiles = [
   {
-    label: "I have my own plate",
-    value: "Own Plate",
+    label: "800 miles/daily +",
+    value: "800",
   },
   {
-    label: "I need plate program",
-    value: "Need Plate",
-  },
-];
-
-const selectTrailerStatus = [
-  {
-    label: "Yes",
-    value: "Yes",
-  },
-  {
-    label: "No",
-    value: "No",
+    label: "1000 miles/daily",
+    value: "1000",
   },
 ];
 
-function OwnerOperatorForm({control}: Props) {
+function DedicatedLanesForm({control}: Props) {
   return (
     <>
       <HFTextField
@@ -63,6 +52,14 @@ function OwnerOperatorForm({control}: Props) {
         name="yearsOfExperience"
       />
 
+      <HFSelectField
+        title="Daily miles that you can do"
+        control={control}
+        name="dailyMiles"
+        required={true}
+        options={selectMiles}
+      />
+
       <HFTextField
         title="How many weeks you can stay out on the road ?"
         control={control}
@@ -71,26 +68,10 @@ function OwnerOperatorForm({control}: Props) {
       />
 
       <HFTextField
-        title="What is your truck year and model ?"
+        title="Name of the company that you worked before ?"
         control={control}
         required={true}
-        name="truckModel"
-      />
-
-      <HFSelectField
-        title="Do you have own plate or you need plate program ?"
-        control={control}
-        name="plateProgram"
-        required={true}
-        options={selectPlateProgram}
-      />
-
-      <HFSelectField
-        title="Do you have own trailer ?"
-        control={control}
-        name="trailerExistance"
-        required={true}
-        options={selectTrailerStatus}
+        name="pastCompany"
       />
 
       <HFTextField
@@ -106,7 +87,7 @@ function OwnerOperatorForm({control}: Props) {
       />
 
       <HFTextField
-        title="How soon you can start in (date)"
+        title="Ready to start in (please show date)"
         control={control}
         required={true}
         name="startDate"
@@ -115,4 +96,4 @@ function OwnerOperatorForm({control}: Props) {
   );
 }
 
-export default OwnerOperatorForm;
+export default DedicatedLanesForm;

@@ -39,8 +39,6 @@ const DedicatedLines: React.FC = () => {
     handleOnGetSheetDataClick();
   }, []);
 
-  console.log("rowsrows", rows);
-
   return (
     <div className="flex bg-gray-50">
       <div className="h-full overflow-auto w-full pt-10">
@@ -177,7 +175,7 @@ const JonPositions: React.FC<JonPositionsProps> = ({
         <Link
           href={{
             pathname: "/dedicated-lines-form",
-            query: {jobTitle: jobTitle, jobType: "dedicatedLines"},
+            query: {jobTitle: jobTitle, jobType: "Dedicated Lanes"},
           }}>
           <button className="h-[45px] w-full bg-[#036760] hover:bg-[#02544f] transition rounded-sm text-[18px] text-white font-bold mt-4">
             Apply Now
