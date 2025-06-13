@@ -103,3 +103,67 @@ export async function POST(req: Request) {
     });
   }
 }
+
+export async function DELETE(req: Request) {
+  const {sheetName, rowIndex} = await req.json();
+
+  const auth = await google.auth.getClient({
+    credentials: {
+      project_id: process.env.GOOGLE_PROJECT_ID,
+      private_key_id: process.env.GOOGLE_PRIVATE_KEY_ID,
+      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      universe_domain: "googleapis.com",
+      type: "service_account",
+    },
+    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+  });
+
+  const sheets = google.sheets({version: "v4", auth});
+
+  try {
+    const getResponse = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID!,
+      range: `${sheetName}!A:Z`,
+    });
+
+    const rows = getResponse.data.values || [];
+    const dataRowCount = rows.length - 1;
+
+    if (dataRowCount > 1) {
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId: process.env.GOOGLE_SHEET_ID!,
+        requestBody: {
+          requests: [
+            {
+              deleteDimension: {
+                range: {
+                  sheetId: 0,
+                  dimension: "ROWS",
+                  startIndex: rowIndex - 1,
+                  endIndex: rowIndex,
+                },
+              },
+            },
+          ],
+        },
+      });
+    } else {
+      const range = `${sheetName}!A${rowIndex}:Z${rowIndex}`;
+      await sheets.spreadsheets.values.clear({
+        spreadsheetId: process.env.GOOGLE_SHEET_ID!,
+        range,
+      });
+    }
+
+    return new Response(JSON.stringify({success: true}), {status: 200});
+  } catch (error) {
+    console.error("❌ Failed to delete or clear row", error);
+    return new Response(
+      JSON.stringify({error: "Failed to delete or clear row"}),
+      {
+        status: 500,
+      }
+    );
+  }
+}

@@ -25,6 +25,7 @@ function OperatorsCreateForm({control, loading}: Props) {
         />
         <HFTextField name="insurance" title="Insurance" control={control} />
         <HFTextField name="eLD" title="ELD" control={control} />
+        <HFTextField name="iFTA" title="IFTA" control={control} />
         <HFTextField name="oFF" title="OFF" control={control} />
         <HFTextField name="loads" title="Loads" control={control} />
         <HFTextField

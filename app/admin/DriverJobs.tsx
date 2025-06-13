@@ -55,6 +55,21 @@ function DriverJobAppliers() {
     setRows(json?.data || []);
   };
 
+  const deleteRow = async (index: number) => {
+    await fetch("/api/sheets", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        sheetName: "Driver Job Appliers",
+        rowIndex: index,
+      }),
+    })
+      .then(() => handleOnGetSheetDataClick())
+      .catch((err) => console.log("eerrrrrrrrrrr", err));
+  };
+
   useEffect(() => {
     handleOnGetSheetDataClick();
   }, []);
@@ -64,12 +79,18 @@ function DriverJobAppliers() {
       <div className="py-2 px-4 h-[50px] flex justify-between items-center border-b border-[#E0E0E0]">
         <h2 className="text-xl">Driver Job Appliers</h2>
       </div>
-      <StickyHeadTable rows={rows || []} />
+      <StickyHeadTable rows={rows || []} deleteRow={deleteRow} />
     </>
   );
 }
 
-function StickyHeadTable({rows}: {rows: Data[]}) {
+function StickyHeadTable({
+  rows,
+  deleteRow,
+}: {
+  rows: Data[];
+  deleteRow: (index: number) => void;
+}) {
   return (
     <TableContainer className="h-[calc(100vh-50px)]">
       <Table stickyHeader aria-label="sticky table">
@@ -135,7 +156,9 @@ function StickyHeadTable({rows}: {rows: Data[]}) {
                   padding: "5px",
                   borderRight: "1px solid #E0E0E0",
                 }}>
-                <Button className="bg-transparent border w-[40px] h-[30px] border-red-500 hover:bg-transparent">
+                <Button
+                  onClick={() => deleteRow(index + 2)}
+                  className="bg-transparent border w-[40px] h-[30px] border-red-500 hover:bg-transparent">
                   <DeleteOutlineIcon
                     style={{width: "20px", height: "20px"}}
                     className="text-red-500"

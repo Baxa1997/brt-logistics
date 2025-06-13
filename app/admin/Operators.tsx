@@ -84,6 +84,21 @@ function Operators() {
     setRows(json?.data || []);
   };
 
+  const deleteRow = async (index: number) => {
+    await fetch("/api/sheets", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        sheetName: "Operators",
+        rowIndex: index,
+      }),
+    })
+      .then(() => handleOnGetSheetDataClick())
+      .catch((err) => console.log("eerrrrrrrrrrr", err));
+  };
+
   useEffect(() => {
     handleOnGetSheetDataClick();
   }, []);
@@ -104,7 +119,7 @@ function Operators() {
         </div>
       </div>
 
-      <StickyHeadTable rows={rows} />
+      <StickyHeadTable rows={rows} deleteRow={deleteRow} />
       <CreateEditForm
         open={open}
         jobType="operator"
@@ -115,7 +130,13 @@ function Operators() {
   );
 }
 
-function StickyHeadTable({rows}: {rows: Data[]}) {
+function StickyHeadTable({
+  rows,
+  deleteRow,
+}: {
+  rows: Data[];
+  deleteRow: (index: number) => void;
+}) {
   return (
     <TableContainer className="h-[calc(100vh-50px)]">
       <Table stickyHeader aria-label="sticky table">
@@ -150,51 +171,25 @@ function StickyHeadTable({rows}: {rows: Data[]}) {
         </TableHead>
 
         <TableBody>
-          {rows.map((row, rowIndex) => (
-            <TableRow hover key={rowIndex}>
+          {rows.map((row, index) => (
+            <TableRow hover key={index}>
               <TableCell
                 sx={{
                   textAlign: "center",
                   borderRight: "1px solid #E0E0E0",
                 }}>
-                {rowIndex + 1}
+                {index + 1}
               </TableCell>
 
-              {columns.map(({accessor, icon}, colIndex) => (
+              {columns.map(({accessor}, colIndex) => (
                 <TableCell
                   key={colIndex}
                   sx={{
                     padding: "0px 10px",
                     borderRight: "1px solid #E0E0E0",
                     verticalAlign: "middle",
-                    color: [
-                      "payment",
-                      "grossAverageSolo",
-                      "grossAverageTeam",
-                      "provided",
-                      "requiredExperience",
-                      "companyAddress",
-                      "companyYard",
-                      "availableLanes",
-                    ].includes(accessor)
-                      ? "#1976d2"
-                      : undefined,
-                    fontWeight: [
-                      "payment",
-                      "grossAverageSolo",
-                      "grossAverageTeam",
-                      "provided",
-                      "requiredExperience",
-                      "companyAddress",
-                      "companyYard",
-                      "availableLanes",
-                    ].includes(accessor)
-                      ? 500
-                      : undefined,
-                    fontStyle: accessor === "eLD" ? "italic" : undefined,
                   }}>
                   <span className="flex items-center gap-1">
-                    {icon}
                     {row[accessor]}
                   </span>
                 </TableCell>
@@ -202,7 +197,9 @@ function StickyHeadTable({rows}: {rows: Data[]}) {
 
               <TableCell
                 sx={{padding: "5px", borderRight: "1px solid #E0E0E0"}}>
-                <Button className="bg-transparent border w-[40px] h-[30px] border-red-500 hover:bg-transparent">
+                <Button
+                  onClick={() => deleteRow(index + 2)}
+                  className="bg-transparent border w-[40px] h-[30px] border-red-500 hover:bg-transparent">
                   <DeleteOutlineIcon
                     style={{width: "20px", height: "20px"}}
                     className="text-red-500"
