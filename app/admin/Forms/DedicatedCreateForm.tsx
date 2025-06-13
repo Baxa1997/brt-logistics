@@ -88,7 +88,7 @@ function DedicatedCreateForm({control, loading}: Props) {
         />
 
         <HFSelectField
-          title="Transport"
+          title="Trailer Type"
           control={control}
           name="transport"
           options={selectEquipmentOption}

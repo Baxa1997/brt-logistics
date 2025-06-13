@@ -21,33 +21,33 @@ import DedicatedJobAppliers from "./DedicatedJobs";
 const NAVIGATION: Navigation = [
   {
     segment: "drivers",
-    title: "Drivers",
+    title: "Post CD",
     icon: <DashboardIcon />,
   },
   {
     segment: "operators",
-    title: "Operators",
+    title: "Post OO",
     icon: <ShoppingCartIcon />,
   },
   {
     segment: "dedicated",
-    title: "Dedicated Lines",
+    title: "Post DL",
     icon: <ShoppingCartIcon />,
   },
   {
     segment: "appliedDedicated",
-    title: "Dedicated Lanes Jobs",
+    title: "Appl DL ",
     icon: <ShoppingCartIcon />,
   },
 
   {
     segment: "driverJobs",
-    title: "Driver Jobs",
+    title: "Appl CD",
     icon: <DashboardIcon />,
   },
   {
     segment: "appliedOperator",
-    title: "Operator Jobs",
+    title: "Appl OO",
     icon: <ShoppingCartIcon />,
   },
 ];
@@ -69,8 +69,6 @@ const demoTheme = createTheme({
 });
 
 function DemoPageContent({pathname}: {pathname: string}) {
-  console.log("pathnamepathnamepathname", pathname);
-
   const drivers = pathname?.includes("drivers");
   const operators = pathname?.includes("operators");
   const dedicated = pathname?.includes("dedicated");

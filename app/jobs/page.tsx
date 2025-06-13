@@ -137,7 +137,7 @@ const JobsPage: React.FC = () => {
         </div>
 
         <div className="container mx-auto">
-          <div className="md:w-[330px] w-[300px] mx-auto border border-[#EAECF0] rounded-[8px] h-[54px] mb-3 bg-[#F9FAFB] p-[6px] flex items-center justify-between gap-[6px]">
+          <div className="md:w-[250px] w-[250px] mx-auto border border-[#EAECF0] rounded-[8px] h-[54px] mb-3 bg-[#F9FAFB] p-[6px] flex items-center justify-between gap-[6px]">
             {jobTypes?.map((job) => (
               <Button
                 key={job?.value}
