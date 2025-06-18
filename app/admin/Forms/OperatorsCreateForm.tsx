@@ -23,6 +23,7 @@ function OperatorsCreateForm({control, loading}: Props) {
           title="Dispatch Fee"
           control={control}
         />
+        <HFTextField name="company" title="Company" control={control} />
         <HFTextField name="insurance" title="Insurance" control={control} />
         <HFTextField name="eLD" title="ELD" control={control} />
         <HFTextField name="iFTA" title="IFTA" control={control} />

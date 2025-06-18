@@ -1,23 +1,23 @@
 "use client";
 import {Button} from "@/components/ui/button";
-import AddIcon from "@mui/icons-material/Add";
-import AddIcCallIcon from "@mui/icons-material/AddIcCall";
-import AddRoadIcon from "@mui/icons-material/AddRoad";
-import AreaChartIcon from "@mui/icons-material/AreaChart";
-import AttachEmailIcon from "@mui/icons-material/AttachEmail";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
-import BusinessIcon from "@mui/icons-material/Business";
-import CellTowerIcon from "@mui/icons-material/CellTower";
-import DataThresholdingIcon from "@mui/icons-material/DataThresholding";
-import EventRepeatIcon from "@mui/icons-material/EventRepeat";
-import FastfoodIcon from "@mui/icons-material/Fastfood";
-import FlagIcon from "@mui/icons-material/Flag";
-import FlightIcon from "@mui/icons-material/Flight";
-import ListAltIcon from "@mui/icons-material/ListAlt";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import PaymentIcon from "@mui/icons-material/Payment";
 import {CircularProgress} from "@mui/material";
+// import AddIcon from "@mui/icons-material/Add";
+// import AddIcCallIcon from "@mui/icons-material/AddIcCall";
+// import AddRoadIcon from "@mui/icons-material/AddRoad";
+// import AreaChartIcon from "@mui/icons-material/AreaChart";
+// import AttachEmailIcon from "@mui/icons-material/AttachEmail";
+// import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+// import AutorenewIcon from "@mui/icons-material/Autorenew";
+// import BusinessIcon from "@mui/icons-material/Business";
+// import CellTowerIcon from "@mui/icons-material/CellTower";
+// import DataThresholdingIcon from "@mui/icons-material/DataThresholding";
+// import EventRepeatIcon from "@mui/icons-material/EventRepeat";
+// import FastfoodIcon from "@mui/icons-material/Fastfood";
+// import FlagIcon from "@mui/icons-material/Flag";
+// import FlightIcon from "@mui/icons-material/Flight";
+// import ListAltIcon from "@mui/icons-material/ListAlt";
+// import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+// import PaymentIcon from "@mui/icons-material/Payment";
 import Link from "next/link";
 import {useEffect, useState} from "react";
 
@@ -60,11 +60,11 @@ type JonPositionsProps = {
 
 const jobTypes = [
   {
-    label: "Drivers",
+    label: "Company Drivers",
     value: "Drivers",
   },
   {
-    label: "Operators",
+    label: "Owner Operators",
     value: "Operators",
   },
 ];
@@ -137,12 +137,12 @@ const JobsPage: React.FC = () => {
         </div>
 
         <div className="container mx-auto">
-          <div className="md:w-[250px] w-[250px] mx-auto border border-[#EAECF0] rounded-[8px] h-[54px] mb-3 bg-[#F9FAFB] p-[6px] flex items-center justify-between gap-[6px]">
+          <div className="md:w-[310px] w-[350px] mx-auto border border-[#EAECF0] rounded-[8px] h-[54px] mb-3 bg-[#F9FAFB] p-[6px] flex items-center justify-between gap-[6px]">
             {jobTypes?.map((job) => (
               <Button
                 key={job?.value}
                 onClick={() => setActiveBtn(job.value)}
-                className={`md:w-[120px] w-[100px] hover:bg-[#F9FAFB] text-black ${
+                className={`md:w-[140px] w-[150px] hover:bg-[#F9FAFB] text-black ${
                   job.value === activeBtn
                     ? "bg-white hover:bg-white shadow-md"
                     : "bg-[#F9FAFB] shadow-none"
@@ -184,7 +184,7 @@ const JobsPage: React.FC = () => {
                   ))
               ) : activeBtn === "Operators" ? (
                 rows
-                  ?.filter((el) => el?.job === "driver" || Boolean(!el?.job))
+                  ?.filter((el) => el?.job === "Operator" || Boolean(!el?.job))
                   .map((item, index) => (
                     <div key={index}>
                       <JonPositions
@@ -194,6 +194,7 @@ const JobsPage: React.FC = () => {
                         payment={item?.payment}
                         insurance={item?.insurance}
                         off={item?.oFF}
+                        company={item?.company}
                         companyAddress={item?.companyAddress}
                         companyYard={item?.companyYard}
                         loads={item?.loads}
@@ -244,8 +245,8 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
     weeklyMiles,
     dispatchFee,
     insurance,
-    eld,
-    ifta,
+    eLD,
+    iFTA,
     plateProgram,
     coverageArea,
     grossAverageSolo,
@@ -273,32 +274,32 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
           <>
             {payment && (
               <p className="flex items-center gap-2 mb-1">
-                <PaymentIcon style={{color: "#036760"}} />
+                {/* <PaymentIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold"> Payment:</span>{" "}
                 {payment}
               </p>
             )}
             {otr && (
               <p className="flex items-center gap-2 mb-1">
-                <AddRoadIcon style={{color: "#036760"}} />
+                {/* <AddRoadIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold"> OTR:</span> {otr}
               </p>
             )}
             {off && (
               <p className="flex items-center gap-2 mb-1">
-                <EventRepeatIcon style={{color: "#036760"}} />
+                {/* <EventRepeatIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold"> OFF:</span> {off}
               </p>
             )}
             {escrow && (
               <p className="flex items-center gap-2 mb-1">
-                <DataThresholdingIcon style={{color: "#036760"}} />
+                {/* <DataThresholdingIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold"> Escrow:</span> {escrow}
               </p>
             )}
             {flightTicket && (
               <p className="flex items-center gap-2 mb-1">
-                <FlightIcon style={{color: "#036760"}} />
+                {/* <FlightIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">
                   Flight Ticket:
                 </span>{" "}
@@ -307,26 +308,26 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
             )}
             {truck && (
               <p className="flex items-center gap-2 mb-1">
-                <LocalShippingIcon style={{color: "#036760"}} />
+                {/* <LocalShippingIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">Truck:</span> {truck}
               </p>
             )}
             {loads && (
               <p className="flex items-center gap-2 mb-1">
-                <AutorenewIcon style={{color: "#036760"}} />
+                {/* <AutorenewIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">Loads:</span> {loads}
               </p>
             )}
             {firstPayment && (
               <p className="flex items-center gap-2 mb-1">
-                <AttachMoneyIcon style={{color: "#036760"}} />
+                {/* <AttachMoneyIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">1st Payment:</span>{" "}
                 {firstPayment}
               </p>
             )}
             {weeklyMiles && (
               <p className="flex items-center gap-2 mb-1">
-                <FlagIcon style={{color: "#036760"}} />
+                {/* <FlagIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">
                   Weekly Guaranteed Miles:
                 </span>{" "}
@@ -340,7 +341,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
           <>
             {dispatchFee && (
               <p className="flex items-center gap-2 mb-1">
-                <PaymentIcon style={{color: "#036760"}} />
+                {/* <PaymentIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">
                   Dispatch Fee:
                 </span>{" "}
@@ -350,44 +351,44 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
 
             {insurance && (
               <p className="flex items-center gap-2 mb-1">
-                <AddIcon style={{color: "#036760"}} />
+                {/* <AddIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">Insurance:</span>{" "}
                 {insurance}
               </p>
             )}
-            {eld && (
+            {eLD && (
               <p className="flex items-center gap-2 mb-1">
-                <AddIcCallIcon style={{color: "#036760"}} />
-                <span className="text-[16px] font-bold">ELD:</span> {eld}
+                {/* <AddIcCallIcon style={{color: "#036760"}} /> */}
+                <span className="text-[16px] font-bold">ELD:</span> {eLD}
               </p>
             )}
-            {ifta && (
+            {iFTA && (
               <p className="flex items-center gap-2 mb-1">
-                <AttachEmailIcon style={{color: "#036760"}} />
-                <span className="text-[16px] font-bold">IFTA:</span> {ifta}
+                {/* <AttachEmailIcon style={{color: "#036760"}} /> */}
+                <span className="text-[16px] font-bold">IFTA:</span> {iFTA}
               </p>
             )}
             {otr && (
               <p className="flex items-center gap-2 mb-1">
-                <CellTowerIcon style={{color: "#036760"}} />
+                {/* <CellTowerIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">OTR:</span> {otr}
               </p>
             )}
             {off && (
               <p className="flex items-center gap-2 mb-1">
-                <EventRepeatIcon style={{color: "#036760"}} />
+                {/* <EventRepeatIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">OFF:</span> {off}
               </p>
             )}
             {loads && (
               <p className="flex items-center gap-2 mb-1">
-                <AutorenewIcon style={{color: "#036760"}} />
+                {/* <AutorenewIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">Loads</span> {loads}
               </p>
             )}
             {plateProgram && (
               <p className="flex items-center gap-2 mb-1">
-                <FastfoodIcon style={{color: "#036760"}} />
+                {/* <FastfoodIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">
                   Plate Program:
                 </span>{" "}
@@ -396,7 +397,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
             )}
             {coverageArea && (
               <p className="flex items-center gap-2 mb-1">
-                <AreaChartIcon style={{color: "#036760"}} />
+                {/* <AreaChartIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">
                   Coverage Area
                 </span>{" "}
@@ -405,7 +406,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
             )}
             {grossAverageSolo && (
               <p className="flex items-center gap-2 mb-1">
-                <AreaChartIcon style={{color: "#036760"}} />
+                {/* <AreaChartIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">
                   Gross Avg Solo (Weekly):
                 </span>{" "}
@@ -414,7 +415,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
             )}
             {grossAverageTeam && (
               <p className="flex items-center gap-2 mb-1">
-                <AreaChartIcon style={{color: "#036760"}} />
+                {/* <AreaChartIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">
                   Gross Avg Team (Weekly):
                 </span>{" "}
@@ -423,21 +424,21 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
             )}
             {payment && (
               <p className="flex items-center gap-2 mb-1">
-                <PaymentIcon style={{color: "#036760"}} />
+                {/* <PaymentIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">Payment:</span>{" "}
                 {payment}
               </p>
             )}
             {provided && (
               <p className="flex items-center gap-2 mb-1">
-                <AreaChartIcon style={{color: "#036760"}} />
+                {/* <AreaChartIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">Provided:</span>{" "}
                 {provided}
               </p>
             )}
             {requiredExperience && (
               <p className="flex items-center gap-2 mb-1">
-                <AreaChartIcon style={{color: "#036760"}} />
+                {/* <AreaChartIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">
                   Required Experience:
                 </span>{" "}
@@ -446,7 +447,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
             )}
             {companyAddress && (
               <p className="flex items-center gap-2 mb-1">
-                <BusinessIcon style={{color: "#036760"}} />
+                {/* <BusinessIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">
                   Company Address:
                 </span>{" "}
@@ -455,7 +456,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
             )}
             {companyYard && (
               <p className="flex items-center gap-2 mb-1">
-                <BusinessIcon style={{color: "#036760"}} />
+                {/* <BusinessIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">
                   Company Yard:
                 </span>{" "}
@@ -464,7 +465,7 @@ const JonPositions: React.FC<JonPositionsProps> = (props) => {
             )}
             {availableLanes && (
               <p className="flex items-center gap-2 mb-1">
-                <ListAltIcon style={{color: "#036760"}} />
+                {/* <ListAltIcon style={{color: "#036760"}} /> */}
                 <span className="text-[16px] font-bold">
                   Available Lanes:
                 </span>{" "}

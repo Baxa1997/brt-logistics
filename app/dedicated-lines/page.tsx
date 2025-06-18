@@ -51,22 +51,28 @@ const DedicatedLines: React.FC = () => {
 
         <div className="md:px-12 px-5 w-full flex justify-center">
           <div className="lg:w-[80%]">
-            {rows?.map((el, index) => (
-              <JonPositions
-                key={index}
-                jobTitle={el?.jobTitle}
-                brokerName={el?.brokerName}
-                wayType={el?.wayType}
-                loadsType={el?.loadsType}
-                pickUp={el?.pickUp}
-                deliveryAddress={el?.deliveryAddress}
-                miles={el?.miles}
-                rate={el?.rate}
-                durationOfContract={el?.durationOfContract}
-                loadsPerWeek={el?.loadsPerWeek}
-                transport={el?.transport}
-              />
-            ))}
+            {rows?.length ? (
+              rows?.map((el, index) => (
+                <JonPositions
+                  key={index}
+                  jobTitle={el?.jobTitle}
+                  brokerName={el?.brokerName}
+                  wayType={el?.wayType}
+                  loadsType={el?.loadsType}
+                  pickUp={el?.pickUp}
+                  deliveryAddress={el?.deliveryAddress}
+                  miles={el?.miles}
+                  rate={el?.rate}
+                  durationOfContract={el?.durationOfContract}
+                  loadsPerWeek={el?.loadsPerWeek}
+                  transport={el?.transport}
+                />
+              ))
+            ) : (
+              <div className="h-[250px] flex items-center justify-center">
+                No jobs available yet
+              </div>
+            )}
           </div>
         </div>
       </div>
