@@ -30,8 +30,8 @@ function OperatorsCreateForm({control, loading}: Props) {
         <HFTextField name="oFF" title="OFF" control={control} />
         <HFTextField name="loads" title="Loads" control={control} />
         <HFTextField
-          name="plateProgram"
-          title="Plate Program"
+          name="platesProgram"
+          title="Plates Program"
           control={control}
         />
         <HFTextField

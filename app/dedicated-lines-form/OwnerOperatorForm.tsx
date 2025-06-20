@@ -64,23 +64,23 @@ function OwnerOperatorForm({control}: Props) {
       />
 
       <HFTextField
-        title="How many weeks you can stay out on the road ?"
-        control={control}
-        required={true}
-        name="weeksAvailable"
-      />
-
-      <HFTextField
         title="What is your truck year and model ?"
         control={control}
         required={true}
         name="truckModel"
       />
 
+      <HFTextField
+        title="How many weeks you can stay out on the road ?"
+        control={control}
+        required={true}
+        name="weeksAvailable"
+      />
+
       <HFSelectField
         title="Do you have own plate or you need plate program ?"
         control={control}
-        name="plateProgram"
+        name="platesProgram"
         required={true}
         options={selectPlateProgram}
       />

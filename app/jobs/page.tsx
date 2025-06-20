@@ -91,7 +91,7 @@ interface Data {
   coverageArea?: string;
   grossAverageSolo?: string;
   grossAverageTeam?: string;
-  plateProgram?: string;
+  platesProgram?: string;
   provided?: string;
   requiredExperience?: string;
   availableLanes?: string;
@@ -205,7 +205,7 @@ const JobsPage: React.FC = () => {
                         eLD={item?.eLD}
                         iFTA={item?.iFTA}
                         availableLanes={item?.availableLanes}
-                        plateProgram={item?.plateProgram}
+                        plateProgram={item?.platesProgram}
                         provided={item?.provided}
                         requiredExperience={item?.requiredExperience}
                       />

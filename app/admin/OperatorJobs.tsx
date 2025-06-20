@@ -25,7 +25,7 @@ const columns: readonly ColumnLabel[] = [
   {label: "Weeks Available", key: "weeksAvailable"},
 
   {label: "Truck Model", key: "truckModel"},
-  {label: "Plate Status", key: "plateProgram"},
+  {label: "Plates Program", key: "platesProgram"},
 
   {label: "Trailer Existance", key: "trailerExistance"},
   {label: "Accidents", key: "accidents"},
@@ -41,7 +41,7 @@ interface Data {
   yourPhoneNumber?: string;
   yourEmailAddress?: string;
   truckModel?: string;
-  plateProgram?: string;
+  platesProgram?: string;
   weeksAvailable?: string;
   trailerExistance?: string;
   accidents?: string;

@@ -33,7 +33,7 @@ interface OperatorFormValues {
   eLD?: string;
   oFF?: string;
   loads?: string;
-  plateProgram?: string;
+  platesProgram?: string;
   coverageArea?: string;
   grossAverageSolo?: string;
   grossAverageTeam?: string;
@@ -43,6 +43,7 @@ interface OperatorFormValues {
   companyAddress?: string;
   companyYard?: string;
   availableLanes?: string;
+  company?: string;
   job?: string;
 }
 
@@ -115,7 +116,7 @@ function CreateEditForm<T extends JobType>({
           IFTA: o.iFTA,
           OFF: o.oFF,
           Loads: o.loads,
-          "Plate Program": o.plateProgram,
+          "Plates Program": o.platesProgram,
           "Coverage Area": o.coverageArea,
           "Gross Average Solo": o.grossAverageSolo,
           "Gross Average Team": o.grossAverageTeam,
@@ -126,6 +127,7 @@ function CreateEditForm<T extends JobType>({
           "Company Yard": o.companyYard,
           "Available Lanes": o.availableLanes,
           Job: "Operator",
+          Company: o.company,
         };
       case "dedicated":
         const s = data as DedicatedFormValues;

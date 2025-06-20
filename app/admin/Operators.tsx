@@ -39,7 +39,7 @@ const columns: readonly ColumnLabel[] = [
     accessor: "loads",
     icon: <LocalShippingIcon sx={{fontSize: 18, mr: 0.5}} />,
   },
-  {label: "Plate Program", accessor: "plateProgram"},
+  {label: "Plate Program", accessor: "platesProgram"},
   {label: "Coverage Area", accessor: "coverageArea"},
   {label: "Gross Average (Solo)", accessor: "grossAverageSolo"},
   {label: "Gross Average (Team)", accessor: "grossAverageTeam"},
@@ -48,6 +48,7 @@ const columns: readonly ColumnLabel[] = [
   {label: "Company Address", accessor: "companyAddress"},
   {label: "Company Yard", accessor: "companyYard"},
   {label: "Available Lanes", accessor: "availableLanes"},
+  {label: "Company", accessor: "company"},
 ];
 
 interface Data {
@@ -59,7 +60,7 @@ interface Data {
   iFTA?: string;
   oFF?: string;
   loads?: string;
-  plateProgram?: string;
+  platesProgram?: string;
   coverageArea?: string;
   grossAverageSolo?: string;
   grossAverageTeam?: string;
@@ -68,6 +69,7 @@ interface Data {
   companyAddress?: string;
   companyYard?: string;
   availableLanes?: string;
+  company?: string;
 }
 
 function Operators() {

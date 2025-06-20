@@ -26,7 +26,7 @@ interface ContactFormInputs {
   violations?: string;
   startDate?: string;
   truckModel?: string;
-  plateProgram?: string;
+  platesProgram?: string;
   trailerExistance?: string;
   brokerName?: string;
   wayType?: string;
@@ -116,9 +116,9 @@ const JobsForm: React.FC = () => {
           "Your Email Address": data.yourEmailAddress,
           "Years of Experience": data.yearsOfExperience,
           "Truck Model": data.truckModel,
-          "Plate Status": data.plateProgram,
-          "Trailer Existance": data.trailerExistance,
           "Weeks Available": data.weeksAvailable,
+          "Plates Program": data.platesProgram,
+          "Trailer Existance": data.trailerExistance,
           Accidents: data.accidents,
           Violations: data.violations,
           "Start Date": data.startDate,
