@@ -21,13 +21,19 @@ const columns: readonly ColumnLabel[] = [
   {label: "Full Name", key: "fullName"},
   {label: "Your Phone Number", key: "yourPhoneNumber"},
   {label: "Your Email Address", key: "yourEmailAddress"},
-  {label: "Years Of Experience", key: "yearsOfExperience"},
-  {label: "Daily Miles", key: "dailyMiles"},
-  {label: "Weeks Available", key: "weeksAvailable"},
-  {label: "Past Company", key: "pastCompany"},
-  {label: "Accidents", key: "accidents"},
-  {label: "Violations", key: "violations"},
-  {label: "Start Date", key: "startDate"},
+  {
+    label: "How many years you have experience as truck driver ?",
+    key: "yearsOfExperience",
+  },
+  {label: "Daily miles that you can do", key: "dailyMiles"},
+  {
+    label: "How many weeks you can stay out on the road ?",
+    key: "weeksAvailable",
+  },
+  {label: "Name of the company that you worked before ?", key: "pastCompany"},
+  {label: "Accidents in last 3 years", key: "accidents"},
+  {label: "Violations in last 3 years", key: "violations"},
+  {label: "Ready to start in (please show date)", key: "startDate"},
 ];
 
 interface Data {
